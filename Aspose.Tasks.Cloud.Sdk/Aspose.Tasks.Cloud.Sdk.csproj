@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{11CDA7D7-4E13-4946-BDC7-7178115F35DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>Aspose.Tasks.Cloud.Sdk</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Aspose.Tasks.Cloud.Sdk</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net20\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Aspose.Tasks.Cloud.Sdk.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\ApiException.cs" />
+    <Compile Include="Api\AuthType.cs" />
+    <Compile Include="Api\TasksApi.cs" />
+    <Compile Include="Internal\ApiInvoker.cs" />
+    <Compile Include="Api\Configuration.cs" />
+    <Compile Include="Internal\NeedRepeatRequestException.cs" />
+    <Compile Include="Internal\FileInfo.cs" />
+    <Compile Include="Internal\IRequestHandler.cs" />
+    <Compile Include="Internal\RequestHandlers\ApiExceptionRequestHandler.cs" />
+    <Compile Include="Internal\RequestHandlers\AuthWithSignatureRequestHandler.cs" />
+    <Compile Include="Internal\RequestHandlers\DebugLogRequestHandler.cs" />
+    <Compile Include="Internal\RequestHandlers\OAuthRequestHandler.cs" />
+    <Compile Include="Internal\SerializationHelper.cs" />
+    <Compile Include="Internal\StreamHelper.cs" />
+    <Compile Include="Internal\TasksApiErrorResponse.cs" />
+    <Compile Include="Internal\UrlHelper.cs" />
+    <Compile Include="Model\AsposeResponse.cs" />
+    <Compile Include="Model\AssignmentBaseline.cs" />
+    <Compile Include="Model\AssignmentItem.cs" />
+    <Compile Include="Model\AssignmentItemResponse.cs" />
+    <Compile Include="Model\AssignmentItems.cs" />
+    <Compile Include="Model\AssignmentItemsResponse.cs" />
+    <Compile Include="Model\AssignmentResponse.cs" />
+    <Compile Include="Model\AssignmentsResponse.cs" />
+    <Compile Include="Model\Baseline.cs" />
+    <Compile Include="Model\BaselineType.cs" />
+    <Compile Include="Model\BookingType.cs" />
+    <Compile Include="Model\CalculationMode.cs" />
+    <Compile Include="Model\CalculationType.cs" />
+    <Compile Include="Model\Calendar.cs" />
+    <Compile Include="Model\CalendarException.cs" />
+    <Compile Include="Model\CalendarExceptionsResponse.cs" />
+    <Compile Include="Model\CalendarExceptionType.cs" />
+    <Compile Include="Model\CalendarItem.cs" />
+    <Compile Include="Model\CalendarItemResponse.cs" />
+    <Compile Include="Model\CalendarItems.cs" />
+    <Compile Include="Model\CalendarItemsResponse.cs" />
+    <Compile Include="Model\CalendarResponse.cs" />
+    <Compile Include="Model\CalendarWorkWeeksResponse.cs" />
+    <Compile Include="Model\ConfidenceLevel.cs" />
+    <Compile Include="Model\ConstraintType.cs" />
+    <Compile Include="Model\CostAccrualType.cs" />
+    <Compile Include="Model\CustomFieldType.cs" />
+    <Compile Include="Model\DayOfWeek.cs" />
+    <Compile Include="Model\DayType.cs" />
+    <Compile Include="Model\DocumentProperties.cs" />
+    <Compile Include="Model\DocumentPropertiesResponse.cs" />
+    <Compile Include="Model\DocumentProperty.cs" />
+    <Compile Include="Model\DocumentPropertyResponse.cs" />
+    <Compile Include="Model\EarnedValueMethodType.cs" />
+    <Compile Include="Model\ElementType.cs" />
+    <Compile Include="Model\ExtendedAttribute.cs" />
+    <Compile Include="Model\ExtendedAttributeDefinition.cs" />
+    <Compile Include="Model\ExtendedAttributeItem.cs" />
+    <Compile Include="Model\ExtendedAttributeItemResponse.cs" />
+    <Compile Include="Model\ExtendedAttributeItems.cs" />
+    <Compile Include="Model\ExtendedAttributeItemsResponse.cs" />
+    <Compile Include="Model\ExtendedAttributeResponse.cs" />
+    <Compile Include="Model\HttpStatusCode.cs" />
+    <Compile Include="Model\ImportedProjectType.cs" />
+    <Compile Include="Model\Link.cs" />
+    <Compile Include="Model\LinkElement.cs" />
+    <Compile Include="Model\MaskType.cs" />
+    <Compile Include="Model\Month.cs" />
+    <Compile Include="Model\MonthItemType.cs" />
+    <Compile Include="Model\MonthPosition.cs" />
+    <Compile Include="Model\OrdinalNumber.cs" />
+    <Compile Include="Model\OutlineCode.cs" />
+    <Compile Include="Model\OutlineCodeDefinition.cs" />
+    <Compile Include="Model\OutlineCodeItem.cs" />
+    <Compile Include="Model\OutlineCodeItems.cs" />
+    <Compile Include="Model\OutlineCodeItemsResponse.cs" />
+    <Compile Include="Model\OutlineCodeResponse.cs" />
+    <Compile Include="Model\OutlineMask.cs" />
+    <Compile Include="Model\OutlineValue.cs" />
+    <Compile Include="Model\OutlineValueType.cs" />
+    <Compile Include="Model\PageCountResponse.cs" />
+    <Compile Include="Model\PageSize.cs" />
+    <Compile Include="Model\PresentationFormat.cs" />
+    <Compile Include="Model\ProbabilityDistributionType.cs" />
+    <Compile Include="Model\ProjectDatabaseType.cs" />
+    <Compile Include="Model\ProjectFileFormat.cs" />
+    <Compile Include="Model\ProjectIdsResponse.cs" />
+    <Compile Include="Model\ProjectRecalculateResponse.cs" />
+    <Compile Include="Model\ProjectRecalculationResult.cs" />
+    <Compile Include="Model\ProjectValidationState.cs" />
+    <Compile Include="Model\RateFormatType.cs" />
+    <Compile Include="Model\RateScaleType.cs" />
+    <Compile Include="Model\RateType.cs" />
+    <Compile Include="Model\RecurrencePattern.cs" />
+    <Compile Include="Model\RecurringInfo.cs" />
+    <Compile Include="Model\RecurringInfoResponse.cs" />
+    <Compile Include="Model\ReportType.cs" />
+    <Compile Include="Model\Requests\DeleteAssignmentRequest.cs" />
+    <Compile Include="Model\Requests\DeleteCalendarExceptionRequest.cs" />
+    <Compile Include="Model\Requests\DeleteCalendarRequest.cs" />
+    <Compile Include="Model\Requests\DeleteExtendedAttributeByIndexRequest.cs" />
+    <Compile Include="Model\Requests\DeleteOutlineCodeByIndexRequest.cs" />
+    <Compile Include="Model\Requests\DeleteResourceRequest.cs" />
+    <Compile Include="Model\Requests\DeleteTaskLinkRequest.cs" />
+    <Compile Include="Model\Requests\DeleteTaskRequest.cs" />
+    <Compile Include="Model\Requests\GetAssignmentRequest.cs" />
+    <Compile Include="Model\Requests\GetAssignmentsRequest.cs" />
+    <Compile Include="Model\Requests\GetAssignmentTimephasedDataRequest.cs" />
+    <Compile Include="Model\Requests\GetCalendarExceptionsRequest.cs" />
+    <Compile Include="Model\Requests\GetCalendarRequest.cs" />
+    <Compile Include="Model\Requests\GetCalendarsRequest.cs" />
+    <Compile Include="Model\Requests\GetCalendarWorkWeeksRequest.cs" />
+    <Compile Include="Model\Requests\GetCriticalPathRequest.cs" />
+    <Compile Include="Model\Requests\GetDocumentPropertiesRequest.cs" />
+    <Compile Include="Model\Requests\GetDocumentPropertyRequest.cs" />
+    <Compile Include="Model\Requests\GetExtendedAttributeByIndexRequest.cs" />
+    <Compile Include="Model\Requests\GetExtendedAttributesRequest.cs" />
+    <Compile Include="Model\Requests\GetOutlineCodeByIndexRequest.cs" />
+    <Compile Include="Model\Requests\GetOutlineCodesRequest.cs" />
+    <Compile Include="Model\Requests\GetPageCountRequest.cs" />
+    <Compile Include="Model\Requests\GetProjectIdsRequest.cs" />
+    <Compile Include="Model\Requests\GetReportPdfRequest.cs" />
+    <Compile Include="Model\Requests\GetResourceAssignmentsRequest.cs" />
+    <Compile Include="Model\Requests\GetResourceRequest.cs" />
+    <Compile Include="Model\Requests\GetResourcesRequest.cs" />
+    <Compile Include="Model\Requests\GetResourceTimephasedDataRequest.cs" />
+    <Compile Include="Model\Requests\GetRiskAnalysisReportRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskAssignmentsRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskDocumentRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskDocumentWithFormatRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskLinksRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskRecurringInfoRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskRequest.cs" />
+    <Compile Include="Model\Requests\GetTasksRequest.cs" />
+    <Compile Include="Model\Requests\GetTaskTimephasedDataRequest.cs" />
+    <Compile Include="Model\Requests\GetVbaProjectRequest.cs" />
+    <Compile Include="Model\Requests\GetWbsDefinitionRequest.cs" />
+    <Compile Include="Model\Requests\PostAssignmentRequest.cs" />
+    <Compile Include="Model\Requests\PostCalendarExceptionRequest.cs" />
+    <Compile Include="Model\Requests\PostCalendarRequest.cs" />
+    <Compile Include="Model\Requests\PostDocumentPropertyRequest.cs" />
+    <Compile Include="Model\Requests\PostResourceRequest.cs" />
+    <Compile Include="Model\Requests\PostTaskDocumentWithFormatRequest.cs" />
+    <Compile Include="Model\Requests\PostTaskLinkRequest.cs" />
+    <Compile Include="Model\Requests\PostTaskRequest.cs" />
+    <Compile Include="Model\Requests\PutAssignmentRequest.cs" />
+    <Compile Include="Model\Requests\PutCalendarExceptionRequest.cs" />
+    <Compile Include="Model\Requests\PutCalendarRequest.cs" />
+    <Compile Include="Model\Requests\PutDocumentPropertyRequest.cs" />
+    <Compile Include="Model\Requests\PutExtendedAttributeRequest.cs" />
+    <Compile Include="Model\Requests\PutImportProjectFromDbRequest.cs" />
+    <Compile Include="Model\Requests\PutImportProjectFromFileRequest.cs" />
+    <Compile Include="Model\Requests\PutMoveTaskRequest.cs" />
+    <Compile Include="Model\Requests\PutMoveTaskToSiblingRequest.cs" />
+    <Compile Include="Model\Requests\PutRecalculateProjectRequest.cs" />
+    <Compile Include="Model\Requests\PutRecalculateProjectResourceFieldsRequest.cs" />
+    <Compile Include="Model\Requests\PutRecalculateProjectUncompleteWorkToStartAfterRequest.cs" />
+    <Compile Include="Model\Requests\PutRecalculateProjectWorkAsCompleteRequest.cs" />
+    <Compile Include="Model\Requests\PutRenumberWbsCodeRequest.cs" />
+    <Compile Include="Model\Requests\PutResourceRequest.cs" />
+    <Compile Include="Model\Requests\PutTaskLinkRequest.cs" />
+    <Compile Include="Model\Requests\PutTaskRequest.cs" />
+    <Compile Include="Model\Resource.cs" />
+    <Compile Include="Model\ResourceAssignment.cs" />
+    <Compile Include="Model\ResourceAssignments.cs" />
+    <Compile Include="Model\ResourceItem.cs" />
+    <Compile Include="Model\ResourceItemResponse.cs" />
+    <Compile Include="Model\ResourceItems.cs" />
+    <Compile Include="Model\ResourceItemsResponse.cs" />
+    <Compile Include="Model\ResourceResponse.cs" />
+    <Compile Include="Model\ResourceType.cs" />
+    <Compile Include="Model\RollupType.cs" />
+    <Compile Include="Model\Task.cs" />
+    <Compile Include="Model\TaskBaseline.cs" />
+    <Compile Include="Model\TaskItem.cs" />
+    <Compile Include="Model\TaskItemResponse.cs" />
+    <Compile Include="Model\TaskItems.cs" />
+    <Compile Include="Model\TaskItemsResponse.cs" />
+    <Compile Include="Model\TaskLink.cs" />
+    <Compile Include="Model\TaskLinkResponse.cs" />
+    <Compile Include="Model\TaskLinksResponse.cs" />
+    <Compile Include="Model\TaskLinkType.cs" />
+    <Compile Include="Model\TaskResponse.cs" />
+    <Compile Include="Model\TaskType.cs" />
+    <Compile Include="Model\TimephasedData.cs" />
+    <Compile Include="Model\TimephasedDataResponse.cs" />
+    <Compile Include="Model\TimephasedDataType.cs" />
+    <Compile Include="Model\Timescale.cs" />
+    <Compile Include="Model\TimeUnitType.cs" />
+    <Compile Include="Model\Value.cs" />
+    <Compile Include="Model\VbaModule.cs" />
+    <Compile Include="Model\VbaModuleAttribute.cs" />
+    <Compile Include="Model\VbaProject.cs" />
+    <Compile Include="Model\VbaProjectResponse.cs" />
+    <Compile Include="Model\VbaReference.cs" />
+    <Compile Include="Model\WBSCodeMask.cs" />
+    <Compile Include="Model\WBSDefinition.cs" />
+    <Compile Include="Model\WBSDefinitionResponse.cs" />
+    <Compile Include="Model\WBSSequence.cs" />
+    <Compile Include="Model\WeekDay.cs" />
+    <Compile Include="Model\WeekDayType.cs" />
+    <Compile Include="Model\WorkContourType.cs" />
+    <Compile Include="Model\WorkGroupType.cs" />
+    <Compile Include="Model\WorkingTime.cs" />
+    <Compile Include="Model\WorkWeek.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+</Project>

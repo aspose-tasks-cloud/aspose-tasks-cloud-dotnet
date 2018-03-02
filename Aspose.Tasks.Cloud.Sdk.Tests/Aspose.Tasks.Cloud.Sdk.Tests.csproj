@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aspose.Tasks.Cloud.Sdk.Tests</RootNamespace>
+    <AssemblyName>Aspose.Tasks.Cloud.Sdk.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Storage-Cloud, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Storage-Cloud.1.0.10\lib\Aspose.Storage-Cloud.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net20\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assignment\TestAssignments.cs" />
+    <Compile Include="Base\BaseTestContext.cs" />
+    <Compile Include="Base\DirectoryHelper.cs" />
+    <Compile Include="BasicApiTests.cs" />
+    <Compile Include="Calendar\TestCalendarWorkWeeks.cs" />
+    <Compile Include="Calendar\TestCalendarExceptions.cs" />
+    <Compile Include="Calendar\TestCalendars.cs" />
+    <Compile Include="ExtendedAttributes\TestExtendedAttributes.cs" />
+    <Compile Include="OutlineCodes\TestOutlineCodes.cs" />
+    <Compile Include="Project\TestTaskDocumentFormat.cs" />
+    <Compile Include="Project\TestGetPageCount.cs" />
+    <Compile Include="Project\TestImportProject.cs" />
+    <Compile Include="Project\TestReadProject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recalculation\TestRecalculation.cs" />
+    <Compile Include="Reports\TestReport.cs" />
+    <Compile Include="Resources\TestResources.cs" />
+    <Compile Include="TaskLinks\TaskLinksTests.cs" />
+    <Compile Include="Tasks\TestTasks.cs" />
+    <Compile Include="DocumentProperties\TestDocumentProperties.cs" />
+    <Compile Include="TimephasedData\TimephasedDataTests.cs" />
+    <Compile Include="Vba\VbaTests.cs" />
+    <Compile Include="Wbs\WbsTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aspose.Tasks.Cloud.Sdk\Aspose.Tasks.Cloud.Sdk.csproj">
+      <Project>{11CDA7D7-4E13-4946-BDC7-7178115F35DD}</Project>
+      <Name>Aspose.Tasks.Cloud.Sdk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

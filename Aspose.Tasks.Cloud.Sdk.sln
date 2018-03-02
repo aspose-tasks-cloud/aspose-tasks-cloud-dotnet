@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Tasks.Cloud.Sdk", "Aspose.Tasks.Cloud.Sdk\Aspose.Tasks.Cloud.Sdk.csproj", "{11CDA7D7-4E13-4946-BDC7-7178115F35DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Tasks.Cloud.Sdk.Tests", "Aspose.Tasks.Cloud.Sdk.Tests\Aspose.Tasks.Cloud.Sdk.Tests.csproj", "{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98322D5D-AC84-4BA5-94DC-5FB1B651046F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Debug|x86.ActiveCfg = Debug|x86
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Debug|x86.Build.0 = Debug|x86
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Release|Any CPU.ActiveCfg = Release|x86
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Release|x86.ActiveCfg = Release|x86
+		{11CDA7D7-4E13-4946-BDC7-7178115F35DD}.Release|x86.Build.0 = Release|x86
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FCFE1F60-DB73-4F3F-853A-FBADCC5E994B}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

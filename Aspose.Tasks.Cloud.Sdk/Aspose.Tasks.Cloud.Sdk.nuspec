@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Aspose.Tasks-Cloud</id>
+    <version>18.02</version>
+    <title>Aspose.Tasks Cloud SDK for .NET</title>
+    <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
+    <authors>Vasiliy Sinitsyn</authors>
+    <owners>Aspose</owners>
+    <licenseUrl>https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-dotnet/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-dotnet</projectUrl>
+    <iconUrl>http://www.aspose.com/Images/aspose_tasks_for_cloud_140px.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>New generation of Aspose Cloud SDK that allows to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications. It allows you to work with all aspects of a Project document including conversion. The API offers a wide range of Microsoft Project export options. The Aspose.Tasks for Cloud API allows developers to convert Project documents to various formats including XML, HTML, BMP, PNG, PDF, and XSLX.
+    </description>
+    <releaseNotes>
+      Aspose.Tasks Cloud SDK for .NET 18.02 Release Notes
+      This is fully reworked version of .NET Cloud SDK. Notable advantages over previous generation include the following:
+      * SDK is fully in sync with the API, all missing methods are added
+      * Classes, methods and properties have comments and are IDE-friendly
+      * [Breaking] Usage of Request/Response classes to represent long lists of parameters. This allows for cleaner code and easier backwards-compatibility going forward.
+      * Added endpoint for reading Uids of projects in multiproject files.
+      * Added endpoint for importing project with the specified Uid from file in Primavera xml format or from Primavera SQLite database file (.db).
+      * Added endpoint for importing project with the specified Uid from a public MS Project database specified by a connection string.
+      * Changes in Task type:
+      - added field DurationText (The duration of a task entered by the user as a text)
+      - added field ExternalTaskProject (The source location and task identifier of an external task)
+      - added field ExternalId (If a task is an external task the property contains the task's external Id)
+      - added field StartText (Returns the task's start text)
+      - added field FinishText (Returns the task's finish text)
+      - added field ActualWorkProtected (The duration through which actual work is protected)
+      - added field ActualOvertimeWorkProtected (The duration through which actual overtime work is protected)
+      - added field IsResumeValid (Determines whether a task can be resumed)
+      - added field Stop ( The date that represents the end of the actual portion of a task)
+      - added field ManualStart ( Manually scheduled start of a task)
+      - added field ManualFinish( Manually scheduled finish of a task)
+      - added field ManualDuration( Defines manually scheduled duration of a task)
+      - added field NotesRTF ( The text notes in RTF format)
+      - added field IgnoreWarnings (  Indicates whether to hide the schedule conflict warning indicator in Microsoft Project )
+      - added field IsExpanded (  Determines whether a summary task is expanded or not in GanttChart view)
+      - added field DisplayOnTimeline ( Specifies whether a task should be displayed on a timeline view)
+      - added field DisplayAsSummary ( Determines whether the task should be displayed as a summary task.)
+      - added field Hyperlink ( The title or explanatory text for a hyperlink associated with a task)
+      - added field HyperlinkAddress ( The address for a hyperlink associated with a task)
+      - added field HyperlinkSubAddress ( The specific location in a document in a hyperlink associated with a task)
+      - added field EarnedValueMethod ( Determines whether the % Complete or Physical % Complete field should be used to calculate budgeted cost of work performed (BCWP))
+      - added field IsPublished ( Determines whether the current task should be published to Project Server with the rest of the project)
+      - added field StatusManager ( The name of the enterprise resource who is to receive status updates for the current task from resources )
+      - added field CommitmentStart ( The start date of a delivery )
+      - added field CommitmentFinish ( The finish date of a delivery )
+      - added field CommitmentType (  Determines whether a task has an associated delivery or a dependency on an associated delivery )
+
+      * Changes in Resource type:
+      -  [Breaking] RateScale field (previously integer) now is limited to the following values: 'Undefined', 'Minute', 'Hour', 'Day', 'Week', 'Month', 'Quarter', 'Year'
+      - added field Guid ( Contains the generated unique identification code for the resource )
+      - added field WindowsUserAccount(  The NT account associated with a resource )
+      - added field Workgroup ( The type of a workgroup to which a resource belongs )
+      - added field Notes (  The text notes associated with a resource )
+      - added field NotesRTF ( The text notes in RTF format )
+
+      * The following endpoint is added: \tasks\{name}\calendars\{calendarUid}\workWeeks . Returns work weeks definitions of a calendar with the specified Uid.
+      * The following endpoint is added:  \tasks\{name}\vbaproject
+      * Endpoint that moves a task to another position under the same parent and the same outline level is added.
+      * [Breaking] Endpoint for converting project file to the specified format is renamed.
+      Also, the 'format' parameter now has the following possible values: mpp, xml, html, bmp, png, jpeg, pdf, tiff, xps, svg, csv, txt, spreadsheetML, xlsx, p6xml, xer, mpx, Gdhtml.
+      * Endpoint for converting project file to the specified format with the specified save options is added.
+      * [Breaking] Some enum field in API's objects were serialized to json as integer values. Now it's fixed.
+      * Endpoint tasks/{filename}/recalculate/project now have boolean parameter "validate" which specifies that validation should be performed before the recalculation.
+      * Endpoint 'pagecount' is added. It returns page count for the project to be rendered using specified time interval and given timescale and either specified presentation format or specified page size.
+      * Added endpoint for creating additional attribute definition in the project.
+      * [Breaking] Baseline-related properties are moved from the following types: Task, Resource, Assignment to the nested arrrays.
+      * Added endpoints for getting timephased data for tasks, resources and assignments.
+      * Change in CalendarException type :
+      - added Index field (Index of the current item in the collection of calendar's exceptions)
+      * [Breaking] The DELETE request to the certain endpoints now return 404 NotFound status if the specified entity is not found.
+
+      The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+for+Cloud+18.2+Release+Notes
+    </releaseNotes>
+    <copyright>Aspose 2002-2018. All Rights Reserved.</copyright>
+    <tags>MPP Primavera Microsoft Project P6XML PrimaveraXML XER MPX</tags>    
+  </metadata>
+</package>
