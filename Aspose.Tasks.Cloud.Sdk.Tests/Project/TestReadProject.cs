@@ -23,12 +23,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 {
@@ -46,7 +45,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             CollectionAssert.AreEquivalent(new string[] { "1", "111" } , response.ProjectIds);
         }
 

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents an outline value.
-    /// </summary>  
+    /// </summary>
     public class OutlineValue
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The unique Id of an outline code value within a project.
         /// </summary>  
         public int? ValueId { get; set; }

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class WeekDay
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Returns or sets the type of a day.
         /// </summary>  
         [JsonProperty("DayType", NullValueHandling = NullValueHandling.Ignore)]

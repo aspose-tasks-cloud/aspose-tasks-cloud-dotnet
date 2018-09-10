@@ -35,10 +35,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a vba module 
-    /// </summary>  
+    /// </summary>
     public class VbaModule
-    {         /// <summary>
-        /// Gets a collection of  
+    { 
+        /// <summary>
+        /// Gets a collection of  VbaModuleAttributeCollection
         /// </summary>  
         public List<VbaModuleAttribute> Attributes { get; set; }
 

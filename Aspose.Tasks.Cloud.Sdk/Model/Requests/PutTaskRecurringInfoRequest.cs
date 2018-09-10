@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="HttpStatusCode.cs">
+// <copyright company="Aspose" file="PutTaskRecurringInfoRequest.cs">
 //   Copyright (c) 2018 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
@@ -22,68 +22,54 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace Aspose.Tasks.Cloud.Sdk.Model 
+namespace Aspose.Tasks.Cloud.Sdk.Model.Requests 
 {
-    using System;  
-    using System.Collections;
+    using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+
+    using Aspose.Tasks.Cloud.Sdk.Model; 
 
     /// <summary>
-    /// 
+    /// Request model for <see cref="Aspose.Tasks.Cloud.Sdk.Api.TasksApi.PutTaskRecurringInfo" /> operation.
     /// </summary>  
-    public enum HttpStatusCode
-    { 
-        Continue,
-        SwitchingProtocols,
-        OK,
-        Created,
-        Accepted,
-        NonAuthoritativeInformation,
-        NoContent,
-        ResetContent,
-        PartialContent,
-        MultipleChoices,
-        Ambiguous,
-        MovedPermanently,
-        Moved,
-        Found,
-        Redirect,
-        SeeOther,
-        RedirectMethod,
-        NotModified,
-        UseProxy,
-        Unused,
-        TemporaryRedirect,
-        RedirectKeepVerb,
-        BadRequest,
-        Unauthorized,
-        PaymentRequired,
-        Forbidden,
-        NotFound,
-        MethodNotAllowed,
-        NotAcceptable,
-        ProxyAuthenticationRequired,
-        RequestTimeout,
-        Conflict,
-        Gone,
-        LengthRequired,
-        PreconditionFailed,
-        RequestEntityTooLarge,
-        RequestUriTooLong,
-        UnsupportedMediaType,
-        RequestedRangeNotSatisfiable,
-        ExpectationFailed,
-        UpgradeRequired,
-        InternalServerError,
-        NotImplemented,
-        BadGateway,
-        ServiceUnavailable,
-        GatewayTimeout,
-        HttpVersionNotSupported
+    public class PutTaskRecurringInfoRequest  
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PutTaskRecurringInfoRequest"/> class.
+        /// </summary>        
+        public PutTaskRecurringInfoRequest()
+        {
+        }
+
+
+        /// <summary>
+        /// The name of the file.
+        /// </summary>  
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Task Uid.
+        /// </summary>  
+        public int? TaskUid { get; set; }
+
+        /// <summary>
+        /// A modified DTO of task's recurring info.
+        /// </summary>  
+        public RecurringInfo RecurringInfo { get; set; }
+
+        /// <summary>
+        /// File name to save changes to.
+        /// </summary>  
+        public string FileName { get; set; }
+
+        /// <summary>
+        /// The document storage.
+        /// </summary>  
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// The document folder.
+        /// </summary>  
+        public string Folder { get; set; }
     }
 }

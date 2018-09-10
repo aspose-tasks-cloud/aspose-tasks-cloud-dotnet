@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class WBSDefinition
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Project Code Prefix.
         /// </summary>  
         public string CodePrefix { get; set; }

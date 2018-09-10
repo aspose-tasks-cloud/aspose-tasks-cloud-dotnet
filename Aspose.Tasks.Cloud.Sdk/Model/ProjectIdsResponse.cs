@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// ProjectIds response
-    /// </summary>  
+    /// </summary>
     public class ProjectIdsResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// UIds of the projects
         /// </summary>  
         public List<string> ProjectIds { get; set; }

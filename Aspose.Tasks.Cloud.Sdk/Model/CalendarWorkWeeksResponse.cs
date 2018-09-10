@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// CalendarWorkWeeks response.
-    /// </summary>  
+    /// </summary>
     public class CalendarWorkWeeksResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets CalendarWorkWeeks
         /// </summary>  
         public List<WorkWeek> CalendarWorkWeeks { get; set; }

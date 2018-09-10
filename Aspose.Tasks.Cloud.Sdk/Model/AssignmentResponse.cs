@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Assignment response.
-    /// </summary>  
+    /// </summary>
     public class AssignmentResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// ResourceAssignment DTO.
         /// </summary>  
         public ResourceAssignment Assignment { get; set; }

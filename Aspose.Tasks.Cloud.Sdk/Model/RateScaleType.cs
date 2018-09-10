@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies the rate scale type.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RateScaleType
     { 
         Undefined,

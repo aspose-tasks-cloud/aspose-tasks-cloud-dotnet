@@ -23,6 +23,9 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System.Net;
+
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
@@ -42,14 +45,13 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual("OK", vbaResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, vbaResponse.Code);
             Assert.IsNotNull(vbaResponse.VbaProject);
             Assert.IsNotNull(vbaResponse.VbaProject.Modules);
 
             Assert.AreEqual(7, vbaResponse.VbaProject.Modules.Count);
             Assert.AreEqual("Module1", vbaResponse.VbaProject.Modules[0].Name);
             Assert.IsTrue(vbaResponse.VbaProject.Modules[0].SourceCode.StartsWith("Type MEMORYSTATUS"));
-
         }
     }
 }

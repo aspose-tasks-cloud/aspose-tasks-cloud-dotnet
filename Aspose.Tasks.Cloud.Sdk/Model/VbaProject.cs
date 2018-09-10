@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents VbaProject
-    /// </summary>  
+    /// </summary>
     public class VbaProject
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets conditional Compilation Arguments
         /// </summary>  
         public string CompilationArguments { get; set; }
@@ -58,7 +59,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string HelpFile { get; set; }
 
         /// <summary>
-        /// Gets a collection of 
+        /// Gets a collection of VbaModuleCollection
         /// </summary>  
         public List<VbaModule> Modules { get; set; }
 
@@ -68,7 +69,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets a collection of 
+        /// Gets a collection of VbaReferenceCollection
         /// </summary>  
         public List<VbaReference> References { get; set; }
 

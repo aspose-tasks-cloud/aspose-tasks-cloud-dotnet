@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Supported formats in which project file can be saved.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ProjectFileFormat
     { 
         Mpp,

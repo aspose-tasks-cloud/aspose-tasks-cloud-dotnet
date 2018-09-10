@@ -34,8 +34,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Represents a weekday of a project in the instance of  class.
-    /// </summary>  
+    /// Represents a weekday of a project in the instance of RecurringInfo class.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    [Flags]
     public enum WeekDayType
     { 
         None,

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Resource&#39;s assignment brief into.
-    /// </summary>  
+    /// </summary>
     public class AssignmentItem
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets Link
         /// </summary>  
         public Link Link { get; set; }

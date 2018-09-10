@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
@@ -50,7 +50,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 OutputFileFormat = ProjectFileFormat.P6xml
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getTasksResponse = TasksApi.GetTasks(new GetTasksRequest
             {
@@ -58,7 +58,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getTasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getTasksResponse.Code);
             Assert.AreEqual(12, getTasksResponse.Tasks.TaskItem.Count);
         }
 
@@ -77,7 +77,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Format = ProjectFileFormat.P6xml
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getProjectIdsResponse = TasksApi.GetProjectIds(new GetProjectIdsRequest
             {
@@ -85,7 +85,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getProjectIdsResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getProjectIdsResponse.Code);
             CollectionAssert.AreEquivalent(new string[] { "1" }, getProjectIdsResponse.ProjectIds);
         }
     }

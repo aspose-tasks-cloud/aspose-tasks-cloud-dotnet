@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents baseline values of a task.
-    /// </summary>  
+    /// </summary>
     public class TaskBaseline : Baseline
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The scheduled start date of the task when the baseline was saved.
         /// </summary>  
         public DateTime? Start { get; set; }

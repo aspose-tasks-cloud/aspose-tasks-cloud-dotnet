@@ -63,7 +63,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string Folder { get; set; }
 
         /// <summary>
-        /// The name of the project document to save changes to.              If this parameter is omitted then the changes will be saved to the source project document.
+        /// The name of the project document to save changes to.  If this parameter is omitted then the changes will be saved to the source project document.
         /// </summary>  
         public string FileName { get; set; }
     }

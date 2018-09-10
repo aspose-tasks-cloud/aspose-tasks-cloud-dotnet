@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Enumeration for presentation format.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PresentationFormat
     { 
         GanttChart,

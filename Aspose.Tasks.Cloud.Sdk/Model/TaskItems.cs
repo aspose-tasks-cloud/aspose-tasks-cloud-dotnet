@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class TaskItems : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets TaskItem
         /// </summary>  
         public List<TaskItem> TaskItem { get; set; }

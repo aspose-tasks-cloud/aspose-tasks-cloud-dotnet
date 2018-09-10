@@ -31,6 +31,7 @@ using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System.Linq;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -51,7 +52,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), calendarsReponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, calendarsReponse.Code);
             Assert.IsNotNull(calendarsReponse.Calendars);
 
             var calendarUid = calendarsReponse.Calendars.List.Where(c => c.Name == "Test work weeks").
@@ -65,9 +66,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = calendarUid
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.CalendarWorkWeeks);
-
 
             Assert.AreEqual(1, getResponse.CalendarWorkWeeks.Count);
             var workWeek = getResponse.CalendarWorkWeeks[0];

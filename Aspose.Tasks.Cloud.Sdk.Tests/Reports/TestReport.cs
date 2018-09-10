@@ -24,11 +24,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
@@ -67,7 +64,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.AreEqual(76, response.Tasks.TaskItem.Count);
         }
 

@@ -26,6 +26,7 @@
 
 using System;
 using System.Linq;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
@@ -48,7 +49,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual("OK", resourceResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
             Assert.IsNotNull(resourceResponse.Resources);
             Assert.AreEqual(2, resourceResponse.Resources.ResourceItem.Count);
             Assert.AreEqual("Project manager", resourceResponse.Resources.ResourceItem[1].Name);
@@ -68,7 +69,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual("OK", resourceResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
             var count = resourceResponse.Resources.ResourceItem.Count;
 
             var postResponse = TasksApi.PostResource(new PostResourceRequest
@@ -78,7 +79,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 ResourceName = "new resource"
             });
 
-            Assert.AreEqual("Created", postResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.Created, postResponse.Code);
 
             resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
@@ -106,7 +107,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 ResourceUid = 1
             });
 
-            Assert.AreEqual("OK", resourceResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
             Assert.IsNotNull(resourceResponse.Resource);
 
             var resource = resourceResponse.Resource;
@@ -133,7 +134,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Mode = Model.CalculationMode.None
             });
 
-            Assert.AreEqual("OK", putResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
             resourceResponse = TasksApi.GetResource(new GetResourceRequest
             {
@@ -169,7 +170,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 ResourceUid = 0
             });
 
-            Assert.AreEqual("OK", deleteResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
             var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
@@ -178,7 +179,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual("OK", resourceResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
             Assert.AreEqual(0, resourceResponse.Resources.ResourceItem.Count);
         }
     }

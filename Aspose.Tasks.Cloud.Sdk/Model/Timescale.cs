@@ -34,8 +34,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// The minimal time period to render when saving project view data to some of .
-    /// </summary>  
+    /// The minimal time period to render when saving project view data to some of SaveFileFormat.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Timescale
     { 
         Days,

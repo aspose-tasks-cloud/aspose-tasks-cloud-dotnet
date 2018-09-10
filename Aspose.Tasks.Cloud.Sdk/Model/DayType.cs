@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies the day of a week.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DayType
     { 
         Exception,

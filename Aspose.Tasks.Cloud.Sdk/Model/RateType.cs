@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies the unique identifiers of a rate table.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RateType
     { 
         A,

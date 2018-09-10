@@ -48,12 +48,12 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string Name { get; set; }
 
         /// <summary>
-        /// Task Uid
+        /// Unique id of the task to be moved.
         /// </summary>  
         public int? TaskUid { get; set; }
 
         /// <summary>
-        /// Uniquer id of the task.This task represent parent task for another task. 
+        /// Unique id of the new parent task.
         /// </summary>  
         public int? ParentTaskUid { get; set; }
 

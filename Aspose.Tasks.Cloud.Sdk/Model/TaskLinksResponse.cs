@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// TaskLinks response.
-    /// </summary>  
+    /// </summary>
     public class TaskLinksResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets TaskLinks
         /// </summary>  
         public List<TaskLink> TaskLinks { get; set; }

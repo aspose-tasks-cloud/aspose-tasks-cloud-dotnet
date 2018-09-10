@@ -70,11 +70,11 @@ namespace Aspose.Tasks.Cloud.Sdk
             }
             catch (JsonSerializationException jse)
             {
-                throw new ApiException(500, "Error while parse response: " + jse.Message);
+                throw new ApiException(500, "Error while parsing response: " + jse.Message + "\n" + json);
             }
             catch (System.Xml.XmlException xmle)
             {
-                throw new ApiException(500, "Error while parse response: " + xmle.Message);
+                throw new ApiException(500, "Error while parsing response: " + xmle.Message + "\n" + json);
             }
         }
 

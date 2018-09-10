@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a value of an outline code.
-    /// </summary>  
+    /// </summary>
     public class OutlineCode
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The number value of the project Id (Pid) custom field.
         /// </summary>  
         public string FieldId { get; set; }

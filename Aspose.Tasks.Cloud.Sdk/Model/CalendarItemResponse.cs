@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// TaskItem response.
-    /// </summary>  
+    /// </summary>
     public class CalendarItemResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// CalendarItem DTO.
         /// </summary>  
         public CalendarItem CalendarItem { get; set; }

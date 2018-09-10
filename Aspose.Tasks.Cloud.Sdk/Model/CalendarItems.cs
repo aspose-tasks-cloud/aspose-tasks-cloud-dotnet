@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class CalendarItems : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets List
         /// </summary>  
         public List<CalendarItem> List { get; set; }

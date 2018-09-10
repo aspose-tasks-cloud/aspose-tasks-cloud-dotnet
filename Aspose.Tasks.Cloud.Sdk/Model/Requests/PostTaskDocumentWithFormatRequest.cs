@@ -58,6 +58,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public Object SaveOptions { get; set; }
 
         /// <summary>
+        /// If parameter is true, HTML resources are included as separate files and returned along with the resulting html file as a zip package.
+        /// </summary>  
+        public bool? ReturnAsZipArchive { get; set; }
+
+        /// <summary>
         /// The document storage.
         /// </summary>  
         public string Storage { get; set; }

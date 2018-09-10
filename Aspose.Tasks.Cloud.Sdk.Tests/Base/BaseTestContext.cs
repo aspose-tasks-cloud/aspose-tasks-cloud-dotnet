@@ -66,11 +66,16 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         /// </summary>
         protected string UploadFileToStorage(string localName)
         {
-            var remoteName = "TempFile.mpp";
+            var remoteName = "TempFile_" + localName.Replace(".mpp", string.Empty) + ".mpp";
             var fullName = Path.Combine(this.DataFolder, remoteName);
             var directory = Path.GetDirectoryName(Path.GetDirectoryName(TestContext.CurrentContext.TestDirectory));
 
-            this.StorageApi.PutCreate(fullName, null, "Tasks", File.ReadAllBytes(Path.Combine(directory, GetDataDir(), localName)));
+            this.StorageApi.PutCreate(
+                    fullName,
+                    null,
+                    "Tasks",
+                    File.ReadAllBytes(Path.Combine(directory, GetDataDir(), localName)));
+
             return remoteName;
         }
 

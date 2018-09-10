@@ -25,6 +25,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
@@ -47,7 +48,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttributes);
             Assert.AreEqual(2, response.ExtendedAttributes.List.Count);
         }
@@ -64,7 +65,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttribute);
             Assert.AreEqual("Text1", response.ExtendedAttribute.FieldName);
             Assert.AreEqual(CalculationType.Lookup, response.ExtendedAttribute.CalculationType);
@@ -99,7 +100,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttribute);
 
             Assert.AreEqual("Text3", response.ExtendedAttribute.FieldName);
@@ -117,7 +118,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.ExtendedAttribute);
 
             var extendedAttribute = getResponse.ExtendedAttribute;
@@ -151,7 +152,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttribute);
 
             var extendedAttributeToEdit = response.ExtendedAttribute;
@@ -169,7 +170,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttribute);
 
             Assert.AreEqual("Text1", putResponse.ExtendedAttribute.FieldName);
@@ -184,7 +185,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.ExtendedAttribute);
 
             var extendedAttribute = getResponse.ExtendedAttribute;
@@ -209,7 +210,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), deleteResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
             var response = TasksApi.GetExtendedAttributes(new GetExtendedAttributesRequest
             {
@@ -217,7 +218,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.ExtendedAttributes);
             Assert.AreEqual(1, response.ExtendedAttributes.List.Count);
         }

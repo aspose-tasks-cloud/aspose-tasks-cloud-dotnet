@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a time phased data.
-    /// </summary>  
+    /// </summary>
     public class TimephasedData
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The unique identifier of a timephased data
         /// </summary>  
         public int? Uid { get; set; }

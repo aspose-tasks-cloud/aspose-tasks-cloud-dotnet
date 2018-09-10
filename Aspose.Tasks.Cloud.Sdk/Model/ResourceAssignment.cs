@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a resource assignment in a project.
-    /// </summary>  
+    /// </summary>
     public class ResourceAssignment
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Returns or sets a task unique id to which a resource is assigned.
         /// </summary>  
         public int? TaskUid { get; set; }
@@ -282,12 +283,12 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? UpdateNeeded { get; set; }
 
         /// <summary>
-        /// Returns or sets the difference between basline cost and total cost. Read/write .
+        /// Returns or sets the difference between basline cost and total cost. Read/write Double.
         /// </summary>  
         public double? Vac { get; set; }
 
         /// <summary>
-        /// Returns or sets the amount of scheduled work for an assignment. Read/write .
+        /// Returns or sets the amount of scheduled work for an assignment. Read/write TimeSpan.
         /// </summary>  
         public TimeSpan Work { get; set; }
 

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents four elements of a mask which defines an outline code format.
-    /// </summary>  
+    /// </summary>
     public class OutlineMask
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The level of a mask.
         /// </summary>  
         public int? Level { get; set; }

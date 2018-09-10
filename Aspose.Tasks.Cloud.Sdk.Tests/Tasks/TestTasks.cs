@@ -25,13 +25,14 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
-using System.Collections.Generic;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -50,7 +51,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), tasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Tasks);
             Assert.AreEqual(6, tasksResponse.Tasks.TaskItem.Count);
 
@@ -75,7 +76,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), tasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Task);
             Assert.AreEqual(5, tasksResponse.Task.Uid);
             CollectionAssert.AreEquivalent(new[] { 1, 2, 3, 4}, tasksResponse.Task.SubtasksUids);
@@ -99,7 +100,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 FileName = remoteName
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), deleteResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
             var tasksResponse = TasksApi.GetTasks(new GetTasksRequest
             {
@@ -108,7 +109,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), tasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Tasks);
             Assert.AreEqual(5, tasksResponse.Tasks.TaskItem.Count);
 
@@ -131,7 +132,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 FileName = remoteName
             });
 
-            Assert.AreEqual("Created", postResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.Created, postResponse.Code);
             Assert.IsNotNull(postResponse.TaskItem);
             var newTaskUid = postResponse.TaskItem.Uid;
 
@@ -143,7 +144,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), tasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Task);
         }
 
@@ -178,7 +179,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Recalculate = false
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
             var tasksResponse = TasksApi.GetTask(new GetTaskRequest
             {
@@ -188,7 +189,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), tasksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Task);
             Assert.AreEqual("Modified task name", tasksResponse.Task.Name);
 
@@ -223,7 +224,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), putAttributeResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
             var taskResponse = TasksApi.GetTask(new GetTaskRequest
             {
                 TaskUid = 27,
@@ -231,7 +232,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), taskResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, taskResponse.Code);
             Assert.IsNotNull(taskResponse.Task);
 
             taskResponse.Task.ExtendedAttributes.Add(
@@ -245,7 +246,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), putTaskResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
             taskResponse = TasksApi.GetTask(new GetTaskRequest
             {
@@ -254,7 +255,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), taskResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, taskResponse.Code);
             Assert.IsNotNull(taskResponse.Task);
             Assert.AreEqual(1, taskResponse.Task.ExtendedAttributes.Count);
             Assert.AreEqual("188743737", taskResponse.Task.ExtendedAttributes[0].FieldId);
@@ -274,7 +275,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignments);
         }
 
@@ -291,7 +292,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 6
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.RecurringInfo);
 
             var entity = response.RecurringInfo;
@@ -317,7 +318,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 6
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             CollectionAssert.DoesNotContain(getResponse.Task.SubtasksUids, 10);
 
             var response = TasksApi.PutMoveTask(new PutMoveTaskRequest
@@ -329,7 +330,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 10
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             getResponse = TasksApi.GetTask(new GetTaskRequest
             {
@@ -339,7 +340,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 6
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             CollectionAssert.Contains(getResponse.Task.SubtasksUids, 10);
         }
 
@@ -357,7 +358,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 BeforeTaskUid = 40
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getResponse = TasksApi.GetTask(new GetTaskRequest
             {
@@ -367,7 +368,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 TaskUid = 38
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             CollectionAssert.AreEqual(new int[] { 39, 41, 40 }, getResponse.Task.SubtasksUids);
         }
 

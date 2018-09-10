@@ -48,17 +48,17 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string Name { get; set; }
 
         /// <summary>
-        /// to get page count for.
+        /// PageSize to get page count for.
         /// </summary>  
         public PageSize PageSize { get; set; }
 
         /// <summary>
-        /// to get page count for.
+        /// PresentationFormat to get page count for.
         /// </summary>  
         public PresentationFormat PresentationFormat { get; set; }
 
         /// <summary>
-        /// to get page count for.
+        /// Timescale to get page count for.
         /// </summary>  
         public Timescale Timescale { get; set; }
 

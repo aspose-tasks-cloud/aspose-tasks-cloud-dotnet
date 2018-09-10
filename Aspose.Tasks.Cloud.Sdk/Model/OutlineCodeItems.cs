@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class OutlineCodeItems : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets List
         /// </summary>  
         public List<OutlineCodeItem> List { get; set; }

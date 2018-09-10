@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class ExtendedAttributeItemsResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets ExtendedAttributes
         /// </summary>  
         public ExtendedAttributeItems ExtendedAttributes { get; set; }

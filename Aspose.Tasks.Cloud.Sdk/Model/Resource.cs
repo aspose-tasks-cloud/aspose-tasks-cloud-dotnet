@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a project resource.
-    /// </summary>  
+    /// </summary>
     public class Resource
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The name of a resource.
         /// </summary>  
         public string Name { get; set; }
@@ -97,7 +98,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
 
         /// <summary>
-        /// The unit of measure for the material resource. Read/write .
+        /// The unit of measure for the material resource. Read/write String.
         /// </summary>  
         public string MaterialLabel { get; set; }
 
@@ -127,7 +128,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string HyperlinkAddress { get; set; }
 
         /// <summary>
-        /// The document bookmark of a hyperlink associated with a resource. Read/write .
+        /// The document bookmark of a hyperlink associated with a resource. Read/write String.
         /// </summary>  
         public string HyperlinkSubAddress { get; set; }
 

@@ -34,8 +34,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Represents a type of recurrence pattern of a recurrent task.
-    /// </summary>  
+    /// Represents a type of recurrence pattern of a recurring task.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum RecurrencePattern
     { 
         Daily,

@@ -53,7 +53,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string PropertyName { get; set; }
 
         /// <summary>
-        /// with new property value.
+        /// DocumentProperty with new property value.
         /// </summary>  
         public DocumentProperty Property { get; set; }
 

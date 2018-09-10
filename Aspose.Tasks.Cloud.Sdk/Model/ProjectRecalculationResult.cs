@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies the  result of recalculation of the project;
-    /// </summary>  
+    /// </summary>
     public class ProjectRecalculationResult
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets ValidationState
         /// </summary>  
         [JsonProperty("ValidationState", NullValueHandling = NullValueHandling.Ignore)]

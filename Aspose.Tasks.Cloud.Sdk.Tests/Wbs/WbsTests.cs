@@ -23,12 +23,17 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System.Net;
+
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
+    using System.Collections.Generic;
+
     [TestFixture]
     internal sealed class WbsTests : BaseTestContext
     {
@@ -42,7 +47,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsTrue((bool)response.WBSDefinition.GenerateWBSCode);
             Assert.IsTrue((bool)response.WBSDefinition.VerifyUniqueness);
         }
@@ -54,10 +59,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var response = TasksApi.PutRenumberWbsCode(new PutRenumberWbsCodeRequest()
             {
                 Name = remoteName,
-                Folder = this.DataFolder
+                Folder = this.DataFolder,
+                TaskUids = new List<int?>()
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
         }
     }
 }

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents baseline values of a resource or a task.
-    /// </summary>  
+    /// </summary>
     public class Baseline
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The unique number of a baseline data record.
         /// </summary>  
         [JsonProperty("BaselineNumber", NullValueHandling = NullValueHandling.Ignore)]

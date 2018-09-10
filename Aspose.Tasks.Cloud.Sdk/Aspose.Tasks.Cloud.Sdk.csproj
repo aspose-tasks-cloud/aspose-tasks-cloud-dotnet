@@ -132,7 +132,6 @@
     <Compile Include="Model\ExtendedAttributeItems.cs" />
     <Compile Include="Model\ExtendedAttributeItemsResponse.cs" />
     <Compile Include="Model\ExtendedAttributeResponse.cs" />
-    <Compile Include="Model\HttpStatusCode.cs" />
     <Compile Include="Model\ImportedProjectType.cs" />
     <Compile Include="Model\Link.cs" />
     <Compile Include="Model\LinkElement.cs" />
@@ -214,6 +213,7 @@
     <Compile Include="Model\Requests\PostResourceRequest.cs" />
     <Compile Include="Model\Requests\PostTaskDocumentWithFormatRequest.cs" />
     <Compile Include="Model\Requests\PostTaskLinkRequest.cs" />
+    <Compile Include="Model\Requests\PostTaskRecurringInfoRequest.cs" />
     <Compile Include="Model\Requests\PostTaskRequest.cs" />
     <Compile Include="Model\Requests\PutAssignmentRequest.cs" />
     <Compile Include="Model\Requests\PutCalendarExceptionRequest.cs" />
@@ -231,6 +231,7 @@
     <Compile Include="Model\Requests\PutRenumberWbsCodeRequest.cs" />
     <Compile Include="Model\Requests\PutResourceRequest.cs" />
     <Compile Include="Model\Requests\PutTaskLinkRequest.cs" />
+    <Compile Include="Model\Requests\PutTaskRecurringInfoRequest.cs" />
     <Compile Include="Model\Requests\PutTaskRequest.cs" />
     <Compile Include="Model\Resource.cs" />
     <Compile Include="Model\ResourceAssignment.cs" />

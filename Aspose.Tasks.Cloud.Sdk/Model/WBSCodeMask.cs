@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class WBSCodeMask
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Mask level.
         /// </summary>  
         public int? Level { get; set; }

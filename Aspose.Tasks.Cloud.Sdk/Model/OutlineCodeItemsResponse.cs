@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class OutlineCodeItemsResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets OutlineCodes
         /// </summary>  
         public OutlineCodeItems OutlineCodes { get; set; }

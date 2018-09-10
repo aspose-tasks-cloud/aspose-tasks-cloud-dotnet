@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents project task.
-    /// </summary>  
+    /// </summary>
     public class Task
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The unique id of a task.
         /// </summary>  
         public int? Uid { get; set; }
@@ -307,7 +308,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? IsSubprojectReadOnly { get; set; }
 
         /// <summary>
-        /// The source location of a subproject. Read/write .
+        /// The source location of a subproject. Read/write String.
         /// </summary>  
         public string SubprojectName { get; set; }
 

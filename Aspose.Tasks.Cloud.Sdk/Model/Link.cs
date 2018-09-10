@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Provides information for the object link. This is supposed to be an atom:link, therefore it should have all attributes specified here http://tools.ietf.org/html/rfc4287#section-4.2.7
-    /// </summary>  
+    /// </summary>
     public class Link
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The \"href\" attribute contains the link's IRI. atom:link elements MUST have an href attribute, whose value MUST be a IRI reference
         /// </summary>  
         public string Href { get; set; }

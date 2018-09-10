@@ -25,6 +25,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
@@ -49,8 +50,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Folder = this.DataFolder,
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
-            Assert.AreEqual(6, response.PageCount);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
+            Assert.AreEqual(2, response.PageCount);
         }
 
         [Test]
@@ -68,8 +69,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 EndDate = new DateTime(2004, 2, 28)
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
-            Assert.AreEqual(6, response.PageCount);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
+            Assert.AreEqual(2, response.PageCount);
         }
     }
 }

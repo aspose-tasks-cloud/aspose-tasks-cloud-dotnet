@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies project calculation mode. None: Project dates and costs are not recalculated in this mode. Automatic mode: Project dates and costs are recalculated when using this mode. Manual mode: Only necessary fields are recalculated in this mode, for example Uids and Ids of objects
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CalculationMode
     { 
         None,

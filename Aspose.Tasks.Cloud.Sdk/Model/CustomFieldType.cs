@@ -35,7 +35,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Specifies the type of a custom field.
-    /// </summary>  
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CustomFieldType
     { 
         Null,
@@ -46,6 +47,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         Flag,
         Number,
         Start,
-        Text
+        Text,
+        OutlineCode,
+        RBS
     }
 }

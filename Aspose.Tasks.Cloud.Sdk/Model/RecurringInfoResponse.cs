@@ -35,10 +35,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// RecurringInfo responce
-    /// </summary>  
+    /// </summary>
     public class RecurringInfoResponse : AsposeResponse
-    {         /// <summary>
-        /// DTO RecurringInfo
+    { 
+        /// <summary>
+        /// Gets or sets RecurringInfo
         /// </summary>  
         public RecurringInfo RecurringInfo { get; set; }
 

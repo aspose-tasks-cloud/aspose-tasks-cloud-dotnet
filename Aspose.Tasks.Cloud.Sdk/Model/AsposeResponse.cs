@@ -35,17 +35,16 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class AsposeResponse
-    {         /// <summary>
-        /// Gets or sets Code
+    { 
+        /// <summary>
+        /// Response status code
         /// </summary>  
-        [JsonProperty("Code", NullValueHandling = NullValueHandling.Ignore)]
-        public HttpStatusCode? Code { get; set; }
-
+        public int? Code { get; set; }
 
         /// <summary>
-        /// Gets or sets Status
+        /// Response status
         /// </summary>  
         public string Status { get; set; }
 

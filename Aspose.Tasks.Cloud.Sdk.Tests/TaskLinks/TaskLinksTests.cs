@@ -24,16 +24,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
 {
@@ -51,7 +46,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.TaskLinks);
             Assert.AreEqual(24, response.TaskLinks.Count);
         }
@@ -75,7 +70,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
         }
 
         [Test]
@@ -106,7 +101,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
@@ -115,7 +110,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             Assert.AreEqual(TaskLinkType.StartToFinish, linksResponse.TaskLinks[0].LinkType);
             Assert.AreEqual(9600, linksResponse.TaskLinks[0].Lag);
@@ -135,7 +130,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", deleteResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
             var linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
@@ -144,7 +139,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Storage = "Tasks"
             });
 
-            Assert.AreEqual("OK", linksResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, linksResponse.Code);
             Assert.IsNotNull(linksResponse.TaskLinks);
             Assert.AreEqual(23, linksResponse.TaskLinks.Count);
         }

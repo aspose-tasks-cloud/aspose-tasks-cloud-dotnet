@@ -32,6 +32,7 @@ using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -49,8 +50,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
-            Assert.AreEqual(2, response.Calendars.List.Count);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
+            Assert.AreEqual(1, response.Calendars.List.Count);
             Assert.AreEqual("Standard", response.Calendars.List[0].Name);
             Assert.AreEqual(1L, response.Calendars.List[0].Uid);
         }
@@ -67,7 +68,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Calendar);
             Assert.AreEqual("Standard", response.Calendar.Name);
             Assert.AreEqual(1, response.Calendar.Uid);
@@ -104,7 +105,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 }
             });
 
-            Assert.AreEqual(HttpStatusCode.Created.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.Created, response.Code);
             var createdCalendarUid = response.CalendarItem.Uid;
 
             var getResponse = TasksApi.GetCalendar(new GetCalendarRequest
@@ -114,7 +115,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = createdCalendarUid
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.Calendar);
 
             Assert.AreEqual("My new calendar", getResponse.Calendar.Name);
@@ -198,7 +199,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 }
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getResponse = TasksApi.GetCalendar(new GetCalendarRequest
             {
@@ -207,7 +208,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.Calendar);
 
             Assert.AreEqual("Modified calendar", getResponse.Calendar.Name);
@@ -236,7 +237,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 2
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getResponse = TasksApi.GetCalendars(new GetCalendarsRequest
             {
@@ -244,7 +245,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.AreEqual(1, getResponse.Calendars.List.Count);
             Assert.AreEqual("Standard", getResponse.Calendars.List[0].Name);
             Assert.AreEqual(1L, getResponse.Calendars.List[0].Uid);

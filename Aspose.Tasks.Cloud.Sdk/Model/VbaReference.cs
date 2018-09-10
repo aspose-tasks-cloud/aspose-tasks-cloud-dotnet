@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a reference of the VbaProject
-    /// </summary>  
+    /// </summary>
     public class VbaReference
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets identifier of the library.
         /// </summary>  
         public string LibIdentifier { get; set; }

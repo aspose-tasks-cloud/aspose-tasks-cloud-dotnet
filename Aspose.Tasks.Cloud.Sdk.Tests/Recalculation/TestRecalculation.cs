@@ -30,6 +30,7 @@ using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 {
@@ -48,7 +49,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 TaskName = "NewTaskName"
             });
 
-            Assert.AreEqual(HttpStatusCode.Created.ToString(), responseAfterAdd.Status);
+            Assert.AreEqual((int)HttpStatusCode.Created, responseAfterAdd.Code);
 
             int taskUid = responseAfterAdd.TaskItem.Uid.Value;
 
@@ -59,7 +60,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 TaskUid = taskUid
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Task);
             var t = response.Task;
             t.Name = "New task Name";
@@ -76,7 +77,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 Recalculate = false,
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), responseAfterUpdate.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, responseAfterUpdate.Code);
 
             var recalculationResponse = TasksApi.PutRecalculateProject(new PutRecalculateProjectRequest()
             {
@@ -87,7 +88,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 Validate = true
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), recalculationResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, recalculationResponse.Code);
             var validationResult = recalculationResponse.Result;
             Assert.AreEqual(ProjectValidationState.HasErrors, validationResult.ValidationState);
             Assert.AreEqual("Actual start date of task is greater than actual finish date. Task name: New task Name; Actual start date: 10/20/2000 00:00:00; Actual finish date: 10/09/2000 00:00:00", validationResult.ValidationErrorMessage);
@@ -105,7 +106,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 Folder = this.DataFolder,
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
         }
 
         [Test]
@@ -120,7 +121,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 After = new DateTime(2010, 10, 10)
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
         }
 
         [Test]
@@ -135,7 +136,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
                 CompleteThrough = new DateTime(2010, 10, 10)
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
         }
     }
 }

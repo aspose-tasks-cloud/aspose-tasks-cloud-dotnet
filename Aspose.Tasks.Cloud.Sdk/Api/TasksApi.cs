@@ -1187,7 +1187,7 @@ namespace Aspose.Tasks.Cloud.Sdk
         }
 
         /// <summary>
-        /// Returns page count for the project to be rendered using given  and   or specified PageSize. 
+        /// Returns page count for the project to be rendered using given Timescale and PresentationFormat  or specified PageSize. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetPageCountRequest" /></param> 
         /// <returns><see cref="PageCountResponse"/></returns>            
@@ -1747,6 +1747,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/format");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             
@@ -2129,6 +2130,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'name' when calling PostCalendar");
             }
 
+            // verify the required parameter 'calendar' is set
+            if (request.Calendar == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'calendar' when calling PostCalendar");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -2179,6 +2186,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.CalendarUid == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'calendarUid' when calling PostCalendarException");
+            }
+
+            // verify the required parameter 'calendarException' is set
+            if (request.CalendarException == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'calendarException' when calling PostCalendarException");
             }
 
             // create path and map variables
@@ -2232,6 +2245,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.PropertyName == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'propertyName' when calling PostDocumentProperty");
+            }
+
+            // verify the required parameter 'property' is set
+            if (request.Property == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'property' when calling PostDocumentProperty");
             }
 
             // create path and map variables
@@ -2393,6 +2412,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/format");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.SaveOptions); // http body (model) parameter
@@ -2429,6 +2449,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'name' when calling PostTaskLink");
             }
 
+            // verify the required parameter 'taskLink' is set
+            if (request.TaskLink == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'taskLink' when calling PostTaskLink");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/taskLinks");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -2463,6 +2489,79 @@ namespace Aspose.Tasks.Cloud.Sdk
         }
 
         /// <summary>
+        /// Adds a new recurring task. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostTaskRecurringInfoRequest" /></param> 
+        /// <returns><see cref="TaskItemResponse"/></returns>            
+        public TaskItemResponse PostTaskRecurringInfo(PostTaskRecurringInfoRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling PostTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'parentTaskUid' is set
+            if (request.ParentTaskUid == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'parentTaskUid' when calling PostTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'taskName' is set
+            if (request.TaskName == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'taskName' when calling PostTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'recurringInfo' is set
+            if (request.RecurringInfo == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'recurringInfo' when calling PostTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'calendarName' is set
+            if (request.CalendarName == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'calendarName' when calling PostTaskRecurringInfo");
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/recurringInfo");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "parentTaskUid", request.ParentTaskUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "taskName", request.TaskName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "calendarName", request.CalendarName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            var postBody = SerializationHelper.Serialize(request.RecurringInfo); // http body (model) parameter
+            try 
+            {                               
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath, 
+                    "POST", 
+                    postBody, 
+                    null, 
+                    null);
+                if (response != null)
+                {
+                    return (TaskItemResponse)SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
+                }
+                    
+                return null;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+
+        /// <summary>
         /// Updates resources assignment with the specified Uid. 
         /// </summary>
         /// <param name="request">Request. <see cref="PutAssignmentRequest" /></param> 
@@ -2479,6 +2578,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.AssignmentUid == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'assignmentUid' when calling PutAssignment");
+            }
+
+            // verify the required parameter 'assignment' is set
+            if (request.Assignment == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'assignment' when calling PutAssignment");
             }
 
             // create path and map variables
@@ -2534,6 +2639,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.CalendarUid == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'calendarUid' when calling PutCalendar");
+            }
+
+            // verify the required parameter 'calendar' is set
+            if (request.Calendar == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'calendar' when calling PutCalendar");
             }
 
             // create path and map variables
@@ -2595,6 +2706,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'index' when calling PutCalendarException");
             }
 
+            // verify the required parameter 'calendarException' is set
+            if (request.CalendarException == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'calendarException' when calling PutCalendarException");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/calendarExceptions/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -2649,6 +2766,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'propertyName' when calling PutDocumentProperty");
             }
 
+            // verify the required parameter 'property' is set
+            if (request.Property == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'property' when calling PutDocumentProperty");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/documentproperties/{propertyName}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -2696,6 +2819,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'name' when calling PutExtendedAttribute");
             }
 
+            // verify the required parameter 'extendedAttribute' is set
+            if (request.ExtendedAttribute == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'extendedAttribute' when calling PutExtendedAttribute");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/extendedAttributes");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -2740,6 +2869,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.DatabaseType == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'databaseType' when calling PutImportProjectFromDb");
+            }
+
+            // verify the required parameter 'connectionString' is set
+            if (request.ConnectionString == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'connectionString' when calling PutImportProjectFromDb");
             }
 
             // verify the required parameter 'projectUid' is set
@@ -3181,6 +3316,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'name' when calling PutRenumberWbsCode");
             }
 
+            // verify the required parameter 'taskUids' is set
+            if (request.TaskUids == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'taskUids' when calling PutRenumberWbsCode");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/renumberWbsCode");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -3231,6 +3372,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             if (request.ResourceUid == null) 
             {
                 throw new ApiException(400, "Missing required parameter 'resourceUid' when calling PutResource");
+            }
+
+            // verify the required parameter 'resource' is set
+            if (request.Resource == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'resource' when calling PutResource");
             }
 
             // create path and map variables
@@ -3288,6 +3435,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutTask");
             }
 
+            // verify the required parameter 'task' is set
+            if (request.Task == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'task' when calling PutTask");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -3343,6 +3496,12 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException(400, "Missing required parameter 'index' when calling PutTaskLink");
             }
 
+            // verify the required parameter 'taskLink' is set
+            if (request.TaskLink == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'taskLink' when calling PutTaskLink");
+            }
+
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/taskLinks/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
@@ -3362,6 +3521,65 @@ namespace Aspose.Tasks.Cloud.Sdk
                 if (response != null)
                 {
                     return (TaskLinkResponse)SerializationHelper.Deserialize(response, typeof(TaskLinkResponse));
+                }
+                    
+                return null;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+
+        /// <summary>
+        /// Updates existing task&#39;s recurring info. Note that task should be already recurring. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PutTaskRecurringInfoRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse PutTaskRecurringInfo(PutTaskRecurringInfoRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling PutTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'taskUid' is set
+            if (request.TaskUid == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutTaskRecurringInfo");
+            }
+
+            // verify the required parameter 'recurringInfo' is set
+            if (request.RecurringInfo == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'recurringInfo' when calling PutTaskRecurringInfo");
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/recurringInfo");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            var postBody = SerializationHelper.Serialize(request.RecurringInfo); // http body (model) parameter
+            try 
+            {                               
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath, 
+                    "PUT", 
+                    postBody, 
+                    null, 
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
                     
                 return null;

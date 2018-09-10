@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Collection of document properties.
-    /// </summary>  
+    /// </summary>
     public class DocumentProperties : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets List
         /// </summary>  
         public List<DocumentProperty> List { get; set; }

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Response that contains page count.
-    /// </summary>  
+    /// </summary>
     public class PageCountResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Number of pages in document.
         /// </summary>  
         public int? PageCount { get; set; }

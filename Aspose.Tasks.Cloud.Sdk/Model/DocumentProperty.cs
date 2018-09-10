@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents project document&#39;s property.
-    /// </summary>  
+    /// </summary>
     public class DocumentProperty : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Name of the document property.
         /// </summary>  
         public string Name { get; set; }

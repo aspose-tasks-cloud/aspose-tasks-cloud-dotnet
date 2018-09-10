@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CalendarItem.cs">
+// <copyright company="Aspose" file="PostTaskRecurringInfoRequest.cs">
 //   Copyright (c) 2018 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
@@ -22,50 +22,64 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-namespace Aspose.Tasks.Cloud.Sdk.Model 
+namespace Aspose.Tasks.Cloud.Sdk.Model.Requests 
 {
-    using System;  
-    using System.Collections;
+    using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
-    using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
+
+    using Aspose.Tasks.Cloud.Sdk.Model; 
 
     /// <summary>
-    /// Represents a project calendar&#39;s brief info.
-    /// </summary>
-    public class CalendarItem
-    { 
+    /// Request model for <see cref="Aspose.Tasks.Cloud.Sdk.Api.TasksApi.PostTaskRecurringInfo" /> operation.
+    /// </summary>  
+    public class PostTaskRecurringInfoRequest  
+    {
         /// <summary>
-        /// Gets or sets Link
-        /// </summary>  
-        public Link Link { get; set; }
+        /// Initializes a new instance of the <see cref="PostTaskRecurringInfoRequest"/> class.
+        /// </summary>        
+        public PostTaskRecurringInfoRequest()
+        {
+        }
+
 
         /// <summary>
-        /// Gets or sets Uid
-        /// </summary>  
-        public int? Uid { get; set; }
-
-        /// <summary>
-        /// Gets or sets Name
+        /// The name of the file.
         /// </summary>  
         public string Name { get; set; }
 
         /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
-        {
-            var sb = new StringBuilder();
-            sb.Append("class CalendarItem {\n");
-            sb.Append("  Link: ").Append(this.Link).Append("\n");
-            sb.Append("  Uid: ").Append(this.Uid).Append("\n");
-            sb.Append("  Name: ").Append(this.Name).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
+        /// The Uid of parent task for the created recurring task
+        /// </summary>  
+        public int? ParentTaskUid { get; set; }
+
+        /// <summary>
+        /// Name of the task to create.
+        /// </summary>  
+        public string TaskName { get; set; }
+
+        /// <summary>
+        /// DTO which defines task's recurring info.
+        /// </summary>  
+        public RecurringInfo RecurringInfo { get; set; }
+
+        /// <summary>
+        /// Name of the project's calendar to use for recurring task's scheduling.
+        /// </summary>  
+        public string CalendarName { get; set; }
+
+        /// <summary>
+        /// File name to save changes to.
+        /// </summary>  
+        public string FileName { get; set; }
+
+        /// <summary>
+        /// The document storage.
+        /// </summary>  
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// The document folder.
+        /// </summary>  
+        public string Folder { get; set; }
     }
 }

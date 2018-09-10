@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents extended attribute.
-    /// </summary>  
+    /// </summary>
     public class ExtendedAttribute
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Returns or sets the id of a field.
         /// </summary>  
         public string FieldId { get; set; }

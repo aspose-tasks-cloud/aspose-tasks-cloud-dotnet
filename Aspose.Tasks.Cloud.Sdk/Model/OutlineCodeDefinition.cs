@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents an outline code definition.
-    /// </summary>  
+    /// </summary>
     public class OutlineCodeDefinition
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The Guid of an outline code.
         /// </summary>  
         public string Guid { get; set; }
@@ -63,7 +64,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string PhoneticAlias { get; set; }
 
         /// <summary>
-        /// Returns List<OutlineValue> Values. The values of the table associated with this outline code.
+        /// Returns List&lt;OutlineValue&gt; Values. The values of the table associated with this outline code.
         /// </summary>  
         public List<OutlineValue> Values { get; set; }
 
@@ -98,7 +99,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? OnlyTableValuesAllowed { get; set; }
 
         /// <summary>
-        /// Returns List<OutlineMask> Masks. The table of entries that define the outline code mask.
+        /// Returns List&lt;OutlineMask&gt; Masks. The table of entries that define the outline code mask.
         /// </summary>  
         public List<OutlineMask> Masks { get; set; }
 

@@ -96,5 +96,26 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             }
         }
 
+        [Test]
+        public void TestGetDocumentAsZippedHtml()
+        {
+            var remoteName = UploadFileToStorage("Home move plan.mpp");
+
+            var response = TasksApi.GetTaskDocumentWithFormat(new GetTaskDocumentWithFormatRequest
+                                                                  {
+                                                                       Format = ProjectFileFormat.Html,
+                                                                       Name = remoteName,
+                                                                       Folder = this.DataFolder,
+                                                                       ReturnAsZipArchive = true
+                                                                   });
+
+            Assert.IsNotNull(response);
+            Assert.IsTrue(response.Length > 0);
+            //response.Seek(0, SeekOrigin.Begin);
+
+            //using (var sr = new StreamReader(response))
+            //{
+            //}
+        }
     }
 }

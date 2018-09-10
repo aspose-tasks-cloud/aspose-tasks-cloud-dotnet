@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a calendar used in a project.
-    /// </summary>  
+    /// </summary>
     public class Calendar
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The name of the calendar.
         /// </summary>  
         public string Name { get; set; }

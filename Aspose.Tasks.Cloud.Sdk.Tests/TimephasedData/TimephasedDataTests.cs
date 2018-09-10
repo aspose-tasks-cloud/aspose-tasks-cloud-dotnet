@@ -24,11 +24,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
@@ -52,7 +48,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
                 Type = TimephasedDataType.TaskWork
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Items);
             var timephasedDataItems = response.Items;
             Assert.IsNotNull(timephasedDataItems);
@@ -77,7 +73,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
                 Type = TimephasedDataType.ResourceWork,
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Items);
             var timephasedDataItems = response.Items;
             Assert.IsNotNull(timephasedDataItems);
@@ -102,7 +98,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
                 Type = TimephasedDataType.AssignmentWork
             });
 
-            Assert.AreEqual("OK", response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Items);
             var timephasedDataItems = response.Items;
             Assert.IsNotNull(timephasedDataItems);

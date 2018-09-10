@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class WorkWeek
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Determines the name of a work week.
         /// </summary>  
         public string Name { get; set; }

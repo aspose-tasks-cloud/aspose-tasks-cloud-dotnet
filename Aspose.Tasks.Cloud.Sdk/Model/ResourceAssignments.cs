@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class ResourceAssignments : LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets List
         /// </summary>  
         public List<ResourceAssignment> List { get; set; }

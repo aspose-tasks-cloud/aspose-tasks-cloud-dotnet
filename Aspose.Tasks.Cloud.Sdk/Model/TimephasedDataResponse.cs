@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// TaskLinks response.
-    /// </summary>  
+    /// </summary>
     public class TimephasedDataResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets Items
         /// </summary>  
         public List<TimephasedData> Items { get; set; }

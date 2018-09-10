@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents the details of a recurring task in a project.
-    /// </summary>  
+    /// </summary>
     public class RecurringInfo
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Represents a recurrence pattern of the recurring task. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("RecurrencePattern", NullValueHandling = NullValueHandling.Ignore)]
@@ -70,7 +71,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? UseEndDate { get; set; }
 
         /// <summary>
-        /// Specifies a number of repetitions for the daily recurrence pattern.
+        /// Specifies an interval between repetitions for the daily recurrence pattern.
         /// </summary>  
         public int? DailyRepetitions { get; set; }
 
@@ -80,7 +81,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? DailyUseWorkdays { get; set; }
 
         /// <summary>
-        /// Specifies a number of repetitions for the weekly recurrence pattern.
+        /// Specifies an interval between repetitions for the weekly recurrence pattern.
         /// </summary>  
         public int? WeeklyRepetitions { get; set; }
 

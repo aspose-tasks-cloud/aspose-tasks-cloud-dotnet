@@ -31,6 +31,7 @@ using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -48,7 +49,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignments);
             Assert.AreEqual(6, response.Assignments.AssignmentItem.Count);
             Assert.AreEqual(34, response.Assignments.AssignmentItem[0].TaskUid);
@@ -68,7 +69,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignment);
             Assert.AreEqual(TimeSpan.FromHours(8), response.Assignment.RegularWork);
             Assert.AreEqual(TimeSpan.FromHours(8), response.Assignment.RemainingWork);
@@ -87,7 +88,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignments);
             Assert.AreEqual(6, response.Assignments.List.Count);
             Assert.IsTrue(response.Assignments.List.All(a => a.ResourceUid == 1));
@@ -107,7 +108,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.AssignmentItem);
             var assignmentUid = response.AssignmentItem.Uid;
 
@@ -125,7 +126,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.Assignment);
             Assert.AreEqual(0, getResponse.Assignment.TaskUid);
             Assert.AreEqual(1, getResponse.Assignment.ResourceUid);
@@ -148,7 +149,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignment);
 
             response.Assignment.TaskUid = 0;
@@ -163,7 +164,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
             var getResponse = TasksApi.GetAssignments(new GetAssignmentsRequest
             {
@@ -171,7 +172,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsFalse(getResponse.Assignments.AssignmentItem.Any(a => a.TaskUid == 34 && a.ResourceUid == 1));
             Assert.IsTrue(getResponse.Assignments.AssignmentItem.Any(a => a.TaskUid == 0 && a.ResourceUid == 1 && a.Uid == 63));
         }
@@ -188,7 +189,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getResponse = TasksApi.GetAssignments(new GetAssignmentsRequest
             {
@@ -196,7 +197,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNull(getResponse.Assignments.AssignmentItem.FirstOrDefault(a => a.TaskUid == 34 && a.ResourceUid == 1));
             Assert.IsNull(getResponse.Assignments.AssignmentItem.FirstOrDefault(a => a.Uid == 63));
         }

@@ -48,6 +48,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public ProjectDatabaseType DatabaseType { get; set; }
 
         /// <summary>
+        /// The connection string to the source database.
+        /// </summary>  
+        public string ConnectionString { get; set; }
+
+        /// <summary>
         /// Uid of the project to import.
         /// </summary>  
         public string ProjectUid { get; set; }
@@ -56,11 +61,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         /// The name of the resulting file.
         /// </summary>  
         public string Filename { get; set; }
-
-        /// <summary>
-        /// The connection string to the source database.
-        /// </summary>  
-        public string ConnectionString { get; set; }
 
         /// <summary>
         /// Format of the resulting file. The import to Mpp format is not supported.

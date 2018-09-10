@@ -34,10 +34,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// The attribute of the  object
-    /// </summary>  
+    /// The attribute of the VbaModule object
+    /// </summary>
     public class VbaModuleAttribute
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets key of VBA module attribute.
         /// </summary>  
         public string Key { get; set; }

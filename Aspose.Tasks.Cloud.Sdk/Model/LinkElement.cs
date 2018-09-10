@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Reference to document.
-    /// </summary>  
+    /// </summary>
     public class LinkElement
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Link to the document.
         /// </summary>  
         public Link Link { get; set; }

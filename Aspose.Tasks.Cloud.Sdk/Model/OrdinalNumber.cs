@@ -34,8 +34,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Represents an ordinal number in the instance of  class.
-    /// </summary>  
+    /// Represents an ordinal number in the instance of RecurringInfo class.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum OrdinalNumber
     { 
         First,

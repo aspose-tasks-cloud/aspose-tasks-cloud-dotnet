@@ -35,15 +35,16 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class WorkingTime
-    {         /// <summary>
-        /// Returns or sets the beginning of a working time. Read/write .
+    { 
+        /// <summary>
+        /// Returns or sets the beginning of a working time. Read/write DateTime.
         /// </summary>  
         public DateTime? FromTime { get; set; }
 
         /// <summary>
-        /// Returns or sets the end of a working time. Read/write .
+        /// Returns or sets the end of a working time. Read/write DateTime.
         /// </summary>  
         public DateTime? ToTime { get; set; }
 

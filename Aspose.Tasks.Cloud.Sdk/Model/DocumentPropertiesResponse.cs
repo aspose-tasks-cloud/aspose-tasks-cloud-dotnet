@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// 
-    /// </summary>  
+    /// </summary>
     public class DocumentPropertiesResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// DocumentProperties response.
         /// </summary>  
         public DocumentProperties Properties { get; set; }

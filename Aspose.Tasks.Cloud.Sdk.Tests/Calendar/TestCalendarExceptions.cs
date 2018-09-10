@@ -31,6 +31,7 @@ using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Net;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -49,7 +50,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.CalendarExceptions);
             Assert.AreEqual(1, getResponse.CalendarExceptions.Count);
 
@@ -98,7 +99,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.Created.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.Created, response.Code);
 
             var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
             {
@@ -107,7 +108,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.CalendarExceptions);
             Assert.AreEqual(1, getResponse.CalendarExceptions.Count);
 
@@ -126,7 +127,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
 
             var calendarException = getResponse.CalendarExceptions[0];
 
@@ -149,7 +150,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
             {
@@ -158,7 +159,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.CalendarExceptions);
             Assert.AreEqual(1, getResponse.CalendarExceptions.Count);
 
@@ -178,7 +179,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Index = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
             var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
             {
@@ -187,7 +188,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 CalendarUid = 1
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), getResponse.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsNotNull(getResponse.CalendarExceptions);
             Assert.AreEqual(0, getResponse.CalendarExceptions.Count);
         }

@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents baseline values of a resource assignment.
-    /// </summary>  
+    /// </summary>
     public class AssignmentBaseline : Baseline
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets the scheduled start date of the resource assignment when the baseline was saved. The start date of the resource assignment when this baseline was saved.
         /// </summary>  
         public DateTime? Start { get; set; }

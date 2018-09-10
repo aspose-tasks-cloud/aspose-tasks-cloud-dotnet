@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// VbaProject response
-    /// </summary>  
+    /// </summary>
     public class VbaProjectResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets VbaProject
         /// </summary>  
         public VbaProject VbaProject { get; set; }

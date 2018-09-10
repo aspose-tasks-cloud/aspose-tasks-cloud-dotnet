@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represent exceptional time periods in a calendar.
-    /// </summary>  
+    /// </summary>
     public class CalendarException
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Index of the current item in the collection of calendar's exceptions.
         /// </summary>  
         public int? Index { get; set; }

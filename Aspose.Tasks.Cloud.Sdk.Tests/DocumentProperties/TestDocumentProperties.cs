@@ -24,8 +24,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Linq;
+using System.Net;
 
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
@@ -48,7 +48,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.AreEqual(48, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("Home Move", response.Properties.List[0].Value);
@@ -66,7 +66,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 PropertyName = "Title"
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Property);
             Assert.AreEqual("Title", response.Property.Name);
             Assert.AreEqual("Home Move", response.Property.Value);
@@ -95,7 +95,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.AreEqual(48, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("New title value", response.Properties.List[0].Value);
@@ -124,7 +124,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.AreEqual(48, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("New title value", response.Properties.List[0].Value);
@@ -153,7 +153,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Folder = this.DataFolder
             });
 
-            Assert.AreEqual(HttpStatusCode.OK.ToString(), response.Status);
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.AreEqual(48, response.Properties.List.Count);
             Assert.IsNull(response.Properties.List.Where(p => p.Name == "new property").FirstOrDefault());
         }

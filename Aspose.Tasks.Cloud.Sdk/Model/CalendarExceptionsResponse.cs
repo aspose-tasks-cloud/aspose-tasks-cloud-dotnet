@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// CalendarExceptions response.
-    /// </summary>  
+    /// </summary>
     public class CalendarExceptionsResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Gets or sets CalendarExceptions
         /// </summary>  
         public List<CalendarException> CalendarExceptions { get; set; }

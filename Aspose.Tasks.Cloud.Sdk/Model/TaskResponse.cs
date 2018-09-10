@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Task response.
-    /// </summary>  
+    /// </summary>
     public class TaskResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// Task DTO.
         /// </summary>  
         public Task Task { get; set; }

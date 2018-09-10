@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// WBSDefinition response
-    /// </summary>  
+    /// </summary>
     public class WBSDefinitionResponse : AsposeResponse
-    {         /// <summary>
+    { 
+        /// <summary>
         /// DTO WBSDefintion
         /// </summary>  
         public WBSDefinition WBSDefinition { get; set; }

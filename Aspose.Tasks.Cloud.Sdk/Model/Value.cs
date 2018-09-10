@@ -35,9 +35,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
     /// <summary>
     /// Represents a lookup value of an extended attribute.
-    /// </summary>  
+    /// </summary>
     public class Value
-    {         /// <summary>
+    { 
+        /// <summary>
         /// The unique Id of a value across a project.
         /// </summary>  
         public int? Id { get; set; }
