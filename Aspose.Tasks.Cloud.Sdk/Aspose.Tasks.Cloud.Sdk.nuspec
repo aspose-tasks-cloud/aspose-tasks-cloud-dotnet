@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Aspose.Tasks-Cloud</id>
-    <version>18.8</version>
+    <version>18.8.2</version>
     <title>Aspose.Tasks Cloud SDK for .NET</title>
     <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
     <authors>Vasiliy Sinitsyn</authors>
@@ -23,6 +23,8 @@
       POST /{name}/tasks/recurringinfo API
       It is a new API that can be used to add new recurring task.
 
+      XML documentation file was added.
+
       The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+18.8+Release+Notes
     </releaseNotes>
     <copyright>Aspose 2002-2018. All Rights Reserved.</copyright>
@@ -33,5 +35,6 @@
   </metadata>
   <files>
     <file src="bin\Release\Aspose.Tasks.Cloud.Sdk.dll" target="lib\net20\Aspose.Tasks.Cloud.Sdk.dll" />
+    <file src="bin\Release\Aspose.Tasks.Cloud.Sdk.xml" target="lib\net20\Aspose.Tasks.Cloud.Sdk.xml" />
   </files>
 </package>
