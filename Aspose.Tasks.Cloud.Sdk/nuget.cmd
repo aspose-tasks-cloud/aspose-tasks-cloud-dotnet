@@ -1,0 +1,1 @@
+..\.nuget\nuget.exe pack Aspose.Tasks.Cloud.Sdk.nuspec -properties Configuration=Release

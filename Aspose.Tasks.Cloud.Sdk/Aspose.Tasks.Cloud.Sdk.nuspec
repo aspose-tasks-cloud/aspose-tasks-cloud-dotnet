@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Aspose.Tasks-Cloud</id>
-    <version>18.8.2</version>
+    <version>18.9</version>
     <title>Aspose.Tasks Cloud SDK for .NET</title>
     <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
     <authors>Vasiliy Sinitsyn</authors>
@@ -14,18 +14,20 @@
     <description>New generation of Aspose Cloud SDK that allows to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications. It allows you to work with all aspects of a Project document including conversion. The API offers a wide range of Microsoft Project export options. The Aspose.Tasks for Cloud API allows developers to convert Project documents to various formats including XML, HTML, BMP, PNG, PDF, and XSLX.
     </description>
     <releaseNotes>
-      GET /tasks/{name}/format API
-      Added optional parameter returnAsZipArchive. It specifies whether project should be returned as a ZIP archive (supported only for HTML format).
+1) Duration type was added.
 
-      POST /tasks/{name}/format API
-      Added optional parameter returnAsZipArchive. It specifies whether project should be returned as a ZIP archive (supported only for HTML format).
+2) [Breaking] Changes in ExtendedAttribute type (used in Task.ExtendedAttributes, Resource.ExtendedAttributes, ResourceAssignment.ExtendedAttributes collections):
 
-      POST /{name}/tasks/recurringinfo API
-      It is a new API that can be used to add new recurring task.
+    - 'DurationFormat' field was removed
+    - 'Value' field was removed
+    - 'AttributeType' field was added
+    - Following fields were added: 'DateValue', 'DurationValue', 'NumericValue', 'FlagValue', 'TextValue'. The following table shows which field contains the value of extended attribute depending on ExtendedAttribute's type.
 
-      XML documentation file was added.
+Thus in order to get or set the value of a custom field with 'Date', 'Start' or 'Finish' type one should use 'DateValue' field.
 
-      The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+18.8+Release+Notes
+3) GET /{name}/extendedattributes/{index} and DELETE /{name}/extendedattributes/{index} endpoints: index parameter now can be FieldId as well as index of attribute in project.ExtendedAttributes collection.
+
+      The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+18.9+Release+Notes
     </releaseNotes>
     <copyright>Aspose 2002-2018. All Rights Reserved.</copyright>
     <tags>MPP Primavera Microsoft Project P6XML PrimaveraXML XER MPX</tags>
