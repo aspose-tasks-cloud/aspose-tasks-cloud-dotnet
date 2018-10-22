@@ -228,13 +228,13 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         [Test]
         public void TestDeleteCalendarByUid()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = UploadFileToStorage("CalendarWorkWeeks.mpp");
 
             var response = TasksApi.DeleteCalendar(new DeleteCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
-                CalendarUid = 2
+                CalendarUid = 3
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -247,7 +247,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.AreEqual(1, getResponse.Calendars.List.Count);
-            Assert.AreEqual("Standard", getResponse.Calendars.List[0].Name);
             Assert.AreEqual(1L, getResponse.Calendars.List[0].Uid);
         }
     }

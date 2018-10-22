@@ -31,7 +31,7 @@ namespace Aspose.Tasks.Cloud.Sdk
     public class Configuration
     {
         private string apiBaseUrl = "https://api.aspose.cloud";
-        private string version = "v1.1";
+        private string version = "v2.0";
 
         private bool debugMode = false;
 

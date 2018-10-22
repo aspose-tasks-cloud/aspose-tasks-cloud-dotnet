@@ -39,31 +39,51 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     public class ExtendedAttribute
     { 
         /// <summary>
-        /// Returns or sets the id of a field.
+        /// Gets or sets the id of a field.
         /// </summary>  
         public string FieldId { get; set; }
 
         /// <summary>
-        /// Returns or sets the value of a field.
+        /// Gets the type of a custom field.
         /// </summary>  
-        public string Value { get; set; }
+        [JsonProperty("AttributeType", NullValueHandling = NullValueHandling.Ignore)]
+        public CustomFieldType AttributeType { get; set; }
+
 
         /// <summary>
-        /// Returns or sets the guid of a value.
+        /// Gets or sets the guid of a value.
         /// </summary>  
         public string ValueGuid { get; set; }
 
         /// <summary>
-        /// Returns or sets the duration format.
-        /// </summary>  
-        [JsonProperty("DurationFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeUnitType? DurationFormat { get; set; }
-
-
-        /// <summary>
-        /// Id of the lookup value (if value is lookup value)
+        /// Gets or sets Id of the lookup value (if value is lookup value)
         /// </summary>  
         public int? LookupValueId { get; set; }
+
+        /// <summary>
+        /// Gets or sets value for attributes with 'Duration' type.
+        /// </summary>  
+        public Duration DurationValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value for attributes with numeric types (Cost, Number).
+        /// </summary>  
+        public decimal? NumericValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value for attributes with date types (Date, Start, Finish).
+        /// </summary>  
+        public DateTime? DateValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether a flag is set for an attribute with 'Flag' type.
+        /// </summary>  
+        public bool? FlagValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value for attributes with 'Text' type.
+        /// </summary>  
+        public string TextValue { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -74,10 +94,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             var sb = new StringBuilder();
             sb.Append("class ExtendedAttribute {\n");
             sb.Append("  FieldId: ").Append(this.FieldId).Append("\n");
-            sb.Append("  Value: ").Append(this.Value).Append("\n");
+            sb.Append("  AttributeType: ").Append(this.AttributeType).Append("\n");
             sb.Append("  ValueGuid: ").Append(this.ValueGuid).Append("\n");
-            sb.Append("  DurationFormat: ").Append(this.DurationFormat).Append("\n");
             sb.Append("  LookupValueId: ").Append(this.LookupValueId).Append("\n");
+            sb.Append("  DurationValue: ").Append(this.DurationValue).Append("\n");
+            sb.Append("  NumericValue: ").Append(this.NumericValue).Append("\n");
+            sb.Append("  DateValue: ").Append(this.DateValue).Append("\n");
+            sb.Append("  FlagValue: ").Append(this.FlagValue).Append("\n");
+            sb.Append("  TextValue: ").Append(this.TextValue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

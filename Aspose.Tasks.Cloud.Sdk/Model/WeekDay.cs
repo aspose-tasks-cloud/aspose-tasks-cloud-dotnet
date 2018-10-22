@@ -42,7 +42,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns or sets the type of a day.
         /// </summary>  
         [JsonProperty("DayType", NullValueHandling = NullValueHandling.Ignore)]
-        public DayType? DayType { get; set; }
+        public DayType DayType { get; set; }
 
 
         /// <summary>

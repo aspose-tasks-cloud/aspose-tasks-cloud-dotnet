@@ -50,6 +50,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <DocumentationFile>bin\Debug\Aspose.Tasks.Cloud.Sdk.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -124,6 +125,7 @@
     <Compile Include="Model\DocumentPropertiesResponse.cs" />
     <Compile Include="Model\DocumentProperty.cs" />
     <Compile Include="Model\DocumentPropertyResponse.cs" />
+    <Compile Include="Model\Duration.cs" />
     <Compile Include="Model\EarnedValueMethodType.cs" />
     <Compile Include="Model\ElementType.cs" />
     <Compile Include="Model\ExtendedAttribute.cs" />

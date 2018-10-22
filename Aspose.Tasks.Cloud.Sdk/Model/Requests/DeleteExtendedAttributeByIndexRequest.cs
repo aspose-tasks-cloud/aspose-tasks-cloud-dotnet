@@ -48,7 +48,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string Name { get; set; }
 
         /// <summary>
-        /// Index of the extended attribute. See ExtendedAttributeItem.Index property.
+        /// Index (See ExtendedAttributeItem.Index property) or FieldId of the extended attribute.
         /// </summary>  
         public int? Index { get; set; }
 

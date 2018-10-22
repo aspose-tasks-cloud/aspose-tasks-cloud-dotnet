@@ -199,70 +199,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeLookupValue()
-        {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-
-            var newExtendedAttribute = new ExtendedAttributeDefinition
-            {
-                CalculationType = CalculationType.Lookup,
-                CfType = CustomFieldType.Text,
-                FieldName = "Text3",
-                ElementType = ElementType.Task,
-                Alias = "New Field",
-                ValueList = new List<Value>
-                {
-                    new Value { Description = "descr1", Val = "Internal", Id = 111 },
-                    new Value { Description = "descr2", Val = "External", Id = 112 }
-                }
-            };
-
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
-            {
-                ExtendedAttribute = newExtendedAttribute,
-                Name = remoteName,
-                Folder = this.DataFolder
-            });
-
-            Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
-            {
-                TaskUid = 27,
-                Name = remoteName,
-                Folder = this.DataFolder
-            });
-
-            Assert.AreEqual((int)HttpStatusCode.OK, taskResponse.Code);
-            Assert.IsNotNull(taskResponse.Task);
-
-            taskResponse.Task.ExtendedAttributes.Add(
-                new ExtendedAttribute { LookupValueId = 112, FieldId = putAttributeResponse.ExtendedAttribute.FieldId });
-
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
-            {
-                TaskUid = 27,
-                Task = taskResponse.Task,
-                Name = remoteName,
-                Folder = this.DataFolder
-            });
-
-            Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
-
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
-            {
-                TaskUid = 27,
-                Name = remoteName,
-                Folder = this.DataFolder
-            });
-
-            Assert.AreEqual((int)HttpStatusCode.OK, taskResponse.Code);
-            Assert.IsNotNull(taskResponse.Task);
-            Assert.AreEqual(1, taskResponse.Task.ExtendedAttributes.Count);
-            Assert.AreEqual("188743737", taskResponse.Task.ExtendedAttributes[0].FieldId);
-            Assert.AreEqual(112, taskResponse.Task.ExtendedAttributes[0].LookupValueId);
-        }
-
-        [Test]
         public void TestGetTaskAssignments()
         {
             var remoteName = UploadFileToStorage("Home move plan.mpp");
@@ -277,32 +213,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignments);
-        }
-
-        [Test]
-        public void TestGetTaskRecurringInfo()
-        {
-            var remoteName = UploadFileToStorage("sample.mpp");
-
-            var response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
-            {
-                Name = remoteName,
-                Storage = "Tasks",
-                Folder = this.DataFolder,
-                TaskUid = 6
-            });
-
-            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.IsNotNull(response.RecurringInfo);
-
-            var entity = response.RecurringInfo;
-            Assert.AreEqual(2, (int)entity.Occurrences);
-            Assert.AreEqual(RecurrencePattern.Monthly, entity.RecurrencePattern);
-            Assert.AreEqual(true, entity.UseEndDate);
-            Assert.AreEqual(false, entity.MonthlyUseOrdinalDay);
-            Assert.AreEqual(1, entity.MonthlyDay);
-            Assert.AreEqual(WeekDayType.None, entity.WeeklyDays);
-            Assert.AreEqual(OrdinalNumber.Second, entity.YearlyOrdinalNumber);
         }
 
         [Test]

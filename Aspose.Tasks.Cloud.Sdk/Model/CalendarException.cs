@@ -72,7 +72,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The exception type.
         /// </summary>  
         [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
-        public CalendarExceptionType? Type { get; set; }
+        public CalendarExceptionType Type { get; set; }
 
 
         /// <summary>
@@ -89,21 +89,21 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The month item for which an exception recurrence is scheduled.
         /// </summary>  
         [JsonProperty("MonthItem", NullValueHandling = NullValueHandling.Ignore)]
-        public MonthItemType? MonthItem { get; set; }
+        public MonthItemType MonthItem { get; set; }
 
 
         /// <summary>
         /// The position of a month item within a month.
         /// </summary>  
         [JsonProperty("MonthPosition", NullValueHandling = NullValueHandling.Ignore)]
-        public MonthPosition? MonthPosition { get; set; }
+        public MonthPosition MonthPosition { get; set; }
 
 
         /// <summary>
         /// The month for which an exception recurrence is scheduled.
         /// </summary>  
         [JsonProperty("Month", NullValueHandling = NullValueHandling.Ignore)]
-        public Month? Month { get; set; }
+        public Month Month { get; set; }
 
 
         /// <summary>

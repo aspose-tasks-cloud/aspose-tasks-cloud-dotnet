@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="OutlineMask.cs">
+// <copyright company="Aspose" file="Duration.cs">
 //   Copyright (c) 2018 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
@@ -34,31 +34,21 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Represents four elements of a mask which defines an outline code format.
+    /// Represents a duration value.
     /// </summary>
-    public class OutlineMask
+    public class Duration
     { 
         /// <summary>
-        /// The level of a mask.
+        /// Gets or sets the time interval of duration.
         /// </summary>  
-        public int? Level { get; set; }
+        public TimeSpan TimeSpan { get; set; }
 
         /// <summary>
-        /// The type of a mask.
+        /// Gets or sets the time units which will be used to display duration in MS Project.
         /// </summary>  
-        [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
-        public MaskType Type { get; set; }
+        [JsonProperty("TimeUnit", NullValueHandling = NullValueHandling.Ignore)]
+        public TimeUnitType TimeUnit { get; set; }
 
-
-        /// <summary>
-        /// The maximum length (in characters) of the outline code values. 0 if length is not defined.
-        /// </summary>  
-        public int? Length { get; set; }
-
-        /// <summary>
-        /// The separator of code values.
-        /// </summary>  
-        public string Separator { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -67,11 +57,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public override string ToString()  
         {
             var sb = new StringBuilder();
-            sb.Append("class OutlineMask {\n");
-            sb.Append("  Level: ").Append(this.Level).Append("\n");
-            sb.Append("  Type: ").Append(this.Type).Append("\n");
-            sb.Append("  Length: ").Append(this.Length).Append("\n");
-            sb.Append("  Separator: ").Append(this.Separator).Append("\n");
+            sb.Append("class Duration {\n");
+            sb.Append("  TimeSpan: ").Append(this.TimeSpan).Append("\n");
+            sb.Append("  TimeUnit: ").Append(this.TimeUnit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

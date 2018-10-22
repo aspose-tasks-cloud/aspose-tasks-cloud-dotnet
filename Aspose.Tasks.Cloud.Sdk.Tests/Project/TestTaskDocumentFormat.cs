@@ -111,11 +111,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 
             Assert.IsNotNull(response);
             Assert.IsTrue(response.Length > 0);
-            //response.Seek(0, SeekOrigin.Begin);
-
-            //using (var sr = new StreamReader(response))
-            //{
-            //}
         }
     }
 }

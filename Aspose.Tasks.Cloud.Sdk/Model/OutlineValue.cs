@@ -52,7 +52,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The outline code type.
         /// </summary>  
         [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
-        public OutlineValueType? Type { get; set; }
+        public OutlineValueType Type { get; set; }
 
 
         /// <summary>

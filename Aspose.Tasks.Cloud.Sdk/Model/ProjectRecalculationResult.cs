@@ -42,7 +42,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Gets or sets ValidationState
         /// </summary>  
         [JsonProperty("ValidationState", NullValueHandling = NullValueHandling.Ignore)]
-        public ProjectValidationState? ValidationState { get; set; }
+        public ProjectValidationState ValidationState { get; set; }
 
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Represents a recurrence pattern of the recurring task. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("RecurrencePattern", NullValueHandling = NullValueHandling.Ignore)]
-        public RecurrencePattern? RecurrencePattern { get; set; }
+        public RecurrencePattern RecurrencePattern { get; set; }
 
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Specifies a collection of days used in the weekly recurrence pattern.
         /// </summary>  
         [JsonProperty("WeeklyDays", NullValueHandling = NullValueHandling.Ignore)]
-        public WeekDayType? WeeklyDays { get; set; }
+        public WeekDayType WeeklyDays { get; set; }
 
 
         /// <summary>
@@ -101,14 +101,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Specifies an ordinal number of the monthly recurrence pattern. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("MonthlyOrdinalNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public OrdinalNumber? MonthlyOrdinalNumber { get; set; }
+        public OrdinalNumber MonthlyOrdinalNumber { get; set; }
 
 
         /// <summary>
         /// Specifies a day of the monthly recurrence pattern when using ordinal day. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("MonthlyOrdinalDay", NullValueHandling = NullValueHandling.Ignore)]
-        public DayOfWeek? MonthlyOrdinalDay { get; set; }
+        public DayOfWeek MonthlyOrdinalDay { get; set; }
 
 
         /// <summary>
@@ -140,21 +140,21 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Specifies an ordinal number of the yearly recurrence pattern. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("YearlyOrdinalNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public OrdinalNumber? YearlyOrdinalNumber { get; set; }
+        public OrdinalNumber YearlyOrdinalNumber { get; set; }
 
 
         /// <summary>
         /// Specifies a weekday of the yearly recurrence pattern when using ordinal day. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("YearlyOrdinalDay", NullValueHandling = NullValueHandling.Ignore)]
-        public DayOfWeek? YearlyOrdinalDay { get; set; }
+        public DayOfWeek YearlyOrdinalDay { get; set; }
 
 
         /// <summary>
         /// Specifies a month of the yearly recurrence pattern when using ordinal day. Can be one of the values of  enum.
         /// </summary>  
         [JsonProperty("YearlyOrdinalMonth", NullValueHandling = NullValueHandling.Ignore)]
-        public Month? YearlyOrdinalMonth { get; set; }
+        public Month YearlyOrdinalMonth { get; set; }
 
 
         /// <summary>

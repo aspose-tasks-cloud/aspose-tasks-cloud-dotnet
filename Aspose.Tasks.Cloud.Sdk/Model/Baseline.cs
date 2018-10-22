@@ -42,7 +42,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The unique number of a baseline data record.
         /// </summary>  
         [JsonProperty("BaselineNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public BaselineType? BaselineNumber { get; set; }
+        public BaselineType BaselineNumber { get; set; }
 
 
         /// <summary>

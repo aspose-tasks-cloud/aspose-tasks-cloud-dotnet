@@ -52,7 +52,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Specifies  the type of character of the code string.
         /// </summary>  
         [JsonProperty("Sequence", NullValueHandling = NullValueHandling.Ignore)]
-        public WBSSequence? Sequence { get; set; }
+        public WBSSequence Sequence { get; set; }
 
 
         /// <summary>

@@ -157,7 +157,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Provides choices for the type of constraint that can be applied for scheduling a task.
         /// </summary>  
         [JsonProperty("ConstraintType", NullValueHandling = NullValueHandling.Ignore)]
-        public ConstraintType? ConstraintType { get; set; }
+        public ConstraintType ConstraintType { get; set; }
 
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Determines how the fixed cost is accrued against a task.
         /// </summary>  
         [JsonProperty("FixedCostAccrual", NullValueHandling = NullValueHandling.Ignore)]
-        public CostAccrualType? FixedCostAccrual { get; set; }
+        public CostAccrualType FixedCostAccrual { get; set; }
 
 
         /// <summary>
@@ -461,7 +461,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The type of a task.
         /// </summary>  
         [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
-        public TaskType? Type { get; set; }
+        public TaskType Type { get; set; }
 
 
         /// <summary>
@@ -513,7 +513,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// LevelingDelayFormat
         /// </summary>  
         [JsonProperty("LevelingDelayFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeUnitType? LevelingDelayFormat { get; set; }
+        public TimeUnitType LevelingDelayFormat { get; set; }
 
 
         /// <summary>
@@ -565,7 +565,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Determines whether the % Complete or Physical % Complete field should be used to calculate budgeted cost of work performed (BCWP).
         /// </summary>  
         [JsonProperty("EarnedValueMethod", NullValueHandling = NullValueHandling.Ignore)]
-        public EarnedValueMethodType? EarnedValueMethod { get; set; }
+        public EarnedValueMethodType EarnedValueMethod { get; set; }
 
 
         /// <summary>

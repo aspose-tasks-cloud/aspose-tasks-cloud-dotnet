@@ -107,7 +107,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns or sets the cost rate table used for this assignment.
         /// </summary>  
         [JsonProperty("CostRateTableType", NullValueHandling = NullValueHandling.Ignore)]
-        public RateType? CostRateTableType { get; set; }
+        public RateType CostRateTableType { get; set; }
 
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns or sets the duration format of a delay.
         /// </summary>  
         [JsonProperty("LevelingDelayFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeUnitType? LevelingDelayFormat { get; set; }
+        public TimeUnitType LevelingDelayFormat { get; set; }
 
 
         /// <summary>
@@ -296,7 +296,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns or sets the work contour of an assignment.
         /// </summary>  
         [JsonProperty("WorkContour", NullValueHandling = NullValueHandling.Ignore)]
-        public WorkContourType? WorkContour { get; set; }
+        public WorkContourType WorkContour { get; set; }
 
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns or sets the booking type of an assignment.
         /// </summary>  
         [JsonProperty("BookingType", NullValueHandling = NullValueHandling.Ignore)]
-        public BookingType? BookingType { get; set; }
+        public BookingType BookingType { get; set; }
 
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Returns the time unit for the usage rate of the material resource assignment.
         /// </summary>  
         [JsonProperty("RateScale", NullValueHandling = NullValueHandling.Ignore)]
-        public RateScaleType? RateScale { get; set; }
+        public RateScaleType RateScale { get; set; }
 
 
         /// <summary>

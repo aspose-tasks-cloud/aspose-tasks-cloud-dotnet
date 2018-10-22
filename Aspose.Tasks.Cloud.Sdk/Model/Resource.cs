@@ -62,7 +62,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The type of a resource.
         /// </summary>  
         [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
-        public ResourceType? Type { get; set; }
+        public ResourceType Type { get; set; }
 
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The type of a workgroup to which a resource belongs.  type.
         /// </summary>  
         [JsonProperty("Workgroup", NullValueHandling = NullValueHandling.Ignore)]
-        public WorkGroupType? Workgroup { get; set; }
+        public WorkGroupType Workgroup { get; set; }
 
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Determines how cost is accrued against the resource.
         /// </summary>  
         [JsonProperty("AccrueAt", NullValueHandling = NullValueHandling.Ignore)]
-        public CostAccrualType? AccrueAt { get; set; }
+        public CostAccrualType AccrueAt { get; set; }
 
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The units used by Microsoft Project to display the standard rate.
         /// </summary>  
         [JsonProperty("StandardRateFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public RateFormatType? StandardRateFormat { get; set; }
+        public RateFormatType StandardRateFormat { get; set; }
 
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The units used by Microsoft Project to display the overtime rate.
         /// </summary>  
         [JsonProperty("OvertimeRateFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public RateFormatType? OvertimeRateFormat { get; set; }
+        public RateFormatType OvertimeRateFormat { get; set; }
 
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The booking type of a resource.
         /// </summary>  
         [JsonProperty("BookingType", NullValueHandling = NullValueHandling.Ignore)]
-        public BookingType? BookingType { get; set; }
+        public BookingType BookingType { get; set; }
 
 
         /// <summary>

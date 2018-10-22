@@ -62,7 +62,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Gets or sets LinkType
         /// </summary>  
         [JsonProperty("LinkType", NullValueHandling = NullValueHandling.Ignore)]
-        public TaskLinkType? LinkType { get; set; }
+        public TaskLinkType LinkType { get; set; }
 
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Gets or sets LagFormat
         /// </summary>  
         [JsonProperty("LagFormat", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeUnitType? LagFormat { get; set; }
+        public TimeUnitType LagFormat { get; set; }
 
 
         /// <summary>

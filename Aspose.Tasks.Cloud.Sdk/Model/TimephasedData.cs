@@ -57,7 +57,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The time unit of a timephased data period.
         /// </summary>  
         [JsonProperty("Unit", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeUnitType? Unit { get; set; }
+        public TimeUnitType Unit { get; set; }
 
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The type of a timephased data.
         /// </summary>  
         [JsonProperty("TimephasedDataType", NullValueHandling = NullValueHandling.Ignore)]
-        public TimephasedDataType? TimephasedDataType { get; set; }
+        public TimephasedDataType TimephasedDataType { get; set; }
 
 
         /// <summary>

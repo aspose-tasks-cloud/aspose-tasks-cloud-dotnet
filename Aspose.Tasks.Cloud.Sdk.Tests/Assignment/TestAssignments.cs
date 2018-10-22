@@ -26,12 +26,13 @@
 
 using System;
 using System.Linq;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
 using System.Net;
+
+using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+
+using NUnit.Framework;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {

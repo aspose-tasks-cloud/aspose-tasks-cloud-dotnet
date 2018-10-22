@@ -52,7 +52,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The type of a custom field.
         /// </summary>  
         [JsonProperty("CfType", NullValueHandling = NullValueHandling.Ignore)]
-        public CustomFieldType? CfType { get; set; }
+        public CustomFieldType CfType { get; set; }
 
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Determines whether the extended attribute is associated with a task or a resource
         /// </summary>  
         [JsonProperty("ElementType", NullValueHandling = NullValueHandling.Ignore)]
-        public ElementType? ElementType { get; set; }
+        public ElementType ElementType { get; set; }
 
 
         /// <summary>
@@ -111,14 +111,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// The way rollups are calculated.
         /// </summary>  
         [JsonProperty("RollupType", NullValueHandling = NullValueHandling.Ignore)]
-        public RollupType? RollupType { get; set; }
+        public RollupType RollupType { get; set; }
 
 
         /// <summary>
         /// Determines whether rollups are calculated for a task and group summary rows.
         /// </summary>  
         [JsonProperty("CalculationType", NullValueHandling = NullValueHandling.Ignore)]
-        public CalculationType? CalculationType { get; set; }
+        public CalculationType CalculationType { get; set; }
 
 
         /// <summary>
