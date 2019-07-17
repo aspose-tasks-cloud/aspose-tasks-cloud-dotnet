@@ -25,20 +25,16 @@
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
     using Aspose.Tasks.Cloud.Sdk.Model;
     using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-    using Aspose.Tasks.Cloud.Sdk.RequestHandlers;
-    
+    using System.Net;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Aspose.Tasks for Cloud API.
     /// </summary>
-    public class TasksApi
-    {        
-        private readonly ApiInvoker apiInvoker;
-        private readonly Configuration configuration;     
-
+    public class TasksApi : ApiBase
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="TasksApi"/> class.
         /// </summary>
@@ -57,17 +53,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         /// Initializes a new instance of the <see cref="TasksApi"/> class.
         /// </summary>    
         /// <param name="configuration">Configuration settings</param>
-        public TasksApi(Configuration configuration)
+        public TasksApi(Configuration configuration) : base(configuration)
         {
-            this.configuration = configuration;
-            
-            var requestHandlers = new List<IRequestHandler>();
-            requestHandlers.Add(new OAuthRequestHandler(this.configuration));
-            requestHandlers.Add(new DebugLogRequestHandler(this.configuration));
-            requestHandlers.Add(new ApiExceptionRequestHandler());
-            requestHandlers.Add(new AuthWithSignatureRequestHandler(this.configuration));
-            this.apiInvoker = new ApiInvoker(requestHandlers);
-        }                            
+        }
 
         /// <summary>
         /// Deletes a project assignment with all references to it. 
@@ -77,48 +65,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteAssignment(DeleteAssignmentRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteAssignment");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'assignmentUid' is set
-            if (request.AssignmentUid == null) 
+            if (request.AssignmentUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'assignmentUid' when calling DeleteAssignment");
+                throw new ApiException("Missing required parameter 'assignmentUid' when calling DeleteAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "assignmentUid", request.AssignmentUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -130,48 +119,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteCalendar(DeleteCalendarRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteCalendar");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling DeleteCalendar");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling DeleteCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -183,55 +173,56 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteCalendarException(DeleteCalendarExceptionRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteCalendarException");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling DeleteCalendarException");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling DeleteCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling DeleteCalendarException");
+                throw new ApiException("Missing required parameter 'index' when calling DeleteCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/calendarExceptions/{index}");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/calendars/{calendarUid}/calendarExceptions/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -243,47 +234,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteExtendedAttributeByIndex(DeleteExtendedAttributeByIndexRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteExtendedAttributeByIndex");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteExtendedAttributeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling DeleteExtendedAttributeByIndex");
+                throw new ApiException("Missing required parameter 'index' when calling DeleteExtendedAttributeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/extendedAttributes/{index}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/extendedAttributes/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -295,15 +287,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteOutlineCodeByIndex(DeleteOutlineCodeByIndexRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteOutlineCodeByIndex");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteOutlineCodeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling DeleteOutlineCodeByIndex");
+                throw new ApiException("Missing required parameter 'index' when calling DeleteOutlineCodeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -312,30 +304,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -347,48 +339,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteResource(DeleteResourceRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteResource");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling DeleteResource");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling DeleteResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -400,15 +393,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteTask(DeleteTaskRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteTask");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling DeleteTask");
+                throw new ApiException("Missing required parameter 'taskUid' when calling DeleteTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -418,30 +411,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -453,15 +446,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse DeleteTaskLink(DeleteTaskLinkRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling DeleteTaskLink");
+                throw new ApiException("Missing required parameter 'name' when calling DeleteTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling DeleteTaskLink");
+                throw new ApiException("Missing required parameter 'index' when calling DeleteTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -471,30 +464,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "DELETE", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -506,47 +499,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentResponse GetAssignment(GetAssignmentRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetAssignment");
+                throw new ApiException("Missing required parameter 'name' when calling GetAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'assignmentUid' is set
-            if (request.AssignmentUid == null) 
+            if (request.AssignmentUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'assignmentUid' when calling GetAssignment");
+                throw new ApiException("Missing required parameter 'assignmentUid' when calling GetAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "assignmentUid", request.AssignmentUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AssignmentResponse)SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -558,49 +552,51 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TimephasedDataResponse GetAssignmentTimephasedData(GetAssignmentTimephasedDataRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetAssignmentTimephasedData");
+                throw new ApiException("Missing required parameter 'name' when calling GetAssignmentTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'assignmentUid' is set
-            if (request.AssignmentUid == null) 
+            if (request.AssignmentUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'assignmentUid' when calling GetAssignmentTimephasedData");
+                throw new ApiException("Missing required parameter 'assignmentUid' when calling GetAssignmentTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}/timeScaleData");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/assignments/{assignmentUid}/timeScaleData");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "assignmentUid", request.AssignmentUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "type", request.Type);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startDate", request.StartDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endDate", request.EndDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response, typeof(TimephasedDataResponse));
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
+                        typeof(TimephasedDataResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -612,9 +608,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentItemsResponse GetAssignments(GetAssignmentsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetAssignments");
+                throw new ApiException("Missing required parameter 'name' when calling GetAssignments", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -622,30 +618,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (AssignmentItemsResponse)SerializationHelper.Deserialize(response, typeof(AssignmentItemsResponse));
+                    return (AssignmentItemsResponse)SerializationHelper.Deserialize(response,
+                        typeof(AssignmentItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -657,47 +654,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public CalendarResponse GetCalendar(GetCalendarRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetCalendar");
+                throw new ApiException("Missing required parameter 'name' when calling GetCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling GetCalendar");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling GetCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (CalendarResponse)SerializationHelper.Deserialize(response, typeof(CalendarResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -709,47 +707,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public CalendarExceptionsResponse GetCalendarExceptions(GetCalendarExceptionsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetCalendarExceptions");
+                throw new ApiException("Missing required parameter 'name' when calling GetCalendarExceptions", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling GetCalendarExceptions");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling GetCalendarExceptions", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/calendarExceptions");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/calendars/{calendarUid}/calendarExceptions");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (CalendarExceptionsResponse)SerializationHelper.Deserialize(response, typeof(CalendarExceptionsResponse));
+                    return (CalendarExceptionsResponse)SerializationHelper.Deserialize(response,
+                        typeof(CalendarExceptionsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -761,47 +761,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public CalendarWorkWeeksResponse GetCalendarWorkWeeks(GetCalendarWorkWeeksRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetCalendarWorkWeeks");
+                throw new ApiException("Missing required parameter 'name' when calling GetCalendarWorkWeeks", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling GetCalendarWorkWeeks");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling GetCalendarWorkWeeks", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/workWeeks");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/calendars/{calendarUid}/workWeeks");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (CalendarWorkWeeksResponse)SerializationHelper.Deserialize(response, typeof(CalendarWorkWeeksResponse));
+                    return (CalendarWorkWeeksResponse)SerializationHelper.Deserialize(response,
+                        typeof(CalendarWorkWeeksResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -813,9 +815,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public CalendarItemsResponse GetCalendars(GetCalendarsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetCalendars");
+                throw new ApiException("Missing required parameter 'name' when calling GetCalendars", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -823,30 +825,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (CalendarItemsResponse)SerializationHelper.Deserialize(response, typeof(CalendarItemsResponse));
+                    return (CalendarItemsResponse)SerializationHelper.Deserialize(response,
+                        typeof(CalendarItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -858,9 +861,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskItemsResponse GetCriticalPath(GetCriticalPathRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetCriticalPath");
+                throw new ApiException("Missing required parameter 'name' when calling GetCriticalPath", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -868,30 +871,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskItemsResponse)SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -903,9 +906,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public DocumentPropertiesResponse GetDocumentProperties(GetDocumentPropertiesRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetDocumentProperties");
+                throw new ApiException("Missing required parameter 'name' when calling GetDocumentProperties", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -913,30 +916,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertiesResponse)SerializationHelper.Deserialize(response, typeof(DocumentPropertiesResponse));
+                    return (DocumentPropertiesResponse)SerializationHelper.Deserialize(response,
+                        typeof(DocumentPropertiesResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -948,47 +952,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public DocumentPropertyResponse GetDocumentProperty(GetDocumentPropertyRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetDocumentProperty");
+                throw new ApiException("Missing required parameter 'name' when calling GetDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'propertyName' is set
-            if (request.PropertyName == null) 
+            if (request.PropertyName == null)
             {
-                throw new ApiException(400, "Missing required parameter 'propertyName' when calling GetDocumentProperty");
+                throw new ApiException("Missing required parameter 'propertyName' when calling GetDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/documentproperties/{propertyName}");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/documentproperties/{propertyName}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "propertyName", request.PropertyName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response, typeof(DocumentPropertyResponse));
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
+                        typeof(DocumentPropertyResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1000,47 +1006,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ExtendedAttributeResponse GetExtendedAttributeByIndex(GetExtendedAttributeByIndexRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetExtendedAttributeByIndex");
+                throw new ApiException("Missing required parameter 'name' when calling GetExtendedAttributeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling GetExtendedAttributeByIndex");
+                throw new ApiException("Missing required parameter 'index' when calling GetExtendedAttributeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/extendedAttributes/{index}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/extendedAttributes/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeResponse)SerializationHelper.Deserialize(response, typeof(ExtendedAttributeResponse));
+                    return (ExtendedAttributeResponse)SerializationHelper.Deserialize(response,
+                        typeof(ExtendedAttributeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1052,9 +1060,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ExtendedAttributeItemsResponse GetExtendedAttributes(GetExtendedAttributesRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetExtendedAttributes");
+                throw new ApiException("Missing required parameter 'name' when calling GetExtendedAttributes", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1062,30 +1070,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeItemsResponse)SerializationHelper.Deserialize(response, typeof(ExtendedAttributeItemsResponse));
+                    return (ExtendedAttributeItemsResponse)SerializationHelper.Deserialize(response,
+                        typeof(ExtendedAttributeItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1097,15 +1106,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public OutlineCodeResponse GetOutlineCodeByIndex(GetOutlineCodeByIndexRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetOutlineCodeByIndex");
+                throw new ApiException("Missing required parameter 'name' when calling GetOutlineCodeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling GetOutlineCodeByIndex");
+                throw new ApiException("Missing required parameter 'index' when calling GetOutlineCodeByIndex", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1114,30 +1123,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (OutlineCodeResponse)SerializationHelper.Deserialize(response, typeof(OutlineCodeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1149,9 +1158,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public OutlineCodeItemsResponse GetOutlineCodes(GetOutlineCodesRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetOutlineCodes");
+                throw new ApiException("Missing required parameter 'name' when calling GetOutlineCodes", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1159,30 +1168,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (OutlineCodeItemsResponse)SerializationHelper.Deserialize(response, typeof(OutlineCodeItemsResponse));
+                    return (OutlineCodeItemsResponse)SerializationHelper.Deserialize(response,
+                        typeof(OutlineCodeItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1194,44 +1204,45 @@ namespace Aspose.Tasks.Cloud.Sdk
         public PageCountResponse GetPageCount(GetPageCountRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetPageCount");
+                throw new ApiException("Missing required parameter 'name' when calling GetPageCount", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/pagecount");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageSize", request.PageSize);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "presentationFormat", request.PresentationFormat);
+            resourcePath =
+                UrlHelper.AddQueryParameterToUrl(resourcePath, "presentationFormat", request.PresentationFormat);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "timescale", request.Timescale);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startDate", request.StartDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endDate", request.EndDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (PageCountResponse)SerializationHelper.Deserialize(response, typeof(PageCountResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1243,9 +1254,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ProjectIdsResponse GetProjectIds(GetProjectIdsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetProjectIds");
+                throw new ApiException("Missing required parameter 'name' when calling GetProjectIds", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1253,30 +1264,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (ProjectIdsResponse)SerializationHelper.Deserialize(response, typeof(ProjectIdsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1288,15 +1299,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public System.IO.Stream GetReportPdf(GetReportPdfRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetReportPdf");
+                throw new ApiException("Missing required parameter 'name' when calling GetReportPdf", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'type' is set
-            if (request.Type == null) 
+            if (request.Type == null)
             {
-                throw new ApiException(400, "Missing required parameter 'type' when calling GetReportPdf");
+                throw new ApiException("Missing required parameter 'type' when calling GetReportPdf", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1305,24 +1316,24 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "type", request.Type);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
-                    return this.apiInvoker.InvokeBinaryApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        null);
-            } 
-            catch (ApiException ex) 
+
+            try
             {
-                if (ex.ErrorCode == 404) 
+                return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1334,47 +1345,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ResourceResponse GetResource(GetResourceRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetResource");
+                throw new ApiException("Missing required parameter 'name' when calling GetResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling GetResource");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling GetResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (ResourceResponse)SerializationHelper.Deserialize(response, typeof(ResourceResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1386,47 +1398,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentsResponse GetResourceAssignments(GetResourceAssignmentsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetResourceAssignments");
+                throw new ApiException("Missing required parameter 'name' when calling GetResourceAssignments", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling GetResourceAssignments");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling GetResourceAssignments", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}/assignments");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/resources/{resourceUid}/assignments");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AssignmentsResponse)SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1438,49 +1451,51 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TimephasedDataResponse GetResourceTimephasedData(GetResourceTimephasedDataRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetResourceTimephasedData");
+                throw new ApiException("Missing required parameter 'name' when calling GetResourceTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling GetResourceTimephasedData");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling GetResourceTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}/timeScaleData");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/resources/{resourceUid}/timeScaleData");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "type", request.Type);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startDate", request.StartDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endDate", request.EndDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response, typeof(TimephasedDataResponse));
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
+                        typeof(TimephasedDataResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1492,9 +1507,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ResourceItemsResponse GetResources(GetResourcesRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetResources");
+                throw new ApiException("Missing required parameter 'name' when calling GetResources", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1502,30 +1517,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ResourceItemsResponse)SerializationHelper.Deserialize(response, typeof(ResourceItemsResponse));
+                    return (ResourceItemsResponse)SerializationHelper.Deserialize(response,
+                        typeof(ResourceItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1537,15 +1553,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public System.IO.Stream GetRiskAnalysisReport(GetRiskAnalysisReportRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetRiskAnalysisReport");
+                throw new ApiException("Missing required parameter 'name' when calling GetRiskAnalysisReport", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling GetRiskAnalysisReport");
+                throw new ApiException("Missing required parameter 'taskUid' when calling GetRiskAnalysisReport", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1560,24 +1576,24 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
-                    return this.apiInvoker.InvokeBinaryApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        null);
-            } 
-            catch (ApiException ex) 
+
+            try
             {
-                if (ex.ErrorCode == 404) 
+                return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1589,15 +1605,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskResponse GetTask(GetTaskRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTask");
+                throw new ApiException("Missing required parameter 'name' when calling GetTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling GetTask");
+                throw new ApiException("Missing required parameter 'taskUid' when calling GetTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1606,30 +1622,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskResponse)SerializationHelper.Deserialize(response, typeof(TaskResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1641,47 +1657,48 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentsResponse GetTaskAssignments(GetTaskAssignmentsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskAssignments");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskAssignments", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling GetTaskAssignments");
+                throw new ApiException("Missing required parameter 'taskUid' when calling GetTaskAssignments", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/assignments");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/assignments");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AssignmentsResponse)SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1693,9 +1710,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public System.IO.Stream GetTaskDocument(GetTaskDocumentRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskDocument");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskDocument", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1703,24 +1720,24 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
-                    return this.apiInvoker.InvokeBinaryApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        null);
-            } 
-            catch (ApiException ex) 
+
+            try
             {
-                if (ex.ErrorCode == 404) 
+                return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1732,42 +1749,43 @@ namespace Aspose.Tasks.Cloud.Sdk
         public System.IO.Stream GetTaskDocumentWithFormat(GetTaskDocumentWithFormatRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskDocumentWithFormat");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskDocumentWithFormat", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'format' is set
-            if (request.Format == null) 
+            if (request.Format == null)
             {
-                throw new ApiException(400, "Missing required parameter 'format' when calling GetTaskDocumentWithFormat");
+                throw new ApiException("Missing required parameter 'format' when calling GetTaskDocumentWithFormat", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/format");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
+            resourcePath =
+                UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
-                    return this.apiInvoker.InvokeBinaryApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        null);
-            } 
-            catch (ApiException ex) 
+
+            try
             {
-                if (ex.ErrorCode == 404) 
+                return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1779,9 +1797,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskLinksResponse GetTaskLinks(GetTaskLinksRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskLinks");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskLinks", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1789,30 +1807,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskLinksResponse)SerializationHelper.Deserialize(response, typeof(TaskLinksResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1824,47 +1842,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public RecurringInfoResponse GetTaskRecurringInfo(GetTaskRecurringInfoRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling GetTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'taskUid' when calling GetTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/recurringInfo");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/recurringInfo");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (RecurringInfoResponse)SerializationHelper.Deserialize(response, typeof(RecurringInfoResponse));
+                    return (RecurringInfoResponse)SerializationHelper.Deserialize(response,
+                        typeof(RecurringInfoResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1876,49 +1896,51 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TimephasedDataResponse GetTaskTimephasedData(GetTaskTimephasedDataRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTaskTimephasedData");
+                throw new ApiException("Missing required parameter 'name' when calling GetTaskTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling GetTaskTimephasedData");
+                throw new ApiException("Missing required parameter 'taskUid' when calling GetTaskTimephasedData", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/timeScaleData");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/timeScaleData");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "type", request.Type);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startDate", request.StartDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endDate", request.EndDate);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response, typeof(TimephasedDataResponse));
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
+                        typeof(TimephasedDataResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1930,9 +1952,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskItemsResponse GetTasks(GetTasksRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetTasks");
+                throw new ApiException("Missing required parameter 'name' when calling GetTasks", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -1940,30 +1962,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskItemsResponse)SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -1975,39 +1997,39 @@ namespace Aspose.Tasks.Cloud.Sdk
         public VbaProjectResponse GetVbaProject(GetVbaProjectRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetVbaProject");
+                throw new ApiException("Missing required parameter 'name' when calling GetVbaProject", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/vbaproject");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (VbaProjectResponse)SerializationHelper.Deserialize(response, typeof(VbaProjectResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2019,9 +2041,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public WBSDefinitionResponse GetWbsDefinition(GetWbsDefinitionRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetWbsDefinition");
+                throw new ApiException("Missing required parameter 'name' when calling GetWbsDefinition", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2029,30 +2051,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "GET", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (WBSDefinitionResponse)SerializationHelper.Deserialize(response, typeof(WBSDefinitionResponse));
+                    return (WBSDefinitionResponse)SerializationHelper.Deserialize(response,
+                        typeof(WBSDefinitionResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2064,21 +2087,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentItemResponse PostAssignment(PostAssignmentRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostAssignment");
+                throw new ApiException("Missing required parameter 'name' when calling PostAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PostAssignment");
+                throw new ApiException("Missing required parameter 'taskUid' when calling PostAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling PostAssignment");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling PostAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2090,30 +2113,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (AssignmentItemResponse)SerializationHelper.Deserialize(response, typeof(AssignmentItemResponse));
+                    return (AssignmentItemResponse)SerializationHelper.Deserialize(response,
+                        typeof(AssignmentItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2125,15 +2149,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public CalendarItemResponse PostCalendar(PostCalendarRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostCalendar");
+                throw new ApiException("Missing required parameter 'name' when calling PostCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendar' is set
-            if (request.Calendar == null) 
+            if (request.Calendar == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendar' when calling PostCalendar");
+                throw new ApiException("Missing required parameter 'calendar' when calling PostCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2143,29 +2167,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.Calendar); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (CalendarItemResponse)SerializationHelper.Deserialize(response, typeof(CalendarItemResponse));
+                    return (CalendarItemResponse)SerializationHelper.Deserialize(response,
+                        typeof(CalendarItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2177,54 +2202,55 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PostCalendarException(PostCalendarExceptionRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostCalendarException");
+                throw new ApiException("Missing required parameter 'name' when calling PostCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling PostCalendarException");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling PostCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarException' is set
-            if (request.CalendarException == null) 
+            if (request.CalendarException == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarException' when calling PostCalendarException");
+                throw new ApiException("Missing required parameter 'calendarException' when calling PostCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/calendarExceptions");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/calendars/{calendarUid}/calendarExceptions");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.CalendarException); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2236,54 +2262,56 @@ namespace Aspose.Tasks.Cloud.Sdk
         public DocumentPropertyResponse PostDocumentProperty(PostDocumentPropertyRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostDocumentProperty");
+                throw new ApiException("Missing required parameter 'name' when calling PostDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'propertyName' is set
-            if (request.PropertyName == null) 
+            if (request.PropertyName == null)
             {
-                throw new ApiException(400, "Missing required parameter 'propertyName' when calling PostDocumentProperty");
+                throw new ApiException("Missing required parameter 'propertyName' when calling PostDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'property' is set
-            if (request.Property == null) 
+            if (request.Property == null)
             {
-                throw new ApiException(400, "Missing required parameter 'property' when calling PostDocumentProperty");
+                throw new ApiException("Missing required parameter 'property' when calling PostDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/documentproperties/{propertyName}");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/documentproperties/{propertyName}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "propertyName", request.PropertyName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "filename", request.Filename);
             var postBody = SerializationHelper.Serialize(request.Property); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response, typeof(DocumentPropertyResponse));
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
+                        typeof(DocumentPropertyResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2295,9 +2323,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ResourceItemResponse PostResource(PostResourceRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostResource");
+                throw new ApiException("Missing required parameter 'name' when calling PostResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2308,30 +2336,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ResourceItemResponse)SerializationHelper.Deserialize(response, typeof(ResourceItemResponse));
+                    return (ResourceItemResponse)SerializationHelper.Deserialize(response,
+                        typeof(ResourceItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2343,9 +2372,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskItemResponse PostTask(PostTaskRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostTask");
+                throw new ApiException("Missing required parameter 'name' when calling PostTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2356,30 +2385,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskItemResponse)SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2391,48 +2420,49 @@ namespace Aspose.Tasks.Cloud.Sdk
         public System.IO.Stream PostTaskDocumentWithFormat(PostTaskDocumentWithFormatRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostTaskDocumentWithFormat");
+                throw new ApiException("Missing required parameter 'name' when calling PostTaskDocumentWithFormat", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'format' is set
-            if (request.Format == null) 
+            if (request.Format == null)
             {
-                throw new ApiException(400, "Missing required parameter 'format' when calling PostTaskDocumentWithFormat");
+                throw new ApiException("Missing required parameter 'format' when calling PostTaskDocumentWithFormat", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'saveOptions' is set
-            if (request.SaveOptions == null) 
+            if (request.SaveOptions == null)
             {
-                throw new ApiException(400, "Missing required parameter 'saveOptions' when calling PostTaskDocumentWithFormat");
+                throw new ApiException("Missing required parameter 'saveOptions' when calling PostTaskDocumentWithFormat", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/format");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
+            resourcePath =
+                UrlHelper.AddQueryParameterToUrl(resourcePath, "returnAsZipArchive", request.ReturnAsZipArchive);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.SaveOptions); // http body (model) parameter
-            try 
-            {                               
-                    return this.apiInvoker.InvokeBinaryApi(
-                        resourcePath, 
-                        "POST", 
-                        postBody, 
-                        null, 
-                        null);
-            } 
-            catch (ApiException ex) 
+            try
             {
-                if (ex.ErrorCode == 404) 
+                return this.apiInvoker.InvokeBinaryApi(
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
+                    null);
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2444,15 +2474,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PostTaskLink(PostTaskLinkRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostTaskLink");
+                throw new ApiException("Missing required parameter 'name' when calling PostTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskLink' is set
-            if (request.TaskLink == null) 
+            if (request.TaskLink == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskLink' when calling PostTaskLink");
+                throw new ApiException("Missing required parameter 'taskLink' when calling PostTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2462,29 +2492,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.TaskLink); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2496,33 +2526,33 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskItemResponse PostTaskRecurringInfo(PostTaskRecurringInfoRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PostTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'name' when calling PostTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'parentTaskUid' is set
-            if (request.ParentTaskUid == null) 
+            if (request.ParentTaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'parentTaskUid' when calling PostTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'parentTaskUid' when calling PostTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskName' is set
-            if (request.TaskName == null) 
+            if (request.TaskName == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskName' when calling PostTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'taskName' when calling PostTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'recurringInfo' is set
-            if (request.RecurringInfo == null) 
+            if (request.RecurringInfo == null)
             {
-                throw new ApiException(400, "Missing required parameter 'recurringInfo' when calling PostTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'recurringInfo' when calling PostTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarName' is set
-            if (request.CalendarName == null) 
+            if (request.CalendarName == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarName' when calling PostTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'calendarName' when calling PostTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2535,29 +2565,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.RecurringInfo); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "POST", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskItemResponse)SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2569,25 +2599,26 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AssignmentResponse PutAssignment(PutAssignmentRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutAssignment");
+                throw new ApiException("Missing required parameter 'name' when calling PutAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'assignmentUid' is set
-            if (request.AssignmentUid == null) 
+            if (request.AssignmentUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'assignmentUid' when calling PutAssignment");
+                throw new ApiException("Missing required parameter 'assignmentUid' when calling PutAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'assignment' is set
-            if (request.Assignment == null) 
+            if (request.Assignment == null)
             {
-                throw new ApiException(400, "Missing required parameter 'assignment' when calling PutAssignment");
+                throw new ApiException("Missing required parameter 'assignment' when calling PutAssignment", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/assignments/{assignmentUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "assignmentUid", request.AssignmentUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "mode", request.Mode);
@@ -2596,29 +2627,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.Assignment); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AssignmentResponse)SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2630,21 +2661,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutCalendar(PutCalendarRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutCalendar");
+                throw new ApiException("Missing required parameter 'name' when calling PutCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling PutCalendar");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling PutCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendar' is set
-            if (request.Calendar == null) 
+            if (request.Calendar == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendar' when calling PutCalendar");
+                throw new ApiException("Missing required parameter 'calendar' when calling PutCalendar", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2655,29 +2686,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.Calendar); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2689,31 +2720,32 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutCalendarException(PutCalendarExceptionRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutCalendarException");
+                throw new ApiException("Missing required parameter 'name' when calling PutCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarUid' is set
-            if (request.CalendarUid == null) 
+            if (request.CalendarUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarUid' when calling PutCalendarException");
+                throw new ApiException("Missing required parameter 'calendarUid' when calling PutCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling PutCalendarException");
+                throw new ApiException("Missing required parameter 'index' when calling PutCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'calendarException' is set
-            if (request.CalendarException == null) 
+            if (request.CalendarException == null)
             {
-                throw new ApiException(400, "Missing required parameter 'calendarException' when calling PutCalendarException");
+                throw new ApiException("Missing required parameter 'calendarException' when calling PutCalendarException", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/calendars/{calendarUid}/calendarExceptions/{index}");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/calendars/{calendarUid}/calendarExceptions/{index}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "calendarUid", request.CalendarUid);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "index", request.Index);
@@ -2721,29 +2753,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.CalendarException); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2755,54 +2787,56 @@ namespace Aspose.Tasks.Cloud.Sdk
         public DocumentPropertyResponse PutDocumentProperty(PutDocumentPropertyRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutDocumentProperty");
+                throw new ApiException("Missing required parameter 'name' when calling PutDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'propertyName' is set
-            if (request.PropertyName == null) 
+            if (request.PropertyName == null)
             {
-                throw new ApiException(400, "Missing required parameter 'propertyName' when calling PutDocumentProperty");
+                throw new ApiException("Missing required parameter 'propertyName' when calling PutDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'property' is set
-            if (request.Property == null) 
+            if (request.Property == null)
             {
-                throw new ApiException(400, "Missing required parameter 'property' when calling PutDocumentProperty");
+                throw new ApiException("Missing required parameter 'property' when calling PutDocumentProperty", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/documentproperties/{propertyName}");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/documentproperties/{propertyName}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "propertyName", request.PropertyName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "filename", request.Filename);
             var postBody = SerializationHelper.Serialize(request.Property); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response, typeof(DocumentPropertyResponse));
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
+                        typeof(DocumentPropertyResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2814,15 +2848,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ExtendedAttributeItemResponse PutExtendedAttribute(PutExtendedAttributeRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutExtendedAttribute");
+                throw new ApiException("Missing required parameter 'name' when calling PutExtendedAttribute", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'extendedAttribute' is set
-            if (request.ExtendedAttribute == null) 
+            if (request.ExtendedAttribute == null)
             {
-                throw new ApiException(400, "Missing required parameter 'extendedAttribute' when calling PutExtendedAttribute");
+                throw new ApiException("Missing required parameter 'extendedAttribute' when calling PutExtendedAttribute", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2832,29 +2866,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.ExtendedAttribute); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeItemResponse)SerializationHelper.Deserialize(response, typeof(ExtendedAttributeItemResponse));
+                    return (ExtendedAttributeItemResponse)SerializationHelper.Deserialize(response,
+                        typeof(ExtendedAttributeItemResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2866,27 +2901,27 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutImportProjectFromDb(PutImportProjectFromDbRequest request)
         {
             // verify the required parameter 'databaseType' is set
-            if (request.DatabaseType == null) 
+            if (request.DatabaseType == null)
             {
-                throw new ApiException(400, "Missing required parameter 'databaseType' when calling PutImportProjectFromDb");
+                throw new ApiException("Missing required parameter 'databaseType' when calling PutImportProjectFromDb", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'connectionString' is set
-            if (request.ConnectionString == null) 
+            if (request.ConnectionString == null)
             {
-                throw new ApiException(400, "Missing required parameter 'connectionString' when calling PutImportProjectFromDb");
+                throw new ApiException("Missing required parameter 'connectionString' when calling PutImportProjectFromDb", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'projectUid' is set
-            if (request.ProjectUid == null) 
+            if (request.ProjectUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'projectUid' when calling PutImportProjectFromDb");
+                throw new ApiException("Missing required parameter 'projectUid' when calling PutImportProjectFromDb", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'filename' is set
-            if (request.Filename == null) 
+            if (request.Filename == null)
             {
-                throw new ApiException(400, "Missing required parameter 'filename' when calling PutImportProjectFromDb");
+                throw new ApiException("Missing required parameter 'filename' when calling PutImportProjectFromDb", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2898,29 +2933,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "databaseSchema", request.DatabaseSchema);
             var postBody = SerializationHelper.Serialize(request.ConnectionString); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2932,21 +2967,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutImportProjectFromFile(PutImportProjectFromFileRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutImportProjectFromFile");
+                throw new ApiException("Missing required parameter 'name' when calling PutImportProjectFromFile", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'projectUid' is set
-            if (request.ProjectUid == null) 
+            if (request.ProjectUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'projectUid' when calling PutImportProjectFromFile");
+                throw new ApiException("Missing required parameter 'projectUid' when calling PutImportProjectFromFile", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'filename' is set
-            if (request.Filename == null) 
+            if (request.Filename == null)
             {
-                throw new ApiException(400, "Missing required parameter 'filename' when calling PutImportProjectFromFile");
+                throw new ApiException("Missing required parameter 'filename' when calling PutImportProjectFromFile", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -2957,30 +2992,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileType", request.FileType);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outputFileFormat", request.OutputFileFormat);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -2992,21 +3027,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutMoveTask(PutMoveTaskRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutMoveTask");
+                throw new ApiException("Missing required parameter 'name' when calling PutMoveTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutMoveTask");
+                throw new ApiException("Missing required parameter 'taskUid' when calling PutMoveTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'parentTaskUid' is set
-            if (request.ParentTaskUid == null) 
+            if (request.ParentTaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'parentTaskUid' when calling PutMoveTask");
+                throw new ApiException("Missing required parameter 'parentTaskUid' when calling PutMoveTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -3017,30 +3052,30 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3052,55 +3087,56 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutMoveTaskToSibling(PutMoveTaskToSiblingRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutMoveTaskToSibling");
+                throw new ApiException("Missing required parameter 'name' when calling PutMoveTaskToSibling", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutMoveTaskToSibling");
+                throw new ApiException("Missing required parameter 'taskUid' when calling PutMoveTaskToSibling", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'beforeTaskUid' is set
-            if (request.BeforeTaskUid == null) 
+            if (request.BeforeTaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'beforeTaskUid' when calling PutMoveTaskToSibling");
+                throw new ApiException("Missing required parameter 'beforeTaskUid' when calling PutMoveTaskToSibling", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/moveToSibling");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/moveToSibling");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "beforeTaskUid", request.BeforeTaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3112,9 +3148,9 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ProjectRecalculateResponse PutRecalculateProject(PutRecalculateProjectRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutRecalculateProject");
+                throw new ApiException("Missing required parameter 'name' when calling PutRecalculateProject", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -3125,30 +3161,31 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
-                    return (ProjectRecalculateResponse)SerializationHelper.Deserialize(response, typeof(ProjectRecalculateResponse));
+                    return (ProjectRecalculateResponse)SerializationHelper.Deserialize(response,
+                        typeof(ProjectRecalculateResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3160,41 +3197,42 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutRecalculateProjectResourceFields(PutRecalculateProjectResourceFieldsRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutRecalculateProjectResourceFields");
+                throw new ApiException("Missing required parameter 'name' when calling PutRecalculateProjectResourceFields", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/recalculate/resourceFields");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/recalculate/resourceFields");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
-            
-            try 
-            {                               
+
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    null, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    null,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3203,50 +3241,52 @@ namespace Aspose.Tasks.Cloud.Sdk
         /// </summary>
         /// <param name="request">Request. <see cref="PutRecalculateProjectUncompleteWorkToStartAfterRequest" /></param> 
         /// <returns><see cref="AsposeResponse"/></returns>            
-        public AsposeResponse PutRecalculateProjectUncompleteWorkToStartAfter(PutRecalculateProjectUncompleteWorkToStartAfterRequest request)
+        public AsposeResponse PutRecalculateProjectUncompleteWorkToStartAfter(
+            PutRecalculateProjectUncompleteWorkToStartAfterRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutRecalculateProjectUncompleteWorkToStartAfter");
+                throw new ApiException("Missing required parameter 'name' when calling PutRecalculateProjectUncompleteWorkToStartAfter", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'after' is set
-            if (request.After == null) 
+            if (request.After == null)
             {
-                throw new ApiException(400, "Missing required parameter 'after' when calling PutRecalculateProjectUncompleteWorkToStartAfter");
+                throw new ApiException("Missing required parameter 'after' when calling PutRecalculateProjectUncompleteWorkToStartAfter", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/recalculate/uncompleteWorkToStartAfter");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/recalculate/uncompleteWorkToStartAfter");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.After); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3258,48 +3298,50 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutRecalculateProjectWorkAsComplete(PutRecalculateProjectWorkAsCompleteRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutRecalculateProjectWorkAsComplete");
+                throw new ApiException("Missing required parameter 'name' when calling PutRecalculateProjectWorkAsComplete", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'completeThrough' is set
-            if (request.CompleteThrough == null) 
+            if (request.CompleteThrough == null)
             {
-                throw new ApiException(400, "Missing required parameter 'completeThrough' when calling PutRecalculateProjectWorkAsComplete");
+                throw new ApiException("Missing required parameter 'completeThrough' when calling PutRecalculateProjectWorkAsComplete", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/recalculate/projectWorkAsComplete");
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/recalculate/projectWorkAsComplete");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "setZeroOrHundredPercentCompleteOnly", request.SetZeroOrHundredPercentCompleteOnly);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "setZeroOrHundredPercentCompleteOnly",
+                request.SetZeroOrHundredPercentCompleteOnly);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.CompleteThrough); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3311,15 +3353,15 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutRenumberWbsCode(PutRenumberWbsCodeRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutRenumberWbsCode");
+                throw new ApiException("Missing required parameter 'name' when calling PutRenumberWbsCode", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUids' is set
-            if (request.TaskUids == null) 
+            if (request.TaskUids == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUids' when calling PutRenumberWbsCode");
+                throw new ApiException("Missing required parameter 'taskUids' when calling PutRenumberWbsCode", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -3329,29 +3371,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.TaskUids); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3363,25 +3405,26 @@ namespace Aspose.Tasks.Cloud.Sdk
         public ResourceResponse PutResource(PutResourceRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutResource");
+                throw new ApiException("Missing required parameter 'name' when calling PutResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resourceUid' is set
-            if (request.ResourceUid == null) 
+            if (request.ResourceUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resourceUid' when calling PutResource");
+                throw new ApiException("Missing required parameter 'resourceUid' when calling PutResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'resource' is set
-            if (request.Resource == null) 
+            if (request.Resource == null)
             {
-                throw new ApiException(400, "Missing required parameter 'resource' when calling PutResource");
+                throw new ApiException("Missing required parameter 'resource' when calling PutResource", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resources/{resourceUid}");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "mode", request.Mode);
@@ -3390,29 +3433,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.Resource); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (ResourceResponse)SerializationHelper.Deserialize(response, typeof(ResourceResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3424,21 +3467,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskResponse PutTask(PutTaskRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutTask");
+                throw new ApiException("Missing required parameter 'name' when calling PutTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutTask");
+                throw new ApiException("Missing required parameter 'taskUid' when calling PutTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'task' is set
-            if (request.Task == null) 
+            if (request.Task == null)
             {
-                throw new ApiException(400, "Missing required parameter 'task' when calling PutTask");
+                throw new ApiException("Missing required parameter 'task' when calling PutTask", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -3451,29 +3494,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.Task); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskResponse)SerializationHelper.Deserialize(response, typeof(TaskResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3485,21 +3528,21 @@ namespace Aspose.Tasks.Cloud.Sdk
         public TaskLinkResponse PutTaskLink(PutTaskLinkRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutTaskLink");
+                throw new ApiException("Missing required parameter 'name' when calling PutTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'index' is set
-            if (request.Index == null) 
+            if (request.Index == null)
             {
-                throw new ApiException(400, "Missing required parameter 'index' when calling PutTaskLink");
+                throw new ApiException("Missing required parameter 'index' when calling PutTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskLink' is set
-            if (request.TaskLink == null) 
+            if (request.TaskLink == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskLink' when calling PutTaskLink");
+                throw new ApiException("Missing required parameter 'taskLink' when calling PutTaskLink", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
@@ -3510,29 +3553,29 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             var postBody = SerializationHelper.Serialize(request.TaskLink); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (TaskLinkResponse)SerializationHelper.Deserialize(response, typeof(TaskLinkResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
 
@@ -3544,56 +3587,58 @@ namespace Aspose.Tasks.Cloud.Sdk
         public AsposeResponse PutTaskRecurringInfo(PutTaskRecurringInfoRequest request)
         {
             // verify the required parameter 'name' is set
-            if (request.Name == null) 
+            if (request.Name == null)
             {
-                throw new ApiException(400, "Missing required parameter 'name' when calling PutTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'name' when calling PutTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'taskUid' is set
-            if (request.TaskUid == null) 
+            if (request.TaskUid == null)
             {
-                throw new ApiException(400, "Missing required parameter 'taskUid' when calling PutTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'taskUid' when calling PutTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // verify the required parameter 'recurringInfo' is set
-            if (request.RecurringInfo == null) 
+            if (request.RecurringInfo == null)
             {
-                throw new ApiException(400, "Missing required parameter 'recurringInfo' when calling PutTaskRecurringInfo");
+                throw new ApiException("Missing required parameter 'recurringInfo' when calling PutTaskRecurringInfo", StatusCodes.ErrorInvalidInputData);
             }
 
             // create path and map variables
-            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/recurringInfo");
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/{taskUid}/recurringInfo");
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             var postBody = SerializationHelper.Serialize(request.RecurringInfo); // http body (model) parameter
-            try 
-            {                               
+            try
+            {
                 var response = this.apiInvoker.InvokeApi(
-                    resourcePath, 
-                    "PUT", 
-                    postBody, 
-                    null, 
+                    resourcePath,
+                    "PUT",
+                    postBody,
+                    null,
                     null);
                 if (response != null)
                 {
                     return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
-                    
+
                 return null;
-            } 
-            catch (ApiException ex) 
+            }
+            catch (ApiException ex)
             {
-                if (ex.ErrorCode == 404) 
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
                 {
                     return null;
                 }
-                
-                throw;                
+
+                throw;
             }
         }
+
         private static string UnescapePath(string path)
         {
             return Regex.Replace(path, "\\*", string.Empty)

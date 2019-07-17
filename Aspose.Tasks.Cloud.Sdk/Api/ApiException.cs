@@ -25,68 +25,86 @@
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
+    using Newtonsoft.Json;
     using System;
+    using System.Net;
 
     /// <summary>
     /// API exception.
     /// </summary>
     public class ApiException : Exception
     {
-        private readonly int errorCode;
-        private readonly string reasonCode;
+        #region Public Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        ///     Public constructor
         /// </summary>
-        /// <param name="errorCode">
-        /// The error code.
-        /// </param>
-        /// <param name="message">
-        /// The message.
-        /// </param>
-        public ApiException(int errorCode, string message) : base(message)
+        /// <param name="message">Message</param>
+        /// <param name="error">Error as <see cref="StatusCode"/></param>
+        public ApiException(string message, StatusCode error) : base(message)
         {
-            this.errorCode = errorCode;
+            Code = error.Code;
+            HttpStatusCode = error.HttpStatusCode;
+            Description = error.Description;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        ///     Public constructor
         /// </summary>
-        /// <param name="errorCode">
-        /// The error code.
-        /// </param>
-        /// <param name="message">
-        /// The error message.
-        /// </param>
-        /// <param name="reasonCode">
-        /// Code that describes the reason of the error (if error is returned by Tasks API).
-        /// </param>
-        public ApiException(int errorCode, string message, string reasonCode) : this(errorCode, message)
+        /// <param name="message">Message</param>
+        /// <param name="code">Error code</param>
+        /// <param name="httpStatusCode">Status code as <see cref="System.Net.HttpStatusCode"/></param>
+        /// <param name="description">Description</param>
+        [JsonConstructor]
+        public ApiException(string message, string code, HttpStatusCode httpStatusCode, string description = null)
+            : base(message)
         {
-            this.reasonCode = reasonCode;
+            Code = code;
+            HttpStatusCode = httpStatusCode;
+            Description = !string.IsNullOrEmpty(description) && description.Contains("Operation Failed")
+                ? description
+                : "Operation Failed. " + description;
         }
 
+        #endregion
 
-        /// <summary>
-        /// Error code of response.
-        /// </summary>
-        public int ErrorCode
-        {
-            get
-            {
-                return this.errorCode;
-            }
-        }
+        #region Methods
 
         /// <summary>
-        /// Reason error code returned from tasks API.
+        ///     Get Description from error code and inner exception
         /// </summary>
-        public string ReasonCode
+        /// <param name="error"></param>
+        /// <param name="innerException"></param>
+        /// <param name="errorMessage"></param>
+        protected string GetDescription(StatusCode error, Exception innerException, string errorMessage)
         {
-            get
-            {
-                return this.reasonCode;
-            }
+            if (innerException != null
+                && !string.IsNullOrEmpty(innerException.Message)
+                && innerException.Message != errorMessage)
+                return innerException.Message;
+
+            return error.Description;
         }
+
+        #endregion
+
+        #region Public properties
+
+        /// <summary>
+        ///     Code
+        /// </summary>
+        public string Code { get; set; }
+
+        /// <summary>
+        ///     Http Status Code
+        /// </summary>
+        public HttpStatusCode HttpStatusCode { get; set; }
+
+        /// <summary>
+        ///     Description
+        /// </summary>
+        public string Description { get; set; }
+
+        #endregion
     }
 }

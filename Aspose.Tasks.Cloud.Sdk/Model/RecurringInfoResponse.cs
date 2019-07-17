@@ -23,18 +23,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Tasks.Cloud.Sdk.Model 
+namespace Aspose.Tasks.Cloud.Sdk.Model
 {
-    using System;  
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Runtime.Serialization;
     using System.Text;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// RecurringInfo responce
+    /// RecurringInfo response
     /// </summary>
     public class RecurringInfoResponse : AsposeResponse
     { 

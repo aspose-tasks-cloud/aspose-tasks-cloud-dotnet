@@ -45,7 +45,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder
             });
 
@@ -65,7 +64,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder
             });
 
@@ -84,7 +82,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder
             });
 
@@ -102,7 +99,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var resourceResponse = TasksApi.GetResource(new GetResourceRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder,
                 ResourceUid = 1
             });
@@ -139,7 +135,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             resourceResponse = TasksApi.GetResource(new GetResourceRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder,
                 ResourceUid = 1
             });
@@ -165,7 +160,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var deleteResponse = TasksApi.DeleteResource(new DeleteResourceRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder,
                 ResourceUid = 0
             });
@@ -175,7 +169,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder
             });
 

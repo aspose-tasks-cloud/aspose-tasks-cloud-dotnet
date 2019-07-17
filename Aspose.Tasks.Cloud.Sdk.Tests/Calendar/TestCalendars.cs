@@ -33,6 +33,8 @@ using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Net;
+using Newtonsoft.Json;
+using Aspose.Tasks.Cloud.Sdk.Internal;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -164,8 +166,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                     });
                 });
 
-            Assert.AreEqual(400, exception.ErrorCode);
-            Assert.AreEqual("InvalidParameters", exception.ReasonCode);
+            Assert.AreEqual(HttpStatusCode.BadRequest, exception.HttpStatusCode);
+            Assert.AreEqual("InvalidParameters", exception.Code);
             Assert.AreEqual("Calendar should have at least one working time defined", exception.Message);
         }
 

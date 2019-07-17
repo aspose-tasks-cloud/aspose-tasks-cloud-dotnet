@@ -25,13 +25,10 @@
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
-    using System;
-    using System.IO;
-
-    using Aspose.Tasks.Cloud.Sdk.Model;
-
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.IO;
 
     internal class SerializationHelper
     {
@@ -47,7 +44,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             }
             catch (Exception e)
             {
-                throw new ApiException(500, e.Message);
+                throw new ApiException(e.Message, StatusCodes.InternalError);
             }
         }
 
@@ -66,20 +63,20 @@ namespace Aspose.Tasks.Cloud.Sdk
             }
             catch (IOException e)
             {
-                throw new ApiException(500, e.Message);
+                throw new ApiException(e.Message, StatusCodes.InternalError);
             }
             catch (JsonSerializationException jse)
             {
-                throw new ApiException(500, "Error while parsing response: " + jse.Message + "\n" + json);
+                throw new ApiException("Error while parsing response: " + jse.Message + "\n" + json, StatusCodes.InternalError);
             }
             catch (System.Xml.XmlException xmle)
             {
-                throw new ApiException(500, "Error while parsing response: " + xmle.Message + "\n" + json);
+                throw new ApiException("Error while parsing response: " + xmle.Message + "\n" + json, StatusCodes.InternalError);
             }
         }
 
         internal abstract class JsonCreationConverter<T> : JsonConverter
-        {            
+        {
             public override bool CanConvert(Type objectType)
             {
                 return typeof(T).IsAssignableFrom(objectType);
@@ -111,7 +108,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             /// </param>
             /// <returns>An instance of objectType.</returns>
             protected abstract T Create(Type objectType, JObject jsonObject);
-        }       
+        }
 
         //internal class FormFieldJsonConverter : JsonCreationConverter<FormField>
         //{

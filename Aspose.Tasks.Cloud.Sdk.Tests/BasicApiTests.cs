@@ -22,13 +22,12 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System.IO;
 using System.Linq;
 using System.Text;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests
 {
@@ -41,8 +40,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests
             string name = "notExistingFile.mpp";
             var response = this.TasksApi.GetTasks(new GetTasksRequest()
             {
-                Name = name,
-                Storage = "Tasks"
+                Name = name
             });
 
             Assert.IsNull(response);

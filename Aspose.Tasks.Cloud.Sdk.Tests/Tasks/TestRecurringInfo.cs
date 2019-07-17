@@ -24,14 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -46,7 +45,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
             {
                 Name = remoteName,
-                Storage = "Tasks",
                 Folder = this.DataFolder,
                 TaskUid = 6
             });
@@ -72,7 +70,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
                                                              {
                                                                  Name = remoteName,
-                                                                 Storage = "Tasks",
                                                                  Folder = this.DataFolder,
                                                                  TaskUid = 6
                                                              });
@@ -86,7 +83,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var putResponse = TasksApi.PutTaskRecurringInfo(new PutTaskRecurringInfoRequest
                                                              {
                                                                  Name = remoteName,
-                                                                 Storage = "Tasks",
                                                                  Folder = this.DataFolder,
                                                                  TaskUid = 6,
                                                                  RecurringInfo = recurringInfo
@@ -97,7 +93,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
                                                          {
                                                              Name = remoteName,
-                                                             Storage = "Tasks",
                                                              Folder = this.DataFolder,
                                                              TaskUid = 6
                                                          });
@@ -126,7 +121,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                                                   Occurrences = 4,
                                                   WeeklyRepetitions = 3,
                                                   WeeklyDays = WeekDayType.Thursday | WeekDayType.Wednesday,
-                                                  StartDate = new DateTime(2018, 1, 1),
+                                                  StartDate = new DateTime(2018, 1, 1, 8, 0, 0),
                                                   EndDate = new DateTime(2018, 12, 31),
                                                   UseEndDate = true
                                               };
@@ -134,7 +129,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var response = TasksApi.PostTaskRecurringInfo(new PostTaskRecurringInfoRequest
                                                           {
                                                               Name = remoteName,
-                                                              Storage = "Tasks",
                                                               Folder = this.DataFolder,
                                                               ParentTaskUid = 0,
                                                               RecurringInfo = recurringInfo,
@@ -150,7 +144,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     {
                         Name = remoteName,
                         Folder = this.DataFolder,
-                        Storage = "Tasks",
                         TaskUid = response.TaskItem.Uid
                     });
 
@@ -163,7 +156,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     {
                         Name = remoteName,
                         Folder = this.DataFolder,
-                        Storage = "Tasks",
                         TaskUid = lastTaskUid.Value
                 });
 

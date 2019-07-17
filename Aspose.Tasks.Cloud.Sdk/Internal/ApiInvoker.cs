@@ -26,26 +26,27 @@
 namespace Aspose.Tasks.Cloud.Sdk
 {
     using System;
-    using System.Collections.Generic;    
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
     using System.Text;
 
-    internal class ApiInvoker
-    {        
+    public class ApiInvoker
+    {
         private const string AsposeClientHeaderName = "x-aspose-client";
         private const string AsposeClientVersionHeaderName = "x-aspose-client-version";
         private readonly Dictionary<string, string> defaultHeaderMap = new Dictionary<string, string>();
-        private readonly List<IRequestHandler> requestHandlers; 
-    
-        public ApiInvoker(List<IRequestHandler> requestHandlers)
+        private readonly List<IRequestHandler> requestHandlers;
+
+        internal ApiInvoker(List<IRequestHandler> requestHandlers)
         {
             var sdkVersion = this.GetType().Assembly.GetName().Version;
             this.AddDefaultHeader(AsposeClientHeaderName, ".net sdk");
-            this.AddDefaultHeader(AsposeClientVersionHeaderName, string.Format("{0}.{1}", sdkVersion.Major, sdkVersion.Minor));
+            this.AddDefaultHeader(AsposeClientVersionHeaderName,
+                string.Format("{0}.{1}", sdkVersion.Major, sdkVersion.Minor));
             this.requestHandlers = requestHandlers;
         }
-        
+
         public string InvokeApi(
             string path,
             string method,
@@ -66,108 +67,111 @@ namespace Aspose.Tasks.Cloud.Sdk
             string contentType = "application/json")
         {
             return (Stream)this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
-        }                     
-       
-        public FileInfo ToFileInfo(Stream stream, string paramName)
+        }
+
+        public FileInfo ToFileInfo(Stream stream, string paramName, string mimeType = "application/octet-stream")
         {
-            // TODO: add contenttype
-            return new FileInfo { Name = paramName, FileContent = StreamHelper.ReadAsBytes(stream) };
-        }                 
+            return new FileInfo(paramName, StreamHelper.ReadAsBytes(stream), mimeType);
+        }
 
         private static byte[] GetMultipartFormData(Dictionary<string, object> postParameters, string boundary)
         {
-            // TOOD: stream is not disposed
-            Stream formDataStream = new MemoryStream();
-            bool needsClrf = false;
-
-            if (postParameters.Count > 1)
+            using (Stream formDataStream = new MemoryStream())
             {
-                foreach (var param in postParameters)
+                bool needsClrf = false;
+
+                if (postParameters.Count > 1)
                 {
-                    // Thanks to feedback from commenters, add a CRLF to allow multiple parameters to be added.
-                    // Skip it on the first parameter, add it to subsequent parameters.
-                    if (needsClrf)
+                    foreach (var param in postParameters)
                     {
-                        formDataStream.Write(Encoding.UTF8.GetBytes("\r\n"), 0, Encoding.UTF8.GetByteCount("\r\n"));
-                    }
-
-                    needsClrf = true;
-
-                    if (param.Value is FileInfo)
-                    {
-                        var fileInfo = (FileInfo)param.Value;
-                        string postData =
-                            string.Format(
-                                "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n",
-                                boundary,
-                                param.Key,
-                                fileInfo.MimeType);
-                        formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
-
-                        // Write the file data directly to the Stream, rather than serializing it to a string.
-                        formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
-                    }
-                    else
-                    {
-                        string stringData;
-                        if (param.Value is string)
+                        // Thanks to feedback from commenters, add a CRLF to allow multiple parameters to be added.
+                        // Skip it on the first parameter, add it to subsequent parameters.
+                        if (needsClrf)
                         {
-                            stringData = (string)param.Value;
+                            formDataStream.Write(Encoding.UTF8.GetBytes("\r\n"), 0, Encoding.UTF8.GetByteCount("\r\n"));
+                        }
+
+                        needsClrf = true;
+
+                        if (param.Value is FileInfo)
+                        {
+                            var fileInfo = (FileInfo)param.Value;
+                            string postData =
+                                string.Format(
+                                    "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n",
+                                    boundary,
+                                    param.Key,
+                                    fileInfo.MimeType);
+                            formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0,
+                                Encoding.UTF8.GetByteCount(postData));
+
+                            // Write the file data directly to the Stream, rather than serializing it to a string.
+                            formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
                         }
                         else
                         {
-                            stringData = SerializationHelper.Serialize(param.Value);
+                            string stringData;
+                            if (param.Value is string)
+                            {
+                                stringData = (string)param.Value;
+                            }
+                            else
+                            {
+                                stringData = SerializationHelper.Serialize(param.Value);
+                            }
+
+                            string postData =
+                                string.Format(
+                                    "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"\r\n\r\n{2}",
+                                    boundary,
+                                    param.Key,
+                                    stringData);
+                            formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0,
+                                Encoding.UTF8.GetByteCount(postData));
                         }
-                        
-                        string postData =
-                            string.Format(
-                                "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"\r\n\r\n{2}",
-                                boundary,
-                                param.Key,
-                                stringData);
-                        formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
                     }
+
+                    // Add the end of the request.  Start with a newline
+                    string footer = "\r\n--" + boundary + "--\r\n";
+                    formDataStream.Write(Encoding.UTF8.GetBytes(footer), 0, Encoding.UTF8.GetByteCount(footer));
                 }
-
-                // Add the end of the request.  Start with a newline
-                string footer = "\r\n--" + boundary + "--\r\n";
-                formDataStream.Write(Encoding.UTF8.GetBytes(footer), 0, Encoding.UTF8.GetByteCount(footer));
-            }
-            else
-            {
-                foreach (var param in postParameters)
+                else
                 {
-                    if (param.Value is FileInfo)
+                    foreach (var param in postParameters)
                     {
-                        var fileInfo = (FileInfo)param.Value;
-
-                        // Write the file data directly to the Stream, rather than serializing it to a string.
-                        formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
-                    }
-                    else
-                    {
-                        string postData;
-                        if (!(param.Value is string))
+                        if (param.Value is FileInfo)
                         {
-                            postData = SerializationHelper.Serialize(param.Value);
+                            var fileInfo = (FileInfo)param.Value;
+
+                            // Write the file data directly to the Stream, rather than serializing it to a string.
+                            formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
                         }
                         else
                         {
-                            postData = (string)param.Value;
-                        }
+                            string postData;
+                            if (!(param.Value is string))
+                            {
+                                postData = SerializationHelper.Serialize(param.Value);
+                            }
+                            else
+                            {
+                                postData = (string)param.Value;
+                            }
 
-                        formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
+                            formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0,
+                                Encoding.UTF8.GetByteCount(postData));
+                        }
                     }
                 }
+
+                // Dump the Stream into a byte[]
+                formDataStream.Position = 0;
+                byte[] formData = new byte[formDataStream.Length];
+                formDataStream.Read(formData, 0, formData.Length);
+                formDataStream.Close();
+
+                return formData;
             }
-
-            // Dump the Stream into a byte[]
-            formDataStream.Position = 0;
-            byte[] formData = new byte[formDataStream.Length];
-            formDataStream.Read(formData, 0, formData.Length);
-            formDataStream.Close();
-
-            return formData;
         }
 
         private void AddDefaultHeader(string key, string value)
@@ -176,7 +180,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             {
                 this.defaultHeaderMap.Add(key, value);
             }
-        }    
+        }
 
         private object InvokeInternal(
             string path,
@@ -196,7 +200,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             {
                 headerParams = new Dictionary<string, string>();
             }
-           
+
             this.requestHandlers.ForEach(p => path = p.ProcessUrl(path));
 
             WebRequest request;
@@ -208,11 +212,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             catch (NeedRepeatRequestException)
             {
                 request = this.PrepareRequest(path, method, formParams, headerParams, body, contentType);
-                return this.ReadResponse(request, binaryResponse);               
-            }            
-        }       
-        
-        private WebRequest PrepareRequest(string path, string method, Dictionary<string, object> formParams, Dictionary<string, string> headerParams, string body, string contentType)
+                return this.ReadResponse(request, binaryResponse);
+            }
+        }
+
+        private WebRequest PrepareRequest(string path, string method, Dictionary<string, object> formParams,
+            Dictionary<string, string> headerParams, string body, string contentType)
         {
             var client = WebRequest.Create(path);
             client.Method = method;
@@ -275,10 +280,10 @@ namespace Aspose.Tasks.Cloud.Sdk
                             requestWriter.Write(body);
                             requestWriter.Flush();
                         }
-                        
+
                         break;
                     default:
-                        throw new ApiException(500, "unknown method type " + method);
+                        throw new ApiException("unknown method type " + method, StatusCodes.InternalError);
                 }
 
                 this.requestHandlers.ForEach(p => p.BeforeSend(client, streamToSend));
@@ -289,7 +294,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     {
                         StreamHelper.CopyTo(streamToSend, requestStream);
                     }
-                }                
+                }
             }
             finally
             {
@@ -298,7 +303,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     streamToSend.Dispose();
                 }
             }
-            
+
             return client;
         }
 

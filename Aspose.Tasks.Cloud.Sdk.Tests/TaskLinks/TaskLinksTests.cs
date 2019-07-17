@@ -42,8 +42,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             var response = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -66,8 +65,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                     LagFormat = TimeUnitType.Day
                 },
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -81,8 +79,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             var linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             var taskLinkToEdit = linksResponse.TaskLinks[0];
@@ -97,8 +94,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
                 Index = 1,
                 TaskLink = taskLinkToEdit,
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -106,8 +102,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -126,8 +121,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             {
                 Index = 1,
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
@@ -135,8 +129,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             var linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
             {
                 Name = remoteName,
-                Folder = this.DataFolder,
-                Storage = "Tasks"
+                Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, linksResponse.Code);

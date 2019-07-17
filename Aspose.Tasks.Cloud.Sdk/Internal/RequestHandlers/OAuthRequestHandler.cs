@@ -83,35 +83,15 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                this.RefreshToken();
+                this.RequestToken();
 
                 throw new NeedRepeatRequestException();
             }
         }
 
-        private void RefreshToken()
-        {
-            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
-
-            var postData = "grant_type=refresh_token";
-            postData += "&refresh_token=" + this.refreshToken;
-
-            var responseString = this.apiInvoker.InvokeApi(
-                requestUrl,
-                "POST",
-                postData,
-                contentType: "application/x-www-form-urlencoded");
-
-            var result =
-                (GetAccessTokenResult)SerializationHelper.Deserialize(responseString, typeof(GetAccessTokenResult));
-
-            this.accessToken = result.AccessToken;
-            this.refreshToken = result.RefreshToken;
-        }
-
         private void RequestToken()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
+            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;
@@ -127,16 +107,12 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
                 (GetAccessTokenResult)SerializationHelper.Deserialize(responseString, typeof(GetAccessTokenResult));
 
             this.accessToken = result.AccessToken;
-            this.refreshToken = result.RefreshToken;
         }
 
         private class GetAccessTokenResult
         {
             [JsonProperty(PropertyName = "access_token")]
             public string AccessToken { get; set; }
-
-            [JsonProperty(PropertyName = "refresh_token")]
-            public string RefreshToken { get; set; }
         }
     }
 }

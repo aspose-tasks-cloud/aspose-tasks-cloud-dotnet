@@ -25,8 +25,14 @@
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
-    internal struct FileInfo
+    public struct FileInfo
     {
+        internal FileInfo(string name, byte[] fileContent, string mimeType)
+        {
+            Name = name;
+            FileContent = fileContent;
+            MimeType = mimeType;
+        }
         public string Name { get; set; }
 
         public string MimeType { get; set; }

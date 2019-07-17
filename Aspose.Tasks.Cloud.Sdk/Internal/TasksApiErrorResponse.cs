@@ -2,7 +2,9 @@
 {
     public class TasksApiErrorResponse
     {
-        public string Code { get; set; }
-        public string Message { get; set; }
+        /// <summary>
+        ///     Error
+        /// </summary>
+        public ApiException Error { get; set; }
     }
 }

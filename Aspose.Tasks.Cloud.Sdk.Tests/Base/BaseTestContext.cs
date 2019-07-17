@@ -22,24 +22,26 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Newtonsoft.Json;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.IO;
+
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
 {
-    using System.IO;
-
-    using Com.Aspose.Storage.Api;
-
-    using Newtonsoft.Json;
-    using Sdk;
-    using NUnit.Framework;
 
     /// <summary>
     /// Base class for all tests
     /// </summary>
+    [TestFixture]
     public abstract class BaseTestContext
     {
-        protected const string BaseProductUri = @"http://api.aspose.cloud";
+        protected const string BaseProductUri = "https://api.aspose.cloud";
 
-        private Keys keys;
+        private readonly Keys keys;
+        private readonly IList<DeleteRequest> clearingRequests;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseTestContext"/> class.
@@ -49,7 +51,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
             // To run tests with your own credentials please substitute the credentials below
             // this.keys = new Keys { AppKey = "your app key", AppSid = "your app sid" };
             var serverCreds = DirectoryHelper.GetPath("Settings", "servercreds.json", Path.GetDirectoryName(TestContext.CurrentContext.TestDirectory));
-
             this.keys = JsonConvert.DeserializeObject<Keys>(File.ReadAllText(serverCreds));
             if (this.keys == null)
             {
@@ -58,7 +59,18 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
 
             var configuration = new Configuration { ApiBaseUrl = BaseProductUri, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid };
             this.TasksApi = new TasksApi(configuration);
-            this.StorageApi = new StorageApi(this.keys.AppKey, this.keys.AppSid, BaseProductUri + "/v1.1");
+            this.StorageApi = new StorageApi(configuration);
+            clearingRequests = new List<DeleteRequest>();
+        }
+
+        [OneTimeTearDown]
+        public void Clean()
+        {
+            foreach (var request in clearingRequests)
+            {
+                var response = this.StorageApi.DeleteFile(request);
+                Assert.That(response, Is.Not.Null.And.Property("Code").EqualTo(200));
+            }
         }
 
         /// <summary>
@@ -70,13 +82,21 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
             var fullName = Path.Combine(this.DataFolder, remoteName);
             var directory = Path.GetDirectoryName(Path.GetDirectoryName(TestContext.CurrentContext.TestDirectory));
 
-            this.StorageApi.PutCreate(
-                    fullName,
-                    null,
-                    "Tasks",
-                    File.ReadAllBytes(Path.Combine(directory, GetDataDir(), localName)));
+            using (var fileStream = File.OpenRead(Path.Combine(directory, GetDataDir(), localName)))
+            {
+
+                var postRequest = new PostCreateRequest(fullName, fileStream, storage: "Tasks");
+                var response = this.StorageApi.UploadFile(postRequest);
+                PrepareClearingRequest(postRequest);
+
+            }
 
             return remoteName;
+        }
+
+        private void PrepareClearingRequest(PostCreateRequest postRequest)
+        {
+            clearingRequests.Add(new DeleteRequest(postRequest.Path, postRequest.VersionId, postRequest.Storage));
         }
 
         /// <summary>
@@ -131,7 +151,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         {
             return Path.Combine("TestData", string.IsNullOrEmpty(subfolder) ? string.Empty : subfolder);
         }
-        
+
         private class Keys
         {
             public string AppSid { get; set; }

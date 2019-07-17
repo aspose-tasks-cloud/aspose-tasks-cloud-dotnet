@@ -53,28 +53,59 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 
         private void ThrowApiException(HttpWebResponse webResponse, Stream resultStream)
         {
-            Exception resutException;
             try
             {
                 resultStream.Position = 0;
                 using (var responseReader = new StreamReader(resultStream))
                 {
                     var responseData = responseReader.ReadToEnd();
-                    var errorResponse = (TasksApiErrorResponse)SerializationHelper.Deserialize(responseData, typeof(TasksApiErrorResponse));
-                    if (string.IsNullOrEmpty(errorResponse.Message))
+                    if (string.IsNullOrEmpty(responseData))
                     {
-                        errorResponse.Message = responseData;
+                        if (webResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            var message = webResponse.GetResponseHeader("WWW-Authenticate");
+                            throw new ApiException(message,
+                                StatusCodes.ErrorAuthentication.Code,
+                                StatusCodes.ErrorAuthentication.HttpStatusCode);
+                        }
+                        else
+                        {
+                            throw new ApiException("An error occured.",
+                                StatusCodes.Error.Code,
+                                webResponse.StatusCode);
+                        }
                     }
 
-                    resutException = new ApiException((int)webResponse.StatusCode, errorResponse.Message, errorResponse.Code);
+                    var errorResponse = (TasksApiErrorResponse)SerializationHelper.Deserialize(responseData, typeof(TasksApiErrorResponse));
+
+                    if (errorResponse == null)
+                    {
+                        errorResponse = new TasksApiErrorResponse
+                        {
+                            Error = new ApiException(responseData,
+                            StatusCodes.Error.Code,
+                            webResponse.StatusCode)
+                        };
+                    }
+                    
+                    else if(errorResponse.Error.HttpStatusCode == default(HttpStatusCode))
+                    {
+                        errorResponse.Error.HttpStatusCode = webResponse.StatusCode;
+                    }
+
+                    throw errorResponse.Error;
                 }
+            }
+            catch (ApiException)
+            {
+                throw;
             }
             catch (Exception)
             {
-                throw new ApiException((int)webResponse.StatusCode, webResponse.StatusDescription);
+                throw new ApiException(webResponse.StatusDescription,
+                    StatusCodes.Error.Code,
+                    webResponse.StatusCode);
             }
-
-            throw resutException;
         }
     }
 }

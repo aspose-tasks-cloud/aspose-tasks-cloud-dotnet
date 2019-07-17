@@ -112,3 +112,5 @@ SDKs/PHP/.idea/*
 SDKs/PHP/vendor/*
 SDKs/PHP/testReports/*
 SDKs/servercreds.json
+
+.idea/

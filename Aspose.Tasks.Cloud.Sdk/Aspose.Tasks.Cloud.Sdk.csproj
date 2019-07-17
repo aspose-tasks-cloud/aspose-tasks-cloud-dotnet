@@ -62,9 +62,8 @@
     <DocumentationFile>bin\Release\Aspose.Tasks.Cloud.Sdk.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net20\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Web" />
@@ -76,8 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiBase.cs" />
     <Compile Include="Api\ApiException.cs" />
     <Compile Include="Api\AuthType.cs" />
+    <Compile Include="Api\StorageApi.cs" />
     <Compile Include="Api\TasksApi.cs" />
     <Compile Include="Internal\ApiInvoker.cs" />
     <Compile Include="Api\Configuration.cs" />
@@ -89,6 +90,8 @@
     <Compile Include="Internal\RequestHandlers\DebugLogRequestHandler.cs" />
     <Compile Include="Internal\RequestHandlers\OAuthRequestHandler.cs" />
     <Compile Include="Internal\SerializationHelper.cs" />
+    <Compile Include="Api\StatusCode.cs" />
+    <Compile Include="Api\StatusCodes.cs" />
     <Compile Include="Internal\StreamHelper.cs" />
     <Compile Include="Internal\TasksApiErrorResponse.cs" />
     <Compile Include="Internal\UrlHelper.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="Model\CustomFieldType.cs" />
     <Compile Include="Model\DayOfWeek.cs" />
     <Compile Include="Model\DayType.cs" />
+    <Compile Include="Model\DeleteResponse.cs" />
     <Compile Include="Model\DocumentProperties.cs" />
     <Compile Include="Model\DocumentPropertiesResponse.cs" />
     <Compile Include="Model\DocumentProperty.cs" />
@@ -174,6 +178,7 @@
     <Compile Include="Model\Requests\DeleteCalendarRequest.cs" />
     <Compile Include="Model\Requests\DeleteExtendedAttributeByIndexRequest.cs" />
     <Compile Include="Model\Requests\DeleteOutlineCodeByIndexRequest.cs" />
+    <Compile Include="Model\Requests\DeleteRequest.cs" />
     <Compile Include="Model\Requests\DeleteResourceRequest.cs" />
     <Compile Include="Model\Requests\DeleteTaskLinkRequest.cs" />
     <Compile Include="Model\Requests\DeleteTaskRequest.cs" />
@@ -221,6 +226,7 @@
     <Compile Include="Model\Requests\PutAssignmentRequest.cs" />
     <Compile Include="Model\Requests\PutCalendarExceptionRequest.cs" />
     <Compile Include="Model\Requests\PutCalendarRequest.cs" />
+    <Compile Include="Model\Requests\PostCreateRequest.cs" />
     <Compile Include="Model\Requests\PutDocumentPropertyRequest.cs" />
     <Compile Include="Model\Requests\PutExtendedAttributeRequest.cs" />
     <Compile Include="Model\Requests\PutImportProjectFromDbRequest.cs" />
@@ -263,6 +269,7 @@
     <Compile Include="Model\TimephasedDataType.cs" />
     <Compile Include="Model\Timescale.cs" />
     <Compile Include="Model\TimeUnitType.cs" />
+    <Compile Include="Model\UploadResponse.cs" />
     <Compile Include="Model\Value.cs" />
     <Compile Include="Model\VbaModule.cs" />
     <Compile Include="Model\VbaModuleAttribute.cs" />
