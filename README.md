@@ -8,6 +8,17 @@ This repository contains Aspose.Tasks Cloud SDK for .NET source code. This SDK a
 
 To use these SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
+# How to Run the Examples
+<ul>
+<li>You can either clone the repository using your favorite GitHub client or download the ZIP file from here.
+<li>Extract the contents of the ZIP file to any folder on your computer. All the examples are located in the Examples folder.
+<li>These examples has been written in Visual Studio Code
+<li>The project is created in Visual Studio Code, but the solution file is compatible with Visual Studio 2010 SP1 and higher.
+<li>Open the solution file in Visual Studio and build the project.
+<li>On the first run, the dependencies will automatically be downloaded via NuGet.
+<li>Each cs files has a dedicated example in it. Create a object of that class and call the run function, to view the output
+
+
 # Licensing
 All Aspose.Tasks Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
 
