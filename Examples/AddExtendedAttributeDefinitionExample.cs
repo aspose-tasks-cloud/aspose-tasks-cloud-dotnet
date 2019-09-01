@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace aspose.tasks.csharp
 {
-    class AddExtendedAttributeExample : BaseContext
+    public class AddExtendedAttributeExample : BaseContext
     {
-        static void Main(string[] args)
+        public void run()
         {
             var configuration = new Configuration { AppKey = BaseContext.AppKey, AppSid = BaseContext.AppSid };
             TasksApi api = new TasksApi(configuration);

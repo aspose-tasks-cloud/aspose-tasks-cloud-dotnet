@@ -7,7 +7,7 @@ namespace aspose.tasks.csharp
 {
     class AddAssignment : BaseContext
     {
-        static void Main(string[] args)
+        public void run()
         {
             var configuration = new Configuration { AppKey = BaseContext.AppKey, AppSid = BaseContext.AppSid };
             TasksApi api = new TasksApi(configuration);
@@ -15,14 +15,13 @@ namespace aspose.tasks.csharp
 
             var response = api.PostAssignment(new PostAssignmentRequest
             {
-                ResourceUid = 1,
+                ResourceUid = 2,
                 Units = 0.5D,
-                TaskUid = 0,
-                Name = "NewProductDev.mpp",
+                TaskUid = 1,
+                Name = "Home move plan.mpp",
                 Folder = ""
             });
-
-            Console.WriteLine(response.Code);
+            Console.WriteLine(response);
         }
     }
 }

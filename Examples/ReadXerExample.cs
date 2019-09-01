@@ -6,8 +6,7 @@ using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 namespace aspose.tasks.csharp
 {
     class ReadXerExample : BaseContext
-    {
-        static void Main(string[] args)
+    {   public void run()
         {
             var configuration = new Configuration { AppKey = BaseContext.AppKey, AppSid = BaseContext.AppSid };
             TasksApi api = new TasksApi(configuration);

@@ -8,7 +8,7 @@ namespace aspose.tasks.csharp
 {
     class PutTaskLink : BaseContext
     {
-        static void Main(string[] args)
+        public void run()
         {
             var configuration = new Configuration { AppKey = BaseContext.AppKey, AppSid = BaseContext.AppSid };
             TasksApi api = new TasksApi(configuration);

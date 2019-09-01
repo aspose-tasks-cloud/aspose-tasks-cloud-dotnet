@@ -7,8 +7,7 @@ using Newtonsoft.Json.Linq;
 namespace aspose.tasks.csharp
 {
     class GetTaskRecurringInfoExample : BaseContext
-    {
-        static void Main(string[] args)
+    {   public void run()
         {
             var configuration = new Configuration { AppKey = BaseContext.AppKey, AppSid = BaseContext.AppSid };
             TasksApi api = new TasksApi(configuration);
