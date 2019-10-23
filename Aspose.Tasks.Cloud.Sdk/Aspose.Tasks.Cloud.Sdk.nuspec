@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Aspose.Tasks-Cloud</id>
-    <version>19.4</version>
+    <version>19.10</version>
     <title>Aspose.Tasks Cloud SDK for .NET</title>
     <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
     <authors>Ivan Andreychikov</authors>
@@ -14,18 +14,19 @@
     <description>New generation of Aspose Cloud SDK that allows to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications. It allows you to work with all aspects of a Project document including conversion. The API offers a wide range of Microsoft Project export options. The Aspose.Tasks Cloud API allows developers to convert Project documents to various formats including XML, HTML, BMP, PNG, PDF, and XSLX.
     </description>
     <releaseNotes>
-Switching to a new (v3.0) version of the API, which contains more functionality:
+1) New feature has been released! Now you can integrate your software with MS Project Online (Project Server):
+	* Added new method to get info from available projects on your project online account.  
+	* Added new method which allows you to import project from project online.
 
-1) [Breaking] Adding a new file now uses POST (instead of PUT) method, the additional path to the file is now included with filename instead of add. argument
+2) Work with storage is longer requires separate class - now you can do all operations with single TasksApi class.
+	* Added new method to download file from storage.
 
-2) [Breaking] Error response was revised and now includes more information.
+3) Added asynchronous implementations of all methods.
 
-3) New DELETE method was added to remove unused files.
-
-      The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+19.4+Release+Notes
+The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+19.10+Release+Notes
     </releaseNotes>
     <copyright>Aspose 2002-2019. All Rights Reserved.</copyright>
-    <tags>MPP Primavera Microsoft Project P6XML PrimaveraXML XER MPX</tags>
+    <tags>MPP Primavera Microsoft Project Server Online P6XML PrimaveraXML XER MPX</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="12.0.1" />
     </dependencies>

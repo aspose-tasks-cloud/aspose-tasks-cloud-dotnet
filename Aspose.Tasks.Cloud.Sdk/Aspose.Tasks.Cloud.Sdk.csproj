@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>Aspose.Tasks.Cloud.Sdk</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -75,11 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\ApiBase.cs" />
     <Compile Include="Api\ApiException.cs" />
     <Compile Include="Api\AuthType.cs" />
-    <Compile Include="Api\StorageApi.cs" />
     <Compile Include="Api\TasksApi.cs" />
+    <Compile Include="Api\TasksApiAsync.cs" />
     <Compile Include="Internal\ApiInvoker.cs" />
     <Compile Include="Api\Configuration.cs" />
     <Compile Include="Internal\NeedRepeatRequestException.cs" />
@@ -163,6 +162,9 @@
     <Compile Include="Model\ProjectDatabaseType.cs" />
     <Compile Include="Model\ProjectFileFormat.cs" />
     <Compile Include="Model\ProjectIdsResponse.cs" />
+    <Compile Include="Model\ProjectInfo.cs" />
+    <Compile Include="Model\ProjectList.cs" />
+    <Compile Include="Model\ProjectListResponse.cs" />
     <Compile Include="Model\ProjectRecalculateResponse.cs" />
     <Compile Include="Model\ProjectRecalculationResult.cs" />
     <Compile Include="Model\ProjectValidationState.cs" />
@@ -182,6 +184,7 @@
     <Compile Include="Model\Requests\DeleteResourceRequest.cs" />
     <Compile Include="Model\Requests\DeleteTaskLinkRequest.cs" />
     <Compile Include="Model\Requests\DeleteTaskRequest.cs" />
+    <Compile Include="Model\Requests\DownloadFileRequest.cs" />
     <Compile Include="Model\Requests\GetAssignmentRequest.cs" />
     <Compile Include="Model\Requests\GetAssignmentsRequest.cs" />
     <Compile Include="Model\Requests\GetAssignmentTimephasedDataRequest.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Model\Requests\GetOutlineCodesRequest.cs" />
     <Compile Include="Model\Requests\GetPageCountRequest.cs" />
     <Compile Include="Model\Requests\GetProjectIdsRequest.cs" />
+    <Compile Include="Model\Requests\GetProjectListRequest.cs" />
     <Compile Include="Model\Requests\GetReportPdfRequest.cs" />
     <Compile Include="Model\Requests\GetResourceAssignmentsRequest.cs" />
     <Compile Include="Model\Requests\GetResourceRequest.cs" />
@@ -231,6 +235,7 @@
     <Compile Include="Model\Requests\PutExtendedAttributeRequest.cs" />
     <Compile Include="Model\Requests\PutImportProjectFromDbRequest.cs" />
     <Compile Include="Model\Requests\PutImportProjectFromFileRequest.cs" />
+    <Compile Include="Model\Requests\PutImportProjectFromProjectOnlineRequest.cs" />
     <Compile Include="Model\Requests\PutMoveTaskRequest.cs" />
     <Compile Include="Model\Requests\PutMoveTaskToSiblingRequest.cs" />
     <Compile Include="Model\Requests\PutRecalculateProjectRequest.cs" />
