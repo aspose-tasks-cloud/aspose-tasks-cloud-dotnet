@@ -59,7 +59,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
 
             var configuration = new Configuration { ApiBaseUrl = BaseProductUri, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid };
             this.TasksApi = new TasksApi(configuration);
-            this.StorageApi = new StorageApi(configuration);
             clearingRequests = new List<DeleteRequest>();
         }
 
@@ -68,7 +67,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         {
             foreach (var request in clearingRequests)
             {
-                var response = this.StorageApi.DeleteFile(request);
+                var response = this.TasksApi.DeleteFile(request);
                 Assert.That(response, Is.Not.Null.And.Property("Code").EqualTo(200));
             }
         }
@@ -86,7 +85,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
             {
 
                 var postRequest = new PostCreateRequest(fullName, fileStream, storage: "Tasks");
-                var response = this.StorageApi.UploadFile(postRequest);
+                var response = this.TasksApi.UploadFile(postRequest);
                 PrepareClearingRequest(postRequest);
 
             }
@@ -121,11 +120,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         protected static string CommonFolder => "Common/";
 
         protected string DataFolder => Path.Combine(BaseTestDataPath, this.GetType().Name);
-
-        /// <summary>
-        /// Storage API
-        /// </summary>
-        protected StorageApi StorageApi { get; set; }
 
         /// <summary>
         /// Tasks API

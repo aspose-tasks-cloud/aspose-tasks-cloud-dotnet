@@ -36,6 +36,7 @@ using NUnit.Framework;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
+    
     [TestFixture]
     public class TestAssignments : BaseTestContext
     {
@@ -49,7 +50,6 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Name = remoteName,
                 Folder = this.DataFolder
             });
-
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
             Assert.IsNotNull(response.Assignments);
             Assert.AreEqual(6, response.Assignments.AssignmentItem.Count);

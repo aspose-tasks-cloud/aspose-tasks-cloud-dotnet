@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspose.Tasks.Cloud.Sdk.Tests</RootNamespace>
     <AssemblyName>Aspose.Tasks.Cloud.Sdk.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -52,6 +52,7 @@
     <Compile Include="Calendar\TestCalendars.cs" />
     <Compile Include="ExtendedAttributes\TestExtendedAttributes.cs" />
     <Compile Include="OutlineCodes\TestOutlineCodes.cs" />
+    <Compile Include="ProjectOnline\TestProjectList.cs" />
     <Compile Include="Project\TestTaskDocumentFormat.cs" />
     <Compile Include="Project\TestGetPageCount.cs" />
     <Compile Include="Project\TestImportProject.cs" />
@@ -80,6 +81,10 @@
     <Folder Include="TestData\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Aspose.Tasks.Cloud.Sdk\Aspose.Tasks.Cloud.Sdk.csproj">
+      <Project>{11cda7d7-4e13-4946-bdc7-7178115f35dd}</Project>
+      <Name>Aspose.Tasks.Cloud.Sdk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Aspose.Tasks.Cloud.Sdk\Aspose.Tasks.Cloud.Sdk.csproj">
       <Project>{11cda7d7-4e13-4946-bdc7-7178115f35dd}</Project>
       <Name>Aspose.Tasks.Cloud.Sdk</Name>

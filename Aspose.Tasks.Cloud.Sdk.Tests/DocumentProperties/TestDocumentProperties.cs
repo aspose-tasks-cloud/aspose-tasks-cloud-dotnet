@@ -49,7 +49,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(49, response.Properties.List.Count);
+            Assert.AreEqual(51, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("Home Move", response.Properties.List[0].Value);
         }
@@ -96,7 +96,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(49, response.Properties.List.Count);
+            Assert.AreEqual(51, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("New title value", response.Properties.List[0].Value);
         }
@@ -125,7 +125,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(49, response.Properties.List.Count);
+            Assert.AreEqual(51, response.Properties.List.Count);
             Assert.AreEqual("Title", response.Properties.List[0].Name);
             Assert.AreEqual("New title value", response.Properties.List[0].Value);
         }
@@ -154,7 +154,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(49, response.Properties.List.Count);
+            Assert.AreEqual(51, response.Properties.List.Count);
             Assert.IsNull(response.Properties.List.Where(p => p.Name == "new property").FirstOrDefault());
         }
     }
