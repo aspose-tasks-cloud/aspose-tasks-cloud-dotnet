@@ -23,6 +23,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace Aspose.Tasks.Cloud.Sdk
 {
     using System;
@@ -57,6 +59,17 @@ namespace Aspose.Tasks.Cloud.Sdk
         {
             return this.InvokeInternal(path, method, false, body, headerParams, formParams, contentType) as string;
         }
+        
+        public async Task<string> InvokeApiAsync(
+            string path,
+            string method,
+            string body = null,
+            Dictionary<string, string> headerParams = null,
+            Dictionary<string, object> formParams = null,
+            string contentType = "application/json")
+        {
+            return await this.InvokeInternalAsync(path, method, false, body, headerParams, formParams, contentType) as string;
+        }
 
         public Stream InvokeBinaryApi(
             string path,
@@ -67,6 +80,17 @@ namespace Aspose.Tasks.Cloud.Sdk
             string contentType = "application/json")
         {
             return (Stream)this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
+        }
+        
+        public async Task<Stream> InvokeBinaryApiAsync(
+            string path,
+            string method,
+            string body,
+            Dictionary<string, string> headerParams,
+            Dictionary<string, object> formParams,
+            string contentType = "application/json")
+        {
+            return (Stream)await this.InvokeInternalAsync(path, method, true, body, headerParams, formParams, contentType);
         }
 
         public FileInfo ToFileInfo(Stream stream, string paramName, string mimeType = "application/octet-stream")
@@ -215,6 +239,70 @@ namespace Aspose.Tasks.Cloud.Sdk
                 return this.ReadResponse(request, binaryResponse);
             }
         }
+        
+        private async Task<object> InvokeInternalAsync(
+            string path,
+            string method,
+            bool binaryResponse,
+            string body,
+            Dictionary<string, string> headerParams,
+            Dictionary<string, object> formParams,
+            string contentType)
+        {
+            if (formParams == null)
+            {
+                formParams = new Dictionary<string, object>();
+            }
+
+            if (headerParams == null)
+            {
+                headerParams = new Dictionary<string, string>();
+            }
+
+            this.requestHandlers.ForEach(async p => path = await p.ProcessUrlAsync(path));
+
+            WebRequest request;
+            try
+            {
+                request = this.PrepareRequest(path, method, formParams, headerParams, body, contentType);
+                return await this.ReadResponseAsync(request, binaryResponse);
+            }
+            catch (NeedRepeatRequestException)
+            {
+                request = this.PrepareRequest(path, method, formParams, headerParams, body, contentType);
+                return await this.ReadResponseAsync(request, binaryResponse);
+            }
+        }
+        
+        private async Task<object> ReadResponseAsync(WebRequest client, bool binaryResponse)
+        {
+            var webResponse = (HttpWebResponse)await this.GetResponseAsync(client);
+            var resultStream = new MemoryStream();
+
+            StreamHelper.CopyTo(webResponse.GetResponseStream(), resultStream);
+            try
+            {
+                this.requestHandlers.ForEach(async p => await p.ProcessResponseAsync(webResponse, resultStream));
+
+                resultStream.Position = 0;
+                if (binaryResponse)
+                {
+                    return resultStream;
+                }
+
+                using (var responseReader = new StreamReader(resultStream))
+                {
+                    var responseData = responseReader.ReadToEnd();
+                    resultStream.Dispose();
+                    return responseData;
+                }
+            }
+            catch (Exception)
+            {
+                resultStream.Dispose();
+                throw;
+            }
+        }
 
         private WebRequest PrepareRequest(string path, string method, Dictionary<string, object> formParams,
             Dictionary<string, string> headerParams, string body, string contentType)
@@ -342,6 +430,23 @@ namespace Aspose.Tasks.Cloud.Sdk
             try
             {
                 return request.GetResponse();
+            }
+            catch (WebException wex)
+            {
+                if (wex.Response != null)
+                {
+                    return wex.Response;
+                }
+
+                throw;
+            }
+        }
+
+        private async Task<WebResponse> GetResponseAsync(WebRequest request)
+        {
+            try
+            {
+                return await request.GetResponseAsync();
             }
             catch (WebException wex)
             {

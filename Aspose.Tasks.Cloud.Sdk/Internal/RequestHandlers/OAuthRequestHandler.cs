@@ -23,6 +23,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 {
     using System.Collections.Generic;
@@ -64,6 +66,21 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
             return url;
         }
 
+        public async Task<string> ProcessUrlAsync(string url)
+        {
+            if (this.configuration.AuthType != AuthType.OAuth2)
+            {
+                return url;
+            }
+
+            if (string.IsNullOrEmpty(this.accessToken))
+            {
+                await this.RequestTokenAsync();
+            }
+
+            return url;
+        }
+
         public void BeforeSend(WebRequest request, Stream streamToSend)
         {
             if (this.configuration.AuthType != AuthType.OAuth2)
@@ -89,6 +106,21 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
             }
         }
 
+        public async Task ProcessResponseAsync(HttpWebResponse response, Stream resultStream)
+        {
+            if (this.configuration.AuthType != AuthType.OAuth2)
+            {
+                return;
+            }
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                await this.RequestTokenAsync();
+
+                throw new NeedRepeatRequestException();
+            }
+        }
+
         private void RequestToken()
         {
             var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
@@ -98,6 +130,26 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
             postData += "&client_secret=" + this.configuration.AppKey;
 
             var responseString = this.apiInvoker.InvokeApi(
+                requestUrl,
+                "POST",
+                postData,
+                contentType: "application/x-www-form-urlencoded");
+
+            var result =
+                (GetAccessTokenResult)SerializationHelper.Deserialize(responseString, typeof(GetAccessTokenResult));
+
+            this.accessToken = result.AccessToken;
+        }
+        
+        private async Task RequestTokenAsync()
+        {
+            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
+
+            var postData = "grant_type=client_credentials";
+            postData += "&client_id=" + this.configuration.AppSid;
+            postData += "&client_secret=" + this.configuration.AppKey;
+
+            var responseString = await this.apiInvoker.InvokeApiAsync(
                 requestUrl,
                 "POST",
                 postData,

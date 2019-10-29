@@ -23,6 +23,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 {
     using System.Diagnostics;
@@ -44,6 +46,11 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
             return url;
         }
 
+        public Task<string> ProcessUrlAsync(string url)
+        {
+            return Task.FromResult(url);
+        }
+
         public void BeforeSend(WebRequest request, Stream streamToSend)
         {
             if (this.configuration.DebugMode)
@@ -59,6 +66,12 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
                 resultStream.Position = 0;
                 this.LogResponse(response, resultStream);
             }
+        }
+
+        public Task ProcessResponseAsync(HttpWebResponse response, Stream resultStream)
+        {
+            this.ProcessResponse(response, resultStream);
+            return Task.FromResult(0);;
         }
 
         private void LogRequest(WebRequest request, Stream streamToSend)

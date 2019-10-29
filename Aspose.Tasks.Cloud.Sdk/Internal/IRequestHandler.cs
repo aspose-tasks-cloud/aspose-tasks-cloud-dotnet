@@ -23,6 +23,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace Aspose.Tasks.Cloud.Sdk
 {
     using System.IO;
@@ -31,9 +33,13 @@ namespace Aspose.Tasks.Cloud.Sdk
     internal interface IRequestHandler
     {
         string ProcessUrl(string url);
+        
+        Task<string> ProcessUrlAsync(string url);
 
         void BeforeSend(WebRequest request, Stream streamToSend);
 
         void ProcessResponse(HttpWebResponse response, Stream resultStream);
+        
+        Task ProcessResponseAsync(HttpWebResponse response, Stream resultStream);
     }
 }

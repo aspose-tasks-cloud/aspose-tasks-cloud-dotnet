@@ -23,6 +23,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+
 namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 {
     using System;
@@ -55,12 +57,22 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
             return url;
         }
 
+        public Task<string> ProcessUrlAsync(string url)
+        {
+            return Task.FromResult(ProcessUrl(url));
+        }
+
         public void BeforeSend(WebRequest request, Stream streamToSend)
         {
         }
 
         public void ProcessResponse(HttpWebResponse response, Stream resultStream)
         {
+        }
+
+        public Task ProcessResponseAsync(HttpWebResponse response, Stream resultStream)
+        {
+            return Task.FromResult(0);
         }
 
         private string Sign(string url)
