@@ -24,11 +24,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -38,10 +38,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     internal sealed class WbsTests : BaseTestContext
     {
         [Test]
-        public void TestGetWbsDefinition()
+        public async Task TestGetWbsDefinition()
         {
-            var remoteName = UploadFileToStorage("WBSDefinition.mpp");
-            var response = TasksApi.GetWbsDefinition(new GetWbsDefinitionRequest()
+            var remoteName = await UploadFileToStorageAsync("WBSDefinition.mpp");
+            var response = await TasksApi.GetWbsDefinitionAsync(new GetWbsDefinitionRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -53,10 +53,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestRenumberWbsCode()
+        public async Task TestRenumberWbsCode()
         {
-            var remoteName = UploadFileToStorage("WBSDefinition.mpp");
-            var response = TasksApi.PutRenumberWbsCode(new PutRenumberWbsCodeRequest()
+            var remoteName = await UploadFileToStorageAsync("WBSDefinition.mpp");
+            var response = await TasksApi.PutRenumberWbsCodeAsync(new PutRenumberWbsCodeRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder,

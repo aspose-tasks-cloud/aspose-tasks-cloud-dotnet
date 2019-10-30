@@ -24,17 +24,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
-using Newtonsoft.Json;
-using Aspose.Tasks.Cloud.Sdk.Internal;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -42,11 +40,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
     internal sealed class TestCalendars : BaseTestContext
     {
         [Test]
-        public void TestGetCalendars()
+        public async Task TestGetCalendars()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetCalendars(new GetCalendarsRequest
+            var response = await TasksApi.GetCalendarsAsync(new GetCalendarsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -59,11 +57,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestGetCalendarByUid()
+        public async Task TestGetCalendarByUid()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetCalendar(new GetCalendarRequest
+            var response = await TasksApi.GetCalendarAsync(new GetCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -80,11 +78,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestAddNewCalendar()
+        public async Task TestAddNewCalendar()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.PostCalendar(new PostCalendarRequest
+            var response = await TasksApi.PostCalendarAsync(new PostCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -110,7 +108,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             Assert.AreEqual((int)HttpStatusCode.Created, response.Code);
             var createdCalendarUid = response.CalendarItem.Uid;
 
-            var getResponse = TasksApi.GetCalendar(new GetCalendarRequest
+            var getResponse = await TasksApi.GetCalendarAsync(new GetCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -134,14 +132,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestAddEmptyCalendar()
+        public async Task TestAddEmptyCalendar()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var exception = Assert.Throws<ApiException>
-                (() =>
+            var exception = Assert.ThrowsAsync<ApiException>
+                (async () =>
                 {
-                    TasksApi.PostCalendar(new PostCalendarRequest
+                    await TasksApi.PostCalendarAsync(new PostCalendarRequest
                     {
                         Name = remoteName,
                         Folder = this.DataFolder,
@@ -172,11 +170,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestEditExistingCalendar()
+        public async Task TestEditExistingCalendar()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.PutCalendar(new PutCalendarRequest
+            var response = await TasksApi.PutCalendarAsync(new PutCalendarRequest
             {
                 CalendarUid = 1,
                 Name = remoteName,
@@ -203,7 +201,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getResponse = TasksApi.GetCalendar(new GetCalendarRequest
+            var getResponse = await TasksApi.GetCalendarAsync(new GetCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -228,11 +226,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
 
         [Test]
-        public void TestDeleteCalendarByUid()
+        public async Task TestDeleteCalendarByUid()
         {
-            var remoteName = UploadFileToStorage("CalendarWorkWeeks.mpp");
+            var remoteName = await UploadFileToStorageAsync("CalendarWorkWeeks.mpp");
 
-            var response = TasksApi.DeleteCalendar(new DeleteCalendarRequest
+            var response = await TasksApi.DeleteCalendarAsync(new DeleteCalendarRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -241,7 +239,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getResponse = TasksApi.GetCalendars(new GetCalendarsRequest
+            var getResponse = await TasksApi.GetCalendarsAsync(new GetCalendarsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

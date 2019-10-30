@@ -24,15 +24,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Net;
-
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -40,9 +39,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     public class TestTasksExtendedAttributes : BaseTestContext
     {
         [Test]
-        public void TestEditTaskExtendedAttributeLookupValue()
+        public async Task TestEditTaskExtendedAttributeLookupValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -58,7 +57,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 }
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -66,7 +65,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -79,7 +78,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             taskResponse.Task.ExtendedAttributes.Add(
                 new ExtendedAttribute { LookupValueId = 112, FieldId = putAttributeResponse.ExtendedAttribute.FieldId });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -89,7 +88,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -104,9 +103,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeDateValue()
+        public async Task TestEditTaskExtendedAttributeDateValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -117,7 +116,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Finish Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -125,7 +124,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -142,7 +141,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                         FieldId = "188743742"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -152,7 +151,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -167,9 +166,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeDurationValue()
+        public async Task TestEditTaskExtendedAttributeDurationValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -180,7 +179,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Duration Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -188,7 +187,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -205,7 +204,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     FieldId = "188743785"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -215,7 +214,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -231,9 +230,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeFlagValue()
+        public async Task TestEditTaskExtendedAttributeFlagValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -244,7 +243,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Flag Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -252,7 +251,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -269,7 +268,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     FieldId = "188743973"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -279,7 +278,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -294,9 +293,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeCostValue()
+        public async Task TestEditTaskExtendedAttributeCostValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -307,7 +306,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Cost Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -315,7 +314,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -332,7 +331,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     FieldId = "188743944"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -342,7 +341,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -357,9 +356,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeNumberValue()
+        public async Task TestEditTaskExtendedAttributeNumberValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -370,7 +369,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Number Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -378,7 +377,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -395,7 +394,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     FieldId = "188743985"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -405,7 +404,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -420,9 +419,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTaskExtendedAttributeTextValue()
+        public async Task TestEditTaskExtendedAttributeTextValue()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -433,7 +432,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Alias = "Custom Text Field"
             };
 
-            var putAttributeResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putAttributeResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -441,7 +440,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, putAttributeResponse.Code);
-            var taskResponse = TasksApi.GetTask(new GetTaskRequest
+            var taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -458,7 +457,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                     FieldId = "188743731"
                 });
 
-            var putTaskResponse = TasksApi.PutTask(new PutTaskRequest
+            var putTaskResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 27,
                 Task = taskResponse.Task,
@@ -468,7 +467,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putTaskResponse.Code);
 
-            taskResponse = TasksApi.GetTask(new GetTaskRequest
+            taskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 27,
                 Name = remoteName,

@@ -24,12 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
-using System.IO;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Newtonsoft.Json.Linq;
+using NUnit.Framework;
+using System.IO;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 {
@@ -37,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
     internal sealed class TestTaskDocumentFormat : BaseTestContext
     {
         [Test]
-        public void TestGetDocumentInCsvFormat()
+        public async Task TestGetDocumentInCsvFormat()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetTaskDocumentWithFormat(new GetTaskDocumentWithFormatRequest
+            var response = await TasksApi.GetTaskDocumentWithFormatAsync(new GetTaskDocumentWithFormatRequest
             {
                 Format = ProjectFileFormat.Csv,
                 Name = remoteName,
@@ -63,9 +64,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        public void TestGetDocumentInCsvFormatWithSaveOptions()
+        public async Task TestGetDocumentInCsvFormatWithSaveOptions()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
             // SaveOptions parameters is a json-serialized representation of 
             // Aspose.Tasks's SaveOptions class or its format-specific inheritors (Like CsvOptions, etc):
@@ -77,7 +78,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 
             var saveOptions = JObject.Parse(saveOptionsSerialized);
 
-            var response = TasksApi.PostTaskDocumentWithFormat(new PostTaskDocumentWithFormatRequest
+            var response = await TasksApi.PostTaskDocumentWithFormatAsync(new PostTaskDocumentWithFormatRequest
             {
                 Format = ProjectFileFormat.Csv,
                 Name = remoteName,
@@ -97,11 +98,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        public void TestGetDocumentAsZippedHtml()
+        public async Task TestGetDocumentAsZippedHtml()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetTaskDocumentWithFormat(new GetTaskDocumentWithFormatRequest
+            var response = await TasksApi.GetTaskDocumentWithFormatAsync(new GetTaskDocumentWithFormatRequest
                                                                   {
                                                                        Format = ProjectFileFormat.Html,
                                                                        Name = remoteName,

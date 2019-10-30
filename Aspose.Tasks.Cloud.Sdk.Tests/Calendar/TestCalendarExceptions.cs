@@ -24,14 +24,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -39,11 +39,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
     internal sealed class TestCalendarExceptions : BaseTestContext
     {
         [Test]
-        public void TestGetCalendarExceptions()
+        public async Task TestGetCalendarExceptions()
         {
-            var remoteName = UploadFileToStorage("Calenar with exception.mpp");
+            var remoteName = await UploadFileToStorageAsync("Calenar with exception.mpp");
 
-            var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
+            var getResponse = await TasksApi.GetCalendarExceptionsAsync(new GetCalendarExceptionsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -74,9 +74,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestAddCalendarException()
+        public async Task TestAddCalendarException()
         {
-            var remoteName = UploadFileToStorage("New project 2013.mpp");
+            var remoteName = await UploadFileToStorageAsync("New project 2013.mpp");
 
             var calendarException = new CalendarException
             {
@@ -91,7 +91,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Period = 1
             };
 
-            var response = TasksApi.PostCalendarException(new PostCalendarExceptionRequest
+            var response = await TasksApi.PostCalendarExceptionAsync(new PostCalendarExceptionRequest
             {
                 CalendarUid = 1,
                 CalendarException = calendarException,
@@ -101,7 +101,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.Created, response.Code);
 
-            var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
+            var getResponse = await TasksApi.GetCalendarExceptionsAsync(new GetCalendarExceptionsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -116,11 +116,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestEditCalendarException()
+        public async Task TestEditCalendarException()
         {
-            var remoteName = UploadFileToStorage("Calenar with exception.mpp");
+            var remoteName = await UploadFileToStorageAsync("Calenar with exception.mpp");
 
-            var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
+            var getResponse = await TasksApi.GetCalendarExceptionsAsync(new GetCalendarExceptionsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -141,7 +141,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
             calendarException.FromDate = new DateTime(2014, 10, 28);
             calendarException.ToDate = new DateTime(2015, 08, 5);
 
-            var response = TasksApi.PutCalendarException(new PutCalendarExceptionRequest
+            var response = await TasksApi.PutCalendarExceptionAsync(new PutCalendarExceptionRequest
             {
                 CalendarUid = 1,
                 Index = calendarException.Index,
@@ -152,7 +152,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
+            getResponse = await TasksApi.GetCalendarExceptionsAsync(new GetCalendarExceptionsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -167,11 +167,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestDeleteCalendarException()
+        public async Task TestDeleteCalendarException()
         {
-            var remoteName = UploadFileToStorage("Calenar with exception.mpp");
+            var remoteName = await UploadFileToStorageAsync("Calenar with exception.mpp");
 
-            var response = TasksApi.DeleteCalendarException(new DeleteCalendarExceptionRequest
+            var response = await TasksApi.DeleteCalendarExceptionAsync(new DeleteCalendarExceptionRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -181,7 +181,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getResponse = TasksApi.GetCalendarExceptions(new GetCalendarExceptionsRequest
+            var getResponse = await TasksApi.GetCalendarExceptionsAsync(new GetCalendarExceptionsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,

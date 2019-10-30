@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System.Linq;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -38,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
     internal sealed class TestDocumentProperties : BaseTestContext
     {
         [Test]
-        public void TestGetDocumentProperties()
+        public async Task TestGetDocumentProperties()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetDocumentProperties(new GetDocumentPropertiesRequest
+            var response = await TasksApi.GetDocumentPropertiesAsync(new GetDocumentPropertiesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -55,11 +55,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestGetDocumentProperty()
+        public async Task TestGetDocumentProperty()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetDocumentProperty(new GetDocumentPropertyRequest
+            var response = await TasksApi.GetDocumentPropertyAsync(new GetDocumentPropertyRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -73,11 +73,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestEditDocumentProperty()
+        public async Task TestEditDocumentProperty()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var putResponse = TasksApi.PutDocumentProperty(new PutDocumentPropertyRequest
+            var putResponse = await TasksApi.PutDocumentPropertyAsync(new PutDocumentPropertyRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -89,7 +89,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 }
             });
 
-            var response = TasksApi.GetDocumentProperties(new GetDocumentPropertiesRequest
+            var response = await TasksApi.GetDocumentPropertiesAsync(new GetDocumentPropertiesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -102,11 +102,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestEditDocumentPropertyViaPost()
+        public async Task TestEditDocumentPropertyViaPost()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var putResponse = TasksApi.PostDocumentProperty(new PostDocumentPropertyRequest
+            var putResponse = await TasksApi.PostDocumentPropertyAsync(new PostDocumentPropertyRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -118,7 +118,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 }
             });
 
-            var response = TasksApi.GetDocumentProperties(new GetDocumentPropertiesRequest
+            var response = await TasksApi.GetDocumentPropertiesAsync(new GetDocumentPropertiesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -131,11 +131,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
         }
 
         [Test]
-        public void TestAddNonExistingDocumentProperty()
+        public async Task TestAddNonExistingDocumentProperty()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var postResponse = TasksApi.PostDocumentProperty(new PostDocumentPropertyRequest
+            var postResponse = await TasksApi.PostDocumentPropertyAsync(new PostDocumentPropertyRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -147,7 +147,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 }
             });
 
-            var response = TasksApi.GetDocumentProperties(new GetDocumentPropertiesRequest
+            var response = await TasksApi.GetDocumentPropertiesAsync(new GetDocumentPropertiesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

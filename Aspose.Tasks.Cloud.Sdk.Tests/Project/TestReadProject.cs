@@ -23,11 +23,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 {
@@ -35,11 +35,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
     internal sealed class TestReadProject : BaseTestContext
     {
         [Test]
-        public void TestGetProjectIds()
+        public async Task TestGetProjectIds()
         {
-            var remoteName = UploadFileToStorage("p6_multiproject.xml");
+            var remoteName = await UploadFileToStorageAsync("p6_multiproject.xml");
 
-            var response = TasksApi.GetProjectIds(new GetProjectIdsRequest
+            var response = await TasksApi.GetProjectIdsAsync(new GetProjectIdsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -50,11 +50,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        public void TestReadXer()
+        public async Task TestReadXer()
         {
-            var remoteName = UploadFileToStorage("testXer.xer");
+            var remoteName = await UploadFileToStorageAsync("testXer.xer");
 
-            var response = TasksApi.GetTaskDocument(new GetTaskDocumentRequest
+            var response = await TasksApi.GetTaskDocumentAsync(new GetTaskDocumentRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

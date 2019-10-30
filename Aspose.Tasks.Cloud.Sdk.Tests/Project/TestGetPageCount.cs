@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System;
 using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 {
@@ -38,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
     internal sealed class TestGetPageCount : BaseTestContext
     {
         [Test]
-        public void TestGetPageCountWithPresentationFormat()
+        public async Task TestGetPageCountWithPresentationFormat()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetPageCount(new GetPageCountRequest
+            var response = await TasksApi.GetPageCountAsync(new GetPageCountRequest
             {
                 PresentationFormat = PresentationFormat.TaskUsage,
                 Timescale = Timescale.Months,
@@ -55,11 +55,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        public void TestGetPageCountWithPresentationFormatAndDateInterval()
+        public async Task TestGetPageCountWithPresentationFormatAndDateInterval()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetPageCount(new GetPageCountRequest
+            var response = await TasksApi.GetPageCountAsync(new GetPageCountRequest
             {
                 PresentationFormat = PresentationFormat.TaskUsage,
                 Timescale = Timescale.Months,

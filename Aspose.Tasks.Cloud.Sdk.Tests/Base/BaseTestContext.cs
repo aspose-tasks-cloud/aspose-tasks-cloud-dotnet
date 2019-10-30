@@ -28,6 +28,7 @@ using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
 {
@@ -63,11 +64,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         }
 
         [OneTimeTearDown]
-        public void Clean()
+        public async Task Clean()
         {
             foreach (var request in clearingRequests)
             {
-                var response = this.TasksApi.DeleteFile(request);
+                var response = await this.TasksApi.DeleteFileAsync(request);
                 Assert.That(response, Is.Not.Null.And.Property("Code").EqualTo(200));
             }
         }
@@ -75,7 +76,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
         /// <summary>
         /// Uploads a test data file to storage and returns the name of the uploaded file.
         /// </summary>
-        protected string UploadFileToStorage(string localName)
+        protected async Task<string> UploadFileToStorageAsync(string localName)
         {
             var remoteName = "TempFile_" + localName.Replace(".mpp", string.Empty) + ".mpp";
             var fullName = Path.Combine(this.DataFolder, remoteName);
@@ -85,7 +86,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
             {
 
                 var postRequest = new PostCreateRequest(fullName, fileStream, storage: "Tasks");
-                var response = this.TasksApi.UploadFile(postRequest);
+                var response = await this.TasksApi.UploadFileAsync(postRequest);
                 PrepareClearingRequest(postRequest);
 
             }

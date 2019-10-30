@@ -24,26 +24,29 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Compatibility;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests
 {
     [TestFixture]
     public class BasicApiTests : BaseTestContext
     {
+        private static readonly Func<MethodInfo, bool> AsyncMethodFilteringPredicate = m =>
+            m.IsPublic && m.ReturnType.IsGenericType
+                       && m.ReturnType.GetGenericTypeDefinition() == typeof(Task<>);
+        
         [Test]
-        public void TestHandleNonExistingFile()
+        public async Task TestHandleNonExistingFile()
         {
             string name = "notExistingFile.mpp";
-            var response = this.TasksApi.GetTasks(new GetTasksRequest()
+            var response = await this.TasksApi.GetTasksAsync(new GetTasksRequest()
             {
                 Name = name
             });
@@ -58,7 +61,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests
         public void TestApiCoverage()
         {
             var methods = typeof(TasksApi).GetMethods()
-                .Where(p => p.IsPublic && p.DeclaringType != typeof(object) && !p.Name.Contains("Async"))
+                .Where(AsyncMethodFilteringPredicate)
                 .Select(p => p.Name)
                 .ToList();
             var unitTestFolder = DirectoryHelper.GetRootSdkFolder();
@@ -77,15 +80,13 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests
         }
 
         /// <summary>
-        /// Check if all API methods have covered by tests
+        /// Check if all API methods have sync and async versions and async versions has correct name pattern
         /// </summary>
         [Test]
         public void TestApiSyncAndAsyncMethodsEquivalence()
         {
             var allMethods = typeof(TasksApi).GetMethods().Where(m => m.DeclaringType != typeof(object));
-            var asyncMethods = allMethods.Where(p => p.IsPublic 
-                                                     && p.ReturnType.IsGenericType 
-                                                     && p.ReturnType.GetGenericTypeDefinition() == typeof(Task<>));
+            var asyncMethods = allMethods.Where(AsyncMethodFilteringPredicate);
             
             var asyncMethodsWithWrongNamePattern = asyncMethods.Select(m => m.Name).Where(n => !n.Contains("Async"));
             Assert.That(asyncMethodsWithWrongNamePattern, Is.Empty);

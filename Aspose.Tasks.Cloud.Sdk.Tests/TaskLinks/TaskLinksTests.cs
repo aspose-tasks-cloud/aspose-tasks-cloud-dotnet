@@ -24,11 +24,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
 {
@@ -36,10 +37,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
     internal sealed class TaskLinksTests : BaseTestContext
     {
         [Test]
-        public void TestGetTaskLinks()
+        public async Task TestGetTaskLinks()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-            var response = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
+            var response = await TasksApi.GetTaskLinksAsync(new GetTaskLinksRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -51,10 +52,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
         }
 
         [Test]
-        public void TestAddTaskLink()
+        public async Task TestAddTaskLink()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-            var response = TasksApi.PostTaskLink(new PostTaskLinkRequest()
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
+            var response = await TasksApi.PostTaskLinkAsync(new PostTaskLinkRequest()
             {
                 TaskLink = new TaskLink
                 {
@@ -72,11 +73,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
         }
 
         [Test]
-        public void TestEditTaskLink()
+        public async Task TestEditTaskLink()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
+            var linksResponse = await TasksApi.GetTaskLinksAsync(new GetTaskLinksRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -89,7 +90,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             taskLinkToEdit.Lag = 9600;
             taskLinkToEdit.LagFormat = TimeUnitType.Day;
 
-            var response = TasksApi.PutTaskLink(new PutTaskLinkRequest()
+            var response = await TasksApi.PutTaskLinkAsync(new PutTaskLinkRequest()
             {
                 Index = 1,
                 TaskLink = taskLinkToEdit,
@@ -99,7 +100,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
+            linksResponse = await TasksApi.GetTaskLinksAsync(new GetTaskLinksRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -113,11 +114,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
         }
 
         [Test]
-        public void TestDeleteTaskLink()
+        public async Task TestDeleteTaskLink()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var deleteResponse = TasksApi.DeleteTaskLink(new DeleteTaskLinkRequest()
+            var deleteResponse = await TasksApi.DeleteTaskLinkAsync(new DeleteTaskLinkRequest()
             {
                 Index = 1,
                 Name = remoteName,
@@ -126,7 +127,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
-            var linksResponse = TasksApi.GetTaskLinks(new GetTaskLinksRequest()
+            var linksResponse = await TasksApi.GetTaskLinksAsync(new GetTaskLinksRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder

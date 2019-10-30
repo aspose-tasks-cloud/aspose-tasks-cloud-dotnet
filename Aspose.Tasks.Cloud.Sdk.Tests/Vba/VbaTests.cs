@@ -24,11 +24,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -36,10 +36,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     internal sealed class VbaTests : BaseTestContext
     {
         [Test]
-        public void TestGetVbaProject()
+        public async Task TestGetVbaProject()
         {
-            var remoteName = UploadFileToStorage("VbaProject3.mpp");
-            var vbaResponse = TasksApi.GetVbaProject(new GetVbaProjectRequest()
+            var remoteName = await UploadFileToStorageAsync("VbaProject3.mpp");
+            var vbaResponse = await TasksApi.GetVbaProjectAsync(new GetVbaProjectRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder

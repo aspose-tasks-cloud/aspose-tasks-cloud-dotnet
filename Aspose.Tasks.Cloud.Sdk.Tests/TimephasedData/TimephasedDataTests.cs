@@ -24,12 +24,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
 {
@@ -37,10 +37,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
     internal sealed class TimephasedDataTests : BaseTestContext
     {
         [Test]
-        public void TestGetTaskTimephasedData()
+        public async Task TestGetTaskTimephasedData()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-            var response = TasksApi.GetTaskTimephasedData(new GetTaskTimephasedDataRequest()
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
+            var response = await TasksApi.GetTaskTimephasedDataAsync(new GetTaskTimephasedDataRequest()
             {
                 TaskUid = 27,
                 Name = remoteName,
@@ -62,10 +62,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
         }
 
         [Test]
-        public void TestGetResourceTimephasedData()
+        public async Task TestGetResourceTimephasedData()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-            var response = TasksApi.GetResourceTimephasedData(new GetResourceTimephasedDataRequest()
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
+            var response = await TasksApi.GetResourceTimephasedDataAsync(new GetResourceTimephasedDataRequest()
             {
                 ResourceUid = 1,
                 Name = remoteName,
@@ -87,10 +87,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TimephasedData
         }
 
         [Test]
-        public void TestGetResourceAssignmentTimephasedData()
+        public async Task TestGetResourceAssignmentTimephasedData()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
-            var response = TasksApi.GetAssignmentTimephasedData(new GetAssignmentTimephasedDataRequest()
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
+            var response = await TasksApi.GetAssignmentTimephasedDataAsync(new GetAssignmentTimephasedDataRequest()
             {
                 AssignmentUid = 66,
                 Name = remoteName,

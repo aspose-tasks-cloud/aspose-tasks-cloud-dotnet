@@ -24,14 +24,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System;
 using System.Linq;
 using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
 {
@@ -42,11 +42,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
     internal sealed class TestCalendarWorkWeeks : BaseTestContext
     {
         [Test]
-        public void TestGetCalendarWorkWeeks()
+        public async Task TestGetCalendarWorkWeeks()
         {
-            var remoteName = UploadFileToStorage("CalendarWorkWeeks.mpp");
+            var remoteName = await UploadFileToStorageAsync("CalendarWorkWeeks.mpp");
 
-            var calendarsReponse = TasksApi.GetCalendars(new GetCalendarsRequest
+            var calendarsReponse = await TasksApi.GetCalendarsAsync(new GetCalendarsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -59,7 +59,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.DocumentProperties
                 Select(c => c.Uid)
                 .FirstOrDefault();
 
-            var getResponse = TasksApi.GetCalendarWorkWeeks(new GetCalendarWorkWeeksRequest
+            var getResponse = await TasksApi.GetCalendarWorkWeeksAsync(new GetCalendarWorkWeeksRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,

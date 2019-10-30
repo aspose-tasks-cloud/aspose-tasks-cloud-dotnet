@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
+using System.Collections.Generic;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -38,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     public class TestExtendedAttributes : BaseTestContext
     {
         [Test]
-        public void TestGetExtendedAttributes()
+        public async Task TestGetExtendedAttributes()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetExtendedAttributes(new GetExtendedAttributesRequest
+            var response = await TasksApi.GetExtendedAttributesAsync(new GetExtendedAttributesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -54,11 +54,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestGetExtendedAttribute()
+        public async Task TestGetExtendedAttribute()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetExtendedAttributeByIndex(new GetExtendedAttributeByIndexRequest
+            var response = await TasksApi.GetExtendedAttributeByIndexAsync(new GetExtendedAttributeByIndexRequest
             {
                 Index = 1,
                 Name = remoteName,
@@ -75,9 +75,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestAddExtendedAttributeDefinition()
+        public async Task TestAddExtendedAttributeDefinition()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var newExtendedAttribute = new ExtendedAttributeDefinition
             {
@@ -93,7 +93,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 }
             };
 
-            var response = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var response = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = newExtendedAttribute,
                 Name = remoteName,
@@ -110,7 +110,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var addedAttributeIndex = response.ExtendedAttribute.Index;
 
 
-            var getResponse = TasksApi.GetExtendedAttributeByIndex(new GetExtendedAttributeByIndexRequest
+            var getResponse = await TasksApi.GetExtendedAttributeByIndexAsync(new GetExtendedAttributeByIndexRequest
             {
                 Index = addedAttributeIndex,
                 Name = remoteName,
@@ -141,11 +141,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditExtendedAttributeDefinition()
+        public async Task TestEditExtendedAttributeDefinition()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetExtendedAttributeByIndex(new GetExtendedAttributeByIndexRequest
+            var response = await TasksApi.GetExtendedAttributeByIndexAsync(new GetExtendedAttributeByIndexRequest
             {
                 Index = 1,
                 Name = remoteName,
@@ -163,7 +163,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             extendedAttributeToEdit.ElementType = ElementType.Task;
             extendedAttributeToEdit.Alias = "Edited field";
 
-            var putResponse = TasksApi.PutExtendedAttribute(new PutExtendedAttributeRequest
+            var putResponse = await TasksApi.PutExtendedAttributeAsync(new PutExtendedAttributeRequest
             {
                 ExtendedAttribute = extendedAttributeToEdit,
                 Name = remoteName,
@@ -177,7 +177,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual("Edited field", putResponse.ExtendedAttribute.Alias);
             Assert.AreEqual("188743731", putResponse.ExtendedAttribute.FieldId);
 
-            var getResponse = TasksApi.GetExtendedAttributeByIndex(new GetExtendedAttributeByIndexRequest
+            var getResponse = await TasksApi.GetExtendedAttributeByIndexAsync(new GetExtendedAttributeByIndexRequest
             {
                 Index = putResponse.ExtendedAttribute.Index,
                 Name = remoteName,
@@ -199,11 +199,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestDeleteExtendedAttribute()
+        public async Task TestDeleteExtendedAttribute()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var deleteResponse = TasksApi.DeleteExtendedAttributeByIndex(new DeleteExtendedAttributeByIndexRequest
+            var deleteResponse = await TasksApi.DeleteExtendedAttributeByIndexAsync(new DeleteExtendedAttributeByIndexRequest
             {
                 Index = 1,
                 Name = remoteName,
@@ -212,7 +212,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
-            var response = TasksApi.GetExtendedAttributes(new GetExtendedAttributesRequest
+            var response = await TasksApi.GetExtendedAttributesAsync(new GetExtendedAttributesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

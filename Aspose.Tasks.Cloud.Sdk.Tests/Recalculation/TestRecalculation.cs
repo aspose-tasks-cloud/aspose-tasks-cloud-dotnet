@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
+using System;
 using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 {
@@ -38,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
     internal sealed class TestRecalculation : BaseTestContext
     {
         [Test]
-        public void TestRecalculateProjectWithErrors()
+        public async Task TestRecalculateProjectWithErrors()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
-            var responseAfterAdd = TasksApi.PostTask(new PostTaskRequest
+            var responseAfterAdd = await TasksApi.PostTaskAsync(new PostTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -53,7 +53,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 
             int taskUid = responseAfterAdd.TaskItem.Uid.Value;
 
-            var response = TasksApi.GetTask(new GetTaskRequest
+            var response = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -68,7 +68,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
             t.ActualFinish = new DateTime(2000, 10, 09);
             t.Cost = 100;
 
-            var responseAfterUpdate = TasksApi.PutTask(new PutTaskRequest
+            var responseAfterUpdate = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 Task = t,
                 TaskUid = taskUid,
@@ -79,7 +79,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 
             Assert.AreEqual((int)HttpStatusCode.OK, responseAfterUpdate.Code);
 
-            var recalculationResponse = TasksApi.PutRecalculateProject(new PutRecalculateProjectRequest()
+            var recalculationResponse = await TasksApi.PutRecalculateProjectAsync(new PutRecalculateProjectRequest()
             {
                 FileName = remoteName,
                 Folder = this.DataFolder,
@@ -96,11 +96,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 
 
         [Test]
-        public void TestRecalculateResource()
+        public async Task TestRecalculateResource()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.PutRecalculateProjectResourceFields(new PutRecalculateProjectResourceFieldsRequest
+            var response = await TasksApi.PutRecalculateProjectResourceFieldsAsync(new PutRecalculateProjectResourceFieldsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -110,11 +110,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
         }
 
         [Test]
-        public void TestRecalculateUncompleteWork()
+        public async Task TestRecalculateUncompleteWork()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.PutRecalculateProjectUncompleteWorkToStartAfter(new PutRecalculateProjectUncompleteWorkToStartAfterRequest
+            var response = await TasksApi.PutRecalculateProjectUncompleteWorkToStartAfterAsync(new PutRecalculateProjectUncompleteWorkToStartAfterRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -125,11 +125,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
         }
 
         [Test]
-        public void TestRecalculateProjectWorkAsComplete()
+        public async Task TestRecalculateProjectWorkAsComplete()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.PutRecalculateProjectWorkAsComplete(new PutRecalculateProjectWorkAsCompleteRequest
+            var response = await TasksApi.PutRecalculateProjectWorkAsCompleteAsync(new PutRecalculateProjectWorkAsCompleteRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,

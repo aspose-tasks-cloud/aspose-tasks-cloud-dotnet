@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Text;
-using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
 using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
+using System.Net;
+using System.Text;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 {
@@ -38,10 +38,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
     internal sealed class TestReport : BaseTestContext
     {
         [Test]
-        public void TestGetReportPdf()
+        public async Task TestGetReportPdf()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
-            var response = TasksApi.GetReportPdf(new GetReportPdfRequest()
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
+            var response = await TasksApi.GetReportPdfAsync(new GetReportPdfRequest()
             { 
                 Type = ReportType.Milestones,
                 Name = remoteName,
@@ -55,10 +55,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
         }
 
         [Test]
-        public void TestGetCriticalPath()
+        public async Task TestGetCriticalPath()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
-            var response = TasksApi.GetCriticalPath(new GetCriticalPathRequest()
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
+            var response = await TasksApi.GetCriticalPathAsync(new GetCriticalPathRequest()
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -69,10 +69,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
         }
 
         [Test]
-        public void TestGetRiskAnalysisReport()
+        public async Task TestGetRiskAnalysisReport()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
-            var response = TasksApi.GetRiskAnalysisReport(new GetRiskAnalysisReportRequest()
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
+            var response = await TasksApi.GetRiskAnalysisReportAsync(new GetRiskAnalysisReportRequest()
             {
                 DistributionType = ProbabilityDistributionType.Normal,
                 ConfidenceLevel = ConfidenceLevel.CL85,

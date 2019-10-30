@@ -23,16 +23,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
-using Newtonsoft.Json;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 {
@@ -40,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
     internal sealed class TestImportProject : BaseTestContext
     {
         [Test]
-        public void TestImportFromPrimaveraFile()
+        public async Task TestImportFromPrimaveraFile()
         {
-            var remote = UploadFileToStorage("p6_multiproject.xml");
+            var remote = await UploadFileToStorageAsync("p6_multiproject.xml");
 
-            var response = TasksApi.PutImportProjectFromFile(new PutImportProjectFromFileRequest
+            var response = await TasksApi.PutImportProjectFromFileAsync(new PutImportProjectFromFileRequest
             {
                 Name = remote,
                 Folder = this.DataFolder,
@@ -56,7 +54,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getTasksResponse = TasksApi.GetTasks(new GetTasksRequest
+            var getTasksResponse = await TasksApi.GetTasksAsync(new GetTasksRequest
             {
                 Name = "imported_from_primavera.xml",
                 Folder = this.DataFolder
@@ -67,10 +65,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        [Ignore("SQL instance in required in order to run test")]
-        public void TestImportFromMsp()
+        [Ignore("SQL instance in required in order to run test")] 
+        public async Task TestImportFromMsp()
         {
-            var response = TasksApi.PutImportProjectFromDb(new PutImportProjectFromDbRequest
+            var response = await TasksApi.PutImportProjectFromDbAsync(new PutImportProjectFromDbRequest
             {
                 ConnectionString = "Data Source=db.contoso.com;Initial Catalog=ProjectServer;Persist Security Info=True;User ID=sa;Password=pwd;",
                 DatabaseType = ProjectDatabaseType.Msp,
@@ -83,7 +81,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getProjectIdsResponse = TasksApi.GetProjectIds(new GetProjectIdsRequest
+            var getProjectIdsResponse = await TasksApi.GetProjectIdsAsync(new GetProjectIdsRequest
             {
                 Name = "imported_from_mdp.xml",
                 Folder = this.DataFolder
@@ -95,8 +93,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         
 
         [Test]
-        [Ignore("Ignored because real credentials for project server online is required.")]
-        public void TestImportFromProjectOnline()
+        [Ignore("Ignored because real credentials for project server online is required.")] 
+        public async Task TestImportFromProjectOnline()
         {
             var fileName = "NewProductDev.mpp";
             var getFileRequest = new DownloadFileRequest
@@ -113,16 +111,17 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             };
             Stream binaryResponse = null;
 
-            var exception = Assert.Throws<ApiException>(() => binaryResponse = TasksApi.DownloadFile(getFileRequest));
+            var exception = Assert.ThrowsAsync<ApiException>(async () => binaryResponse = await TasksApi.DownloadFileAsync(getFileRequest));
             Assert.AreEqual(HttpStatusCode.NotFound, exception.HttpStatusCode); 
             
-            var response = TasksApi.PutImportProjectFromProjectOnline(importFileRequest);
+            var response = await TasksApi.PutImportProjectFromProjectOnlineAsync(importFileRequest);
             Assert.AreEqual(HttpStatusCode.OK.ToString(), (string)response.Status);
 
-            Assert.DoesNotThrow(() => binaryResponse = TasksApi.DownloadFile(getFileRequest));
+            Assert.DoesNotThrowAsync(async () => binaryResponse = await TasksApi.DownloadFileAsync(getFileRequest));
             Assert.That(binaryResponse, Is.Not.Null);
-
-            TasksApi.DeleteFile((new DeleteRequest(fileName)));
+            
+            binaryResponse.Dispose();
+            await TasksApi.DeleteFileAsync((new DeleteRequest(fileName)));
         }
     }
 }

@@ -31,6 +31,7 @@ using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -38,11 +39,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     public class TestRecurringInfo : BaseTestContext
     {
         [Test]
-        public void TestGetTaskRecurringInfo()
+        public async Task TestGetTaskRecurringInfo()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
-            var response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
+            var response = await TasksApi.GetTaskRecurringInfoAsync(new GetTaskRecurringInfoRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -63,11 +64,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestUpdateTaskRecurringInfo()
+        public async Task TestUpdateTaskRecurringInfo()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
-            var response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
+            var response = await TasksApi.GetTaskRecurringInfoAsync(new GetTaskRecurringInfoRequest
                                                              {
                                                                  Name = remoteName,
                                                                  Folder = this.DataFolder,
@@ -80,7 +81,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var recurringInfo = response.RecurringInfo;
             recurringInfo.Occurrences = 10;
 
-            var putResponse = TasksApi.PutTaskRecurringInfo(new PutTaskRecurringInfoRequest
+            var putResponse = await TasksApi.PutTaskRecurringInfoAsync(new PutTaskRecurringInfoRequest
                                                              {
                                                                  Name = remoteName,
                                                                  Folder = this.DataFolder,
@@ -90,7 +91,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
-            response = TasksApi.GetTaskRecurringInfo(new GetTaskRecurringInfoRequest
+            response = await TasksApi.GetTaskRecurringInfoAsync(new GetTaskRecurringInfoRequest
                                                          {
                                                              Name = remoteName,
                                                              Folder = this.DataFolder,
@@ -111,9 +112,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestAddRecurringTask()
+        public async Task TestAddRecurringTask()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
             RecurringInfo recurringInfo = new RecurringInfo
                                               {
@@ -126,7 +127,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                                                   UseEndDate = true
                                               };
 
-            var response = TasksApi.PostTaskRecurringInfo(new PostTaskRecurringInfoRequest
+            var response = await TasksApi.PostTaskRecurringInfoAsync(new PostTaskRecurringInfoRequest
                                                           {
                                                               Name = remoteName,
                                                               Folder = this.DataFolder,
@@ -139,7 +140,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual((int)HttpStatusCode.Created, response.Code);
             Assert.IsNotNull(response.TaskItem);
 
-            var getTaskResponse = TasksApi.GetTask(
+            var getTaskResponse = await TasksApi.GetTaskAsync(
                 new GetTaskRequest
                     {
                         Name = remoteName,
@@ -151,7 +152,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual(18, getTaskResponse.Task.SubtasksUids.Count);
             var lastTaskUid = getTaskResponse.Task.SubtasksUids.Max();
 
-            getTaskResponse = TasksApi.GetTask(
+            getTaskResponse = await TasksApi.GetTaskAsync(
                 new GetTaskRequest
                     {
                         Name = remoteName,

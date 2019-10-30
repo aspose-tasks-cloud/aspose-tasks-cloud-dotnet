@@ -24,13 +24,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -38,11 +38,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     public class TestResources : BaseTestContext
     {
         [Test]
-        public void TestGetResources()
+        public async Task TestGetResources()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
+            var resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -57,11 +57,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestAddResource()
+        public async Task TestAddResource()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
+            var resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -70,7 +70,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
             var count = resourceResponse.Resources.ResourceItem.Count;
 
-            var postResponse = TasksApi.PostResource(new PostResourceRequest
+            var postResponse = await TasksApi.PostResourceAsync(new PostResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -79,7 +79,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.Created, postResponse.Code);
 
-            resourceResponse = TasksApi.GetResources(new GetResourcesRequest
+            resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -92,11 +92,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditResource()
+        public async Task TestEditResource()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
-            var resourceResponse = TasksApi.GetResource(new GetResourceRequest
+            var resourceResponse = await TasksApi.GetResourceAsync(new GetResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -120,7 +120,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
                 Cost = 44,
             });
 
-            var putResponse = TasksApi.PutResource(new PutResourceRequest
+            var putResponse = await TasksApi.PutResourceAsync(new PutResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -132,7 +132,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
-            resourceResponse = TasksApi.GetResource(new GetResourceRequest
+            resourceResponse = await TasksApi.GetResourceAsync(new GetResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -153,11 +153,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestDeleteResource()
+        public async Task TestDeleteResource()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var deleteResponse = TasksApi.DeleteResource(new DeleteResourceRequest
+            var deleteResponse = await TasksApi.DeleteResourceAsync(new DeleteResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -166,7 +166,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
-            var resourceResponse = TasksApi.GetResources(new GetResourcesRequest
+            var resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

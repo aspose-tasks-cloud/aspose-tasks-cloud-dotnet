@@ -24,16 +24,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.Model;
+using Aspose.Tasks.Cloud.Sdk.Model.Requests;
+using Aspose.Tasks.Cloud.Sdk.Tests.Base;
+using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-
-using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-using Aspose.Tasks.Cloud.Sdk.Model.Requests;
-using NUnit.Framework;
-using Aspose.Tasks.Cloud.Sdk.Model;
-using Aspose.Tasks.Cloud.Sdk.Internal;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -41,11 +39,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
     public class TestTasks : BaseTestContext
     {
         [Test]
-        public void TestGetTasks()
+        public async Task TestGetTasks()
         {
-            var remoteName = UploadFileToStorage("Project2016.mpp");
+            var remoteName = await UploadFileToStorageAsync("Project2016.mpp");
 
-            var tasksResponse = TasksApi.GetTasks(new GetTasksRequest
+            var tasksResponse = await TasksApi.GetTasksAsync(new GetTasksRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -64,11 +62,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestGetTaskByUid()
+        public async Task TestGetTaskByUid()
         {
-            var remoteName = UploadFileToStorage("Project2016.mpp");
+            var remoteName = await UploadFileToStorageAsync("Project2016.mpp");
 
-            var tasksResponse = TasksApi.GetTask(new GetTaskRequest
+            var tasksResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 5,
                 Name = remoteName,
@@ -86,11 +84,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestDeleteTask()
+        public async Task TestDeleteTask()
         {
-            var remoteName = UploadFileToStorage("Project2016.mpp");
+            var remoteName = await UploadFileToStorageAsync("Project2016.mpp");
 
-            var deleteResponse = TasksApi.DeleteTask(new DeleteTaskRequest
+            var deleteResponse = await TasksApi.DeleteTaskAsync(new DeleteTaskRequest
             {
                 TaskUid = 4,
                 Name = remoteName,
@@ -100,7 +98,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
-            var tasksResponse = TasksApi.GetTasks(new GetTasksRequest
+            var tasksResponse = await TasksApi.GetTasksAsync(new GetTasksRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -115,11 +113,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestAddTask()
+        public async Task TestAddTask()
         {
-            var remoteName = UploadFileToStorage("Project2016.mpp");
+            var remoteName = await UploadFileToStorageAsync("Project2016.mpp");
 
-            var postResponse = TasksApi.PostTask(new PostTaskRequest
+            var postResponse = await TasksApi.PostTaskAsync(new PostTaskRequest
             {
                 BeforeTaskId = 4,
                 TaskName = "New task name",
@@ -132,7 +130,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.IsNotNull(postResponse.TaskItem);
             var newTaskUid = postResponse.TaskItem.Uid;
 
-            var tasksResponse = TasksApi.GetTask(new GetTaskRequest
+            var tasksResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = newTaskUid,
                 Name = remoteName,
@@ -144,11 +142,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditTask()
+        public async Task TestEditTask()
         {
-            var remoteName = UploadFileToStorage("Project2016.mpp");
+            var remoteName = await UploadFileToStorageAsync("Project2016.mpp");
 
-            var getResponse = TasksApi.GetTask(new GetTaskRequest
+            var getResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 4,
                 Name = remoteName,
@@ -161,7 +159,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             task.ManualStart = new DateTime(2015, 10, 1, 9, 15, 0);
             task.ManualFinish = new DateTime(2015, 10, 1, 17, 15, 0);
 
-            var putResponse = TasksApi.PutTask(new PutTaskRequest
+            var putResponse = await TasksApi.PutTaskAsync(new PutTaskRequest
             {
                 TaskUid = 4,
                 Task = task,
@@ -174,7 +172,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
-            var tasksResponse = TasksApi.GetTask(new GetTaskRequest
+            var tasksResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 4,
                 Name = remoteName,
@@ -191,11 +189,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestGetTaskAssignments()
+        public async Task TestGetTaskAssignments()
         {
-            var remoteName = UploadFileToStorage("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
-            var response = TasksApi.GetTaskAssignments(new GetTaskAssignmentsRequest
+            var response = await TasksApi.GetTaskAssignmentsAsync(new GetTaskAssignmentsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -207,11 +205,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestMoveTask()
+        public async Task TestMoveTask()
         {
-            var remoteName = UploadFileToStorage("sample.mpp");
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
 
-            var getResponse = TasksApi.GetTask(new GetTaskRequest
+            var getResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -221,7 +219,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             CollectionAssert.DoesNotContain(getResponse.Task.SubtasksUids, 10);
 
-            var response = TasksApi.PutMoveTask(new PutMoveTaskRequest
+            var response = await TasksApi.PutMoveTaskAsync(new PutMoveTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -231,7 +229,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            getResponse = TasksApi.GetTask(new GetTaskRequest
+            getResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -243,11 +241,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestMoveTaskToSibling()
+        public async Task TestMoveTaskToSibling()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.PutMoveTaskToSibling(new PutMoveTaskToSiblingRequest
+            var response = await TasksApi.PutMoveTaskToSiblingAsync(new PutMoveTaskToSiblingRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -257,7 +255,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getResponse = TasksApi.GetTask(new GetTaskRequest
+            var getResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
@@ -269,11 +267,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestMoveTaskToSiblingNull()
+        public async Task TestMoveTaskToSiblingNull()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.PutMoveTaskToSibling(new PutMoveTaskToSiblingRequest
+            var response = await TasksApi.PutMoveTaskToSiblingAsync(new PutMoveTaskToSiblingRequest
                {
                    Name = remoteName,
                    Folder = this.DataFolder,

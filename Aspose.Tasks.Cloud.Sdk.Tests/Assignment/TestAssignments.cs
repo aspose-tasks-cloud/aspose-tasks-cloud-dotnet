@@ -24,28 +24,27 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Net;
-
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
-
 using NUnit.Framework;
+using System;
+using System.Linq;
+using System.Net;
+using Task = System.Threading.Tasks.Task;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
-    
+
     [TestFixture]
     public class TestAssignments : BaseTestContext
     {
         [Test]
-        public void TestGetAssignments()
+        public async Task TestGetAssignments()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetAssignments(new GetAssignmentsRequest
+            var response = await TasksApi.GetAssignmentsAsync(new GetAssignmentsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -59,11 +58,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestGetAssignment()
+        public async Task TestGetAssignment()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetAssignment(new GetAssignmentRequest
+            var response = await TasksApi.GetAssignmentAsync(new GetAssignmentRequest
             {
                 AssignmentUid = 63,
                 Name = remoteName,
@@ -78,11 +77,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestGetResourceAssignments()
+        public async Task TestGetResourceAssignments()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetResourceAssignments(new GetResourceAssignmentsRequest
+            var response = await TasksApi.GetResourceAssignmentsAsync(new GetResourceAssignmentsRequest
             {
                 ResourceUid = 1,
                 Name = remoteName,
@@ -96,11 +95,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestAddAssignment()
+        public async Task TestAddAssignment()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.PostAssignment(new PostAssignmentRequest
+            var response = await TasksApi.PostAssignmentAsync(new PostAssignmentRequest
             {
                 ResourceUid = 1,
                 Units = 0.5D,
@@ -113,14 +112,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.IsNotNull(response.AssignmentItem);
             var assignmentUid = response.AssignmentItem.Uid;
 
-            var getResponse = TasksApi.GetAssignment(new GetAssignmentRequest
+            var getResponse = await TasksApi.GetAssignmentAsync(new GetAssignmentRequest
             {
                 AssignmentUid = assignmentUid,
                 Name = remoteName,
                 Folder = this.DataFolder
             });
 
-            var getTaskResponse = TasksApi.GetTask(new GetTaskRequest
+            var getTaskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
             {
                 TaskUid = 0,
                 Name = remoteName,
@@ -139,11 +138,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestEditAssignment()
+        public async Task TestEditAssignment()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.GetAssignment(new GetAssignmentRequest
+            var response = await TasksApi.GetAssignmentAsync(new GetAssignmentRequest
             {
                 AssignmentUid = 63,
                 Name = remoteName,
@@ -155,7 +154,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             response.Assignment.TaskUid = 0;
 
-            var putResponse = TasksApi.PutAssignment(new PutAssignmentRequest
+            var putResponse = await TasksApi.PutAssignmentAsync(new PutAssignmentRequest
             {
                 Mode = CalculationMode.Automatic,
                 Recalculate = true,
@@ -167,7 +166,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, putResponse.Code);
 
-            var getResponse = TasksApi.GetAssignments(new GetAssignmentsRequest
+            var getResponse = await TasksApi.GetAssignmentsAsync(new GetAssignmentsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
@@ -179,11 +178,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
-        public void TestDeleteAssignment()
+        public async Task TestDeleteAssignment()
         {
-            var remoteName = UploadFileToStorage("NewProductDev.mpp");
+            var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
-            var response = TasksApi.DeleteAssignment(new DeleteAssignmentRequest
+            var response = await TasksApi.DeleteAssignmentAsync(new DeleteAssignmentRequest
             {
                 AssignmentUid = 63,
                 Name = remoteName,
@@ -192,7 +191,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
 
-            var getResponse = TasksApi.GetAssignments(new GetAssignmentsRequest
+            var getResponse = await TasksApi.GetAssignmentsAsync(new GetAssignmentsRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder

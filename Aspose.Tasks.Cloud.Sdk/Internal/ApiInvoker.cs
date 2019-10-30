@@ -59,7 +59,7 @@ namespace Aspose.Tasks.Cloud.Sdk
         {
             return this.InvokeInternal(path, method, false, body, headerParams, formParams, contentType) as string;
         }
-        
+
         public async Task<string> InvokeApiAsync(
             string path,
             string method,
@@ -68,7 +68,8 @@ namespace Aspose.Tasks.Cloud.Sdk
             Dictionary<string, object> formParams = null,
             string contentType = "application/json")
         {
-            return await this.InvokeInternalAsync(path, method, false, body, headerParams, formParams, contentType) as string;
+            return await this.InvokeInternalAsync(path, method, false, body, headerParams, formParams, contentType) as
+                string;
         }
 
         public Stream InvokeBinaryApi(
@@ -79,9 +80,9 @@ namespace Aspose.Tasks.Cloud.Sdk
             Dictionary<string, object> formParams,
             string contentType = "application/json")
         {
-            return (Stream)this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
+            return (Stream) this.InvokeInternal(path, method, true, body, headerParams, formParams, contentType);
         }
-        
+
         public async Task<Stream> InvokeBinaryApiAsync(
             string path,
             string method,
@@ -90,7 +91,8 @@ namespace Aspose.Tasks.Cloud.Sdk
             Dictionary<string, object> formParams,
             string contentType = "application/json")
         {
-            return (Stream)await this.InvokeInternalAsync(path, method, true, body, headerParams, formParams, contentType);
+            return (Stream) await this.InvokeInternalAsync(path, method, true, body, headerParams, formParams,
+                contentType);
         }
 
         public FileInfo ToFileInfo(Stream stream, string paramName, string mimeType = "application/octet-stream")
@@ -119,7 +121,7 @@ namespace Aspose.Tasks.Cloud.Sdk
 
                         if (param.Value is FileInfo)
                         {
-                            var fileInfo = (FileInfo)param.Value;
+                            var fileInfo = (FileInfo) param.Value;
                             string postData =
                                 string.Format(
                                     "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n",
@@ -137,7 +139,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                             string stringData;
                             if (param.Value is string)
                             {
-                                stringData = (string)param.Value;
+                                stringData = (string) param.Value;
                             }
                             else
                             {
@@ -165,7 +167,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     {
                         if (param.Value is FileInfo)
                         {
-                            var fileInfo = (FileInfo)param.Value;
+                            var fileInfo = (FileInfo) param.Value;
 
                             // Write the file data directly to the Stream, rather than serializing it to a string.
                             formDataStream.Write(fileInfo.FileContent, 0, fileInfo.FileContent.Length);
@@ -179,7 +181,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                             }
                             else
                             {
-                                postData = (string)param.Value;
+                                postData = (string) param.Value;
                             }
 
                             formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0,
@@ -239,7 +241,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                 return this.ReadResponse(request, binaryResponse);
             }
         }
-        
+
         private async Task<object> InvokeInternalAsync(
             string path,
             string method,
@@ -259,7 +261,10 @@ namespace Aspose.Tasks.Cloud.Sdk
                 headerParams = new Dictionary<string, string>();
             }
 
-            this.requestHandlers.ForEach(async p => path = await p.ProcessUrlAsync(path));
+            foreach (var requestHandler in this.requestHandlers)
+            {
+                path = await requestHandler.ProcessUrlAsync(path);
+            }
 
             WebRequest request;
             try
@@ -273,16 +278,19 @@ namespace Aspose.Tasks.Cloud.Sdk
                 return await this.ReadResponseAsync(request, binaryResponse);
             }
         }
-        
+
         private async Task<object> ReadResponseAsync(WebRequest client, bool binaryResponse)
         {
-            var webResponse = (HttpWebResponse)await this.GetResponseAsync(client);
+            var webResponse = (HttpWebResponse) await this.GetResponseAsync(client);
             var resultStream = new MemoryStream();
 
             StreamHelper.CopyTo(webResponse.GetResponseStream(), resultStream);
             try
             {
-                this.requestHandlers.ForEach(async p => await p.ProcessResponseAsync(webResponse, resultStream));
+                foreach (var requestHandler in this.requestHandlers)
+                {
+                    await requestHandler.ProcessResponseAsync(webResponse, resultStream);
+                }
 
                 resultStream.Position = 0;
                 if (binaryResponse)
@@ -397,7 +405,7 @@ namespace Aspose.Tasks.Cloud.Sdk
 
         private object ReadResponse(WebRequest client, bool binaryResponse)
         {
-            var webResponse = (HttpWebResponse)this.GetResponse(client);
+            var webResponse = (HttpWebResponse) this.GetResponse(client);
             var resultStream = new MemoryStream();
 
             StreamHelper.CopyTo(webResponse.GetResponseStream(), resultStream);
