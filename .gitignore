@@ -15,7 +15,6 @@ out/
 *.lic
 *.user
 Out/
-Out*/
 Data/*Out*
 TestResults/
 *.ide
