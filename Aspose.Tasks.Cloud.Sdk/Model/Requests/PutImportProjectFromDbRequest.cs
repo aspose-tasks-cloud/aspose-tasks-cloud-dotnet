@@ -63,7 +63,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string Filename { get; set; }
 
         /// <summary>
-        /// Format of the resulting file. The import to Mpp format is not supported.
+        /// Format of the resulting file.
         /// </summary>  
         public ProjectFileFormat Format { get; set; }
 
