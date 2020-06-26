@@ -609,6 +609,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public List<OutlineCode> OutlineCodes { get; set; }
 
         /// <summary>
+        /// Represents the flag which indicates that task has schedule discrepancies.
+        /// </summary>  
+        public bool Warning { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -728,6 +733,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  Baselines: ").Append(this.Baselines).Append("\n");
             sb.Append("  ExtendedAttributes: ").Append(this.ExtendedAttributes).Append("\n");
             sb.Append("  OutlineCodes: ").Append(this.OutlineCodes).Append("\n");
+            sb.Append("  Warning: ").Append(this.Warning).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

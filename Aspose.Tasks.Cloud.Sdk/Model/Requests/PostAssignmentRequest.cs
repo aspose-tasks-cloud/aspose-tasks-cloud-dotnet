@@ -58,9 +58,14 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public int? ResourceUid { get; set; }
 
         /// <summary>
-        /// The units for the new assignment. Default value is 1.
+        /// The units for the new assignment. If not specified, 'cost' value is used.
         /// </summary>  
         public double? Units { get; set; }
+
+        /// <summary>
+        /// The cost for a new assignment. If not specified, default value is used.
+        /// </summary>  
+        public double? Cost { get; set; }
 
         /// <summary>
         /// The name of the project document to save changes to. If this parameter is omitted then the changes will be saved to the source project document.

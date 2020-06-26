@@ -1,6 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PutImportProjectFromProjectOnlineRequest.cs">
-//   Copyright (c) 2019 Aspose.Tasks for Cloud
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="DeleteAssignmentRequest.cs">
+//   Copyright (c) 2020 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,37 +23,30 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-
 namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
 {
+
     /// <summary>
-    /// Request model for <see cref="Aspose.Tasks.Cloud.Sdk.Api.TasksApi.PutImportProjectFromProjectOnline" /> operation.
-    /// </summary>  
-    public class PutImportProjectFromProjectOnlineRequest
+    /// Request model for <see cref="Aspose.Tasks.Cloud.Sdk.Api.TasksApi.CreateNewProject" /> operation.
+    /// </summary>
+    public class CreateNewProjectRequest
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PutImportProjectFromProjectOnlineRequest"/> class.
-        /// </summary>        
-        public PutImportProjectFromProjectOnlineRequest()
+        /// Initializes a new instance of the <see cref="CreateNewProjectRequest"/> class.
+        /// </summary>   
+        public CreateNewProjectRequest()
         {
         }
 
         /// <summary>
-        /// The name of the resulting file.
+        /// The name of the file.
         /// </summary>  
         public string Name { get; set; }
 
         /// <summary>
-        /// The url of sharepoint site. For example, "https://your_company_name.sharepoint.com".
+        /// The url of sharepoint site. For example, "https://your_company_name.sharepoint.com"
         /// </summary>  
         public string SiteUrl { get; set; }
-        
-        /// <summary>
-        /// Authorization token for the SharePoint. For example, in C# it can be retrieved using
-        /// SharePointOnlineCredentials class from Microsoft.SharePoint.Client.Runtime assembly
-        /// </summary>
-        public string Token { get; set; }
 
         /// <summary>
         /// The user name for the sharepoint site.
@@ -61,29 +54,29 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public string UserName { get; set; }
 
         /// <summary>
+        /// Dispensable save options for Project Server\Project Online.
+        /// </summary>  
+        public ProjectServerSaveOptionsDTO SaveOptions { get; set; }
+
+        /// <summary>
+        /// The document folder.
+        /// </summary>  
+        public string Folder { get; set; }
+
+        /// <summary>
+        /// The document storage.
+        /// </summary>  
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// Authorization token for the SharePoint. For example, in c# it can be retrieved using SharePointOnlineCredentials class 
+        /// from Microsoft.SharePoint.Client.Runtime assembly.
+        /// </summary>  
+        public string XProjectOnlineToken { get; set; }
+
+        /// <summary>
         /// The password for the SharePoint site.
         /// </summary>  
         public string XSharepointPassword { get; set; }
-
-        /// <summary>
-        /// Format of the resulting file.
-        /// </summary>
-        public ProjectFileFormat? Format { get; set; }
-        
-        /// <summary>
-        /// Guid of the project to import.
-        /// </summary>
-        /// <returns></returns>
-        public Guid Guid { get; set; }
-        
-        /// <summary>
-        /// The document folder.
-        /// </summary>
-        public string Folder { get; set; }
-        
-        /// <summary>
-        /// The document storage.
-        /// </summary>
-        public string Storage { get; set; }
     }
 }

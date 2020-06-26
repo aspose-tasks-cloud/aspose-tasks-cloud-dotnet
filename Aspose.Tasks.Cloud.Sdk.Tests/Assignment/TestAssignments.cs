@@ -138,6 +138,37 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         }
 
         [Test]
+        public async Task TestAddAssignmentWithCost()
+        {
+            var remoteName = await UploadFileToStorageAsync("Cost_Res.mpp");
+
+            var response = await TasksApi.PostAssignmentAsync(new PostAssignmentRequest
+            {
+                ResourceUid = 1,
+                Cost = 2,
+                TaskUid = 0,
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
+            Assert.IsNotNull(response.AssignmentItem);
+            var assignmentUid = response.AssignmentItem.Uid;
+
+            var getResponse = await TasksApi.GetAssignmentAsync(new GetAssignmentRequest
+            {
+                AssignmentUid = assignmentUid,
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+
+            Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
+            Assert.IsNotNull(getResponse.Assignment);
+            Assert.AreEqual(0, getResponse.Assignment.TaskUid);
+            Assert.AreEqual(2, getResponse.Assignment.Cost);
+        }
+
+        [Test]
         public async Task TestEditAssignment()
         {
             var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");

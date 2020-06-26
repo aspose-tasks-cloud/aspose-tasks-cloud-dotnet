@@ -40,8 +40,6 @@ namespace Aspose.Tasks.Cloud.Sdk
     /// </summary>
     public partial class TasksApi
     {
-        private const string ProjectServerAuthHeader = "x-project-online-token";
-
         private readonly ApiInvoker apiInvoker;
         private readonly Configuration configuration;
 
@@ -2200,6 +2198,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "units", request.Units);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "cost", request.Cost);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
@@ -3187,14 +3186,6 @@ namespace Aspose.Tasks.Cloud.Sdk
                     StatusCodes.ErrorInvalidInputData);
             }
 
-            // verify the required parameter 'token' is set
-            if (request.Token == null)
-            {
-                throw new ApiException(
-                    "Missing required parameter 'token' when calling PutImportProjectFromProjectOnline",
-                    StatusCodes.ErrorInvalidInputData);
-            }
-
             // create path and map variables
             var resourcePath =
                 UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/importfromprojectonline");
@@ -3203,9 +3194,20 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
 
             var body = SerializationHelper.Serialize(request.Guid);
-            var header = new Dictionary<string, string> {{ProjectServerAuthHeader, request.Token}};
+            var header = new Dictionary<string, string>();
+            if (request.Token != null)
+            {
+                header.Add("x-project-online-token", request.Token);
+            }
+
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
+
             try
             {
                 var response = this.apiInvoker.InvokeApi(
@@ -3897,19 +3899,22 @@ namespace Aspose.Tasks.Cloud.Sdk
                     StatusCodes.ErrorInvalidInputData);
             }
 
-            // verify the required parameter 'token' is set
-            if (request.Token == null)
-            {
-                throw new ApiException("Missing required parameter 'token' when calling GetProjectList",
-                    StatusCodes.ErrorInvalidInputData);
-            }
-
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectonline/projectlist");
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
 
 
-            var header = new Dictionary<string, string> {{ProjectServerAuthHeader, request.Token}};
+            var header = new Dictionary<string, string>();
+            if (request.Token != null)
+            {
+                header.Add("x-project-online-token", request.Token);
+            }
+
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
 
             try
             {
@@ -3923,6 +3928,158 @@ namespace Aspose.Tasks.Cloud.Sdk
                 if (response != null)
                 {
                     return (ProjectListResponse) SerializationHelper.Deserialize(response, typeof(ProjectListResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  Creates new project in Project Server\\Project Online instance.
+        /// </summary>
+        /// <param name="request">Request. <see cref="CreateNewProjectRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse CreateNewProject(CreateNewProjectRequest request)
+        {
+            // verify the required parameter 'Name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'Name' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // verify the required parameter 'SiteUrl' is set
+            if (request.SiteUrl == null)
+            {
+                throw new ApiException("Missing required parameter 'SiteUrl' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectOnline/{siteUrl}/{name}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+
+
+            var header = new Dictionary<string, string>();
+            if (request.XProjectOnlineToken != null)
+            {
+                header.Add("x-project-online-token", request.XProjectOnlineToken);
+            }
+
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
+
+            string body = null;
+            if (request.SaveOptions != null)
+            {
+                body = SerializationHelper.Serialize(request.SaveOptions);
+            }
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "POST",
+                    body,
+                    header,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.
+        /// </summary>
+        /// <param name="request">Request. <see cref="CreateNewProjectRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse UpdateProject(UpdateProjectRequest request)
+        {
+            // verify the required parameter 'Name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'Name' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // verify the required parameter 'SiteUrl' is set
+            if (request.SiteUrl == null)
+            {
+                throw new ApiException("Missing required parameter 'SiteUrl' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectOnline/{siteUrl}/{name}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+
+
+            var header = new Dictionary<string, string>();
+            if (request.XProjectOnlineToken != null)
+            {
+                header.Add("x-project-online-token", request.XProjectOnlineToken);
+            }
+
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
+
+            string body = null;
+            if (request.SaveOptions != null)
+            {
+                body = SerializationHelper.Serialize(request.SaveOptions);
+            }
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "PUT",
+                    body,
+                    header,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3965,7 +4122,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             }
         }
 
-        
+
         /// <summary>
         /// Delete file 
         /// </summary>

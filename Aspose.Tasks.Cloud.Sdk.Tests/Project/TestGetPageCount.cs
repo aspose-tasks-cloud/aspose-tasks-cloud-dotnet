@@ -51,7 +51,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(2, response.PageCount);
+            Assert.AreEqual(4, response.PageCount);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(2, response.PageCount);
+            Assert.AreEqual(4, response.PageCount);
         }
     }
 }

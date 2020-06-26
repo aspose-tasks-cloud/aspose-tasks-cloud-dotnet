@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using Aspose.Tasks.Cloud.Sdk.Model;
 using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using Aspose.Tasks.Cloud.Sdk.RequestHandlers;
-using  System.Threading.Tasks;
+using System.Threading.Tasks;
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
@@ -52,7 +52,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -108,7 +108,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -172,7 +172,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -227,7 +227,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -281,7 +281,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -337,7 +337,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -392,7 +392,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -447,7 +447,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -502,7 +502,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentResponse) SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
+                    return (AssignmentResponse)SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
                 }
 
                 return null;
@@ -560,7 +560,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse) SerializationHelper.Deserialize(response,
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
                         typeof(TimephasedDataResponse));
                 }
 
@@ -607,7 +607,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentItemsResponse) SerializationHelper.Deserialize(response,
+                    return (AssignmentItemsResponse)SerializationHelper.Deserialize(response,
                         typeof(AssignmentItemsResponse));
                 }
 
@@ -663,7 +663,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (CalendarResponse) SerializationHelper.Deserialize(response, typeof(CalendarResponse));
+                    return (CalendarResponse)SerializationHelper.Deserialize(response, typeof(CalendarResponse));
                 }
 
                 return null;
@@ -718,7 +718,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (CalendarExceptionsResponse) SerializationHelper.Deserialize(response,
+                    return (CalendarExceptionsResponse)SerializationHelper.Deserialize(response,
                         typeof(CalendarExceptionsResponse));
                 }
 
@@ -774,7 +774,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (CalendarWorkWeeksResponse) SerializationHelper.Deserialize(response,
+                    return (CalendarWorkWeeksResponse)SerializationHelper.Deserialize(response,
                         typeof(CalendarWorkWeeksResponse));
                 }
 
@@ -821,7 +821,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (CalendarItemsResponse) SerializationHelper.Deserialize(response,
+                    return (CalendarItemsResponse)SerializationHelper.Deserialize(response,
                         typeof(CalendarItemsResponse));
                 }
 
@@ -868,7 +868,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskItemsResponse) SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
+                    return (TaskItemsResponse)SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
                 }
 
                 return null;
@@ -914,7 +914,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertiesResponse) SerializationHelper.Deserialize(response,
+                    return (DocumentPropertiesResponse)SerializationHelper.Deserialize(response,
                         typeof(DocumentPropertiesResponse));
                 }
 
@@ -970,7 +970,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse) SerializationHelper.Deserialize(response,
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
                         typeof(DocumentPropertyResponse));
                 }
 
@@ -1026,7 +1026,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeResponse) SerializationHelper.Deserialize(response,
+                    return (ExtendedAttributeResponse)SerializationHelper.Deserialize(response,
                         typeof(ExtendedAttributeResponse));
                 }
 
@@ -1073,7 +1073,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeItemsResponse) SerializationHelper.Deserialize(response,
+                    return (ExtendedAttributeItemsResponse)SerializationHelper.Deserialize(response,
                         typeof(ExtendedAttributeItemsResponse));
                 }
 
@@ -1128,7 +1128,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (OutlineCodeResponse) SerializationHelper.Deserialize(response, typeof(OutlineCodeResponse));
+                    return (OutlineCodeResponse)SerializationHelper.Deserialize(response, typeof(OutlineCodeResponse));
                 }
 
                 return null;
@@ -1174,7 +1174,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (OutlineCodeItemsResponse) SerializationHelper.Deserialize(response,
+                    return (OutlineCodeItemsResponse)SerializationHelper.Deserialize(response,
                         typeof(OutlineCodeItemsResponse));
                 }
 
@@ -1226,7 +1226,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (PageCountResponse) SerializationHelper.Deserialize(response, typeof(PageCountResponse));
+                    return (PageCountResponse)SerializationHelper.Deserialize(response, typeof(PageCountResponse));
                 }
 
                 return null;
@@ -1272,7 +1272,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ProjectIdsResponse) SerializationHelper.Deserialize(response, typeof(ProjectIdsResponse));
+                    return (ProjectIdsResponse)SerializationHelper.Deserialize(response, typeof(ProjectIdsResponse));
                 }
 
                 return null;
@@ -1375,7 +1375,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ResourceResponse) SerializationHelper.Deserialize(response, typeof(ResourceResponse));
+                    return (ResourceResponse)SerializationHelper.Deserialize(response, typeof(ResourceResponse));
                 }
 
                 return null;
@@ -1430,7 +1430,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentsResponse) SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
+                    return (AssignmentsResponse)SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
                 }
 
                 return null;
@@ -1488,7 +1488,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse) SerializationHelper.Deserialize(response,
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
                         typeof(TimephasedDataResponse));
                 }
 
@@ -1535,7 +1535,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ResourceItemsResponse) SerializationHelper.Deserialize(response,
+                    return (ResourceItemsResponse)SerializationHelper.Deserialize(response,
                         typeof(ResourceItemsResponse));
                 }
 
@@ -1644,7 +1644,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskResponse) SerializationHelper.Deserialize(response, typeof(TaskResponse));
+                    return (TaskResponse)SerializationHelper.Deserialize(response, typeof(TaskResponse));
                 }
 
                 return null;
@@ -1699,7 +1699,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentsResponse) SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
+                    return (AssignmentsResponse)SerializationHelper.Deserialize(response, typeof(AssignmentsResponse));
                 }
 
                 return null;
@@ -1835,7 +1835,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskLinksResponse) SerializationHelper.Deserialize(response, typeof(TaskLinksResponse));
+                    return (TaskLinksResponse)SerializationHelper.Deserialize(response, typeof(TaskLinksResponse));
                 }
 
                 return null;
@@ -1890,7 +1890,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (RecurringInfoResponse) SerializationHelper.Deserialize(response,
+                    return (RecurringInfoResponse)SerializationHelper.Deserialize(response,
                         typeof(RecurringInfoResponse));
                 }
 
@@ -1948,7 +1948,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TimephasedDataResponse) SerializationHelper.Deserialize(response,
+                    return (TimephasedDataResponse)SerializationHelper.Deserialize(response,
                         typeof(TimephasedDataResponse));
                 }
 
@@ -1995,7 +1995,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskItemsResponse) SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
+                    return (TaskItemsResponse)SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
                 }
 
                 return null;
@@ -2040,7 +2040,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (VbaProjectResponse) SerializationHelper.Deserialize(response, typeof(VbaProjectResponse));
+                    return (VbaProjectResponse)SerializationHelper.Deserialize(response, typeof(VbaProjectResponse));
                 }
 
                 return null;
@@ -2086,7 +2086,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (WBSDefinitionResponse) SerializationHelper.Deserialize(response,
+                    return (WBSDefinitionResponse)SerializationHelper.Deserialize(response,
                         typeof(WBSDefinitionResponse));
                 }
 
@@ -2137,6 +2137,7 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "taskUid", request.TaskUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resourceUid", request.ResourceUid);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "units", request.Units);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "cost", request.Cost);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
@@ -2151,7 +2152,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentItemResponse) SerializationHelper.Deserialize(response,
+                    return (AssignmentItemResponse)SerializationHelper.Deserialize(response,
                         typeof(AssignmentItemResponse));
                 }
 
@@ -2206,7 +2207,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (CalendarItemResponse) SerializationHelper.Deserialize(response,
+                    return (CalendarItemResponse)SerializationHelper.Deserialize(response,
                         typeof(CalendarItemResponse));
                 }
 
@@ -2271,7 +2272,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -2334,7 +2335,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse) SerializationHelper.Deserialize(response,
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
                         typeof(DocumentPropertyResponse));
                 }
 
@@ -2384,7 +2385,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ResourceItemResponse) SerializationHelper.Deserialize(response,
+                    return (ResourceItemResponse)SerializationHelper.Deserialize(response,
                         typeof(ResourceItemResponse));
                 }
 
@@ -2434,7 +2435,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskItemResponse) SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
+                    return (TaskItemResponse)SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
                 }
 
                 return null;
@@ -2546,7 +2547,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -2624,7 +2625,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskItemResponse) SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
+                    return (TaskItemResponse)SerializationHelper.Deserialize(response, typeof(TaskItemResponse));
                 }
 
                 return null;
@@ -2689,7 +2690,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentResponse) SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
+                    return (AssignmentResponse)SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
                 }
 
                 return null;
@@ -2751,7 +2752,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -2823,7 +2824,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -2886,7 +2887,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (DocumentPropertyResponse) SerializationHelper.Deserialize(response,
+                    return (DocumentPropertyResponse)SerializationHelper.Deserialize(response,
                         typeof(DocumentPropertyResponse));
                 }
 
@@ -2942,7 +2943,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ExtendedAttributeItemResponse) SerializationHelper.Deserialize(response,
+                    return (ExtendedAttributeItemResponse)SerializationHelper.Deserialize(response,
                         typeof(ExtendedAttributeItemResponse));
                 }
 
@@ -3014,7 +3015,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3077,7 +3078,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3124,14 +3125,6 @@ namespace Aspose.Tasks.Cloud.Sdk
                     StatusCodes.ErrorInvalidInputData);
             }
 
-            // verify the required parameter 'token' is set
-            if (request.Token == null)
-            {
-                throw new ApiException(
-                    "Missing required parameter 'token' when calling PutImportProjectFromProjectOnline",
-                    StatusCodes.ErrorInvalidInputData);
-            }
-
             // create path and map variables
             var resourcePath =
                 UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/importfromprojectonline");
@@ -3140,9 +3133,18 @@ namespace Aspose.Tasks.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.Format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
 
             var body = SerializationHelper.Serialize(request.Guid);
-            var header = new Dictionary<string, string> {{ProjectServerAuthHeader, request.Token}};
+            var header = new Dictionary<string, string>();
+            if (request.Token != null)
+            {
+                header.Add("x-project-online-token", request.Token);
+            }
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
             try
             {
                 var response = await this.apiInvoker.InvokeApiAsync(
@@ -3153,7 +3155,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3216,7 +3218,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3280,7 +3282,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3329,7 +3331,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ProjectRecalculateResponse) SerializationHelper.Deserialize(response,
+                    return (ProjectRecalculateResponse)SerializationHelper.Deserialize(response,
                         typeof(ProjectRecalculateResponse));
                 }
 
@@ -3379,7 +3381,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3437,7 +3439,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3496,7 +3498,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3550,7 +3552,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3615,7 +3617,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ResourceResponse) SerializationHelper.Deserialize(response, typeof(ResourceResponse));
+                    return (ResourceResponse)SerializationHelper.Deserialize(response, typeof(ResourceResponse));
                 }
 
                 return null;
@@ -3679,7 +3681,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskResponse) SerializationHelper.Deserialize(response, typeof(TaskResponse));
+                    return (TaskResponse)SerializationHelper.Deserialize(response, typeof(TaskResponse));
                 }
 
                 return null;
@@ -3741,7 +3743,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (TaskLinkResponse) SerializationHelper.Deserialize(response, typeof(TaskLinkResponse));
+                    return (TaskLinkResponse)SerializationHelper.Deserialize(response, typeof(TaskLinkResponse));
                 }
 
                 return null;
@@ -3804,7 +3806,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AsposeResponse) SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3834,19 +3836,21 @@ namespace Aspose.Tasks.Cloud.Sdk
                     StatusCodes.ErrorInvalidInputData);
             }
 
-            // verify the required parameter 'token' is set
-            if (request.Token == null)
-            {
-                throw new ApiException("Missing required parameter 'token' when calling GetProjectList",
-                    StatusCodes.ErrorInvalidInputData);
-            }
-
             // create path and map variables
             var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectonline/projectlist");
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
 
 
-            var header = new Dictionary<string, string> {{ProjectServerAuthHeader, request.Token}};
+            var header = new Dictionary<string, string>();
+            if (request.Token != null)
+            {
+                header.Add("x-project-online-token", request.Token);
+            }
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
 
             try
             {
@@ -3859,7 +3863,151 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (ProjectListResponse) SerializationHelper.Deserialize(response, typeof(ProjectListResponse));
+                    return (ProjectListResponse)SerializationHelper.Deserialize(response, typeof(ProjectListResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  Creates new project in Project Server\\Project Online instance.
+        /// </summary>
+        /// <param name="request">Request. <see cref="CreateNewProjectRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public async Task<AsposeResponse> CreateNewProjectAsync(CreateNewProjectRequest request)
+        {
+            // verify the required parameter 'Name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'Name' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // verify the required parameter 'SiteUrl' is set
+            if (request.SiteUrl == null)
+            {
+                throw new ApiException("Missing required parameter 'SiteUrl' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectOnline/{siteUrl}/{name}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+
+
+            var header = new Dictionary<string, string>();
+            if (request.XProjectOnlineToken != null)
+            {
+                header.Add("x-project-online-token", request.XProjectOnlineToken);
+            }
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
+            string body = null;
+            if (request.SaveOptions != null)
+            {
+                body = SerializationHelper.Serialize(request.SaveOptions);
+            }
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "POST",
+                    body,
+                    header,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  Updates existing project in Project Server\\Project Online instance. The existing project will be overwritten.
+        /// </summary>
+        /// <param name="request">Request. <see cref="CreateNewProjectRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public async Task<AsposeResponse> UpdateProjectAsync(UpdateProjectRequest request)
+        {
+            // verify the required parameter 'Name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'Name' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // verify the required parameter 'SiteUrl' is set
+            if (request.SiteUrl == null)
+            {
+                throw new ApiException("Missing required parameter 'SiteUrl' when calling CreateNewProject",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/projectOnline/{siteUrl}/{name}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "siteUrl", request.SiteUrl);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "userName", request.UserName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+
+
+            var header = new Dictionary<string, string>();
+            if (request.XProjectOnlineToken != null)
+            {
+                header.Add("x-project-online-token", request.XProjectOnlineToken);
+            }
+            if (request.XSharepointPassword != null)
+            {
+                header.Add("x-sharepoint-password", request.XSharepointPassword);
+            }
+            string body = null;
+            if (request.SaveOptions != null)
+            {
+                body = SerializationHelper.Serialize(request.SaveOptions);
+            }
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "PUT",
+                    body,
+                    header,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;
@@ -3882,22 +4030,22 @@ namespace Aspose.Tasks.Cloud.Sdk
         /// <returns><see cref="UploadResponse"/></returns>    
         public async Task<UploadResponse> UploadFileAsync(PostCreateRequest request)
         {
-            var url = BuildUrl(request.Path, (object) request.VersionId, (object) request.Storage);
+            var url = BuildUrl(request.Path, (object)request.VersionId, (object)request.Storage);
             var formParams = new Dictionary<string, object>();
             if (request.File != null)
-                formParams.Add("file", (object) this.apiInvoker.ToFileInfo(request.File, "File"));
+                formParams.Add("file", (object)this.apiInvoker.ToFileInfo(request.File, "File"));
             try
             {
-                string json = await this.apiInvoker.InvokeApiAsync(url, "POST", (string) null, (Dictionary<string, string>) null,
+                string json = await this.apiInvoker.InvokeApiAsync(url, "POST", (string)null, (Dictionary<string, string>)null,
                     formParams, "application/json");
                 if (json != null)
-                    return (UploadResponse) SerializationHelper.Deserialize(json, typeof(UploadResponse));
-                return (UploadResponse) null;
+                    return (UploadResponse)SerializationHelper.Deserialize(json, typeof(UploadResponse));
+                return (UploadResponse)null;
             }
             catch (ApiException ex)
             {
                 if (ex.HttpStatusCode == HttpStatusCode.NotFound)
-                    return (UploadResponse) null;
+                    return (UploadResponse)null;
                 throw;
             }
         }
@@ -3914,23 +4062,23 @@ namespace Aspose.Tasks.Cloud.Sdk
                 throw new ApiException("Missing required parameter 'path' when calling DeleteFile",
                     StatusCodes.ErrorInvalidInputData);
 
-            var url = BuildUrl(request.Path, (object) request.VersionId, (object) request.Storage);
+            var url = BuildUrl(request.Path, (object)request.VersionId, (object)request.Storage);
             var formParams = new Dictionary<string, object>();
 
             try
             {
-                string json = await this.apiInvoker.InvokeApiAsync(url, "DELETE", (string) null, (Dictionary<string, string>) null,
+                string json = await this.apiInvoker.InvokeApiAsync(url, "DELETE", (string)null, (Dictionary<string, string>)null,
                     formParams, "application/json");
 
                 if (string.IsNullOrEmpty(json))
-                    return new DeleteResponse {Code = 200, Status = "OK"};
+                    return new DeleteResponse { Code = 200, Status = "OK" };
 
-                return (DeleteResponse) SerializationHelper.Deserialize(json, typeof(DeleteResponse));
+                return (DeleteResponse)SerializationHelper.Deserialize(json, typeof(DeleteResponse));
             }
             catch (ApiException ex)
             {
                 if (ex.HttpStatusCode == HttpStatusCode.NotFound)
-                    return (DeleteResponse) null;
+                    return (DeleteResponse)null;
                 throw;
             }
         }
@@ -3942,7 +4090,7 @@ namespace Aspose.Tasks.Cloud.Sdk
         /// <returns><see cref="System.IO.Stream"/></returns>    
         public async Task<System.IO.Stream> DownloadFileAsync(DownloadFileRequest request)
         {
-            var url = BuildUrl(request.Path, (object) request.VersionId, (object) request.Storage);
+            var url = BuildUrl(request.Path, (object)request.VersionId, (object)request.Storage);
 
             return await this.apiInvoker.InvokeBinaryApiAsync(url, "GET", null, null, null);
         }

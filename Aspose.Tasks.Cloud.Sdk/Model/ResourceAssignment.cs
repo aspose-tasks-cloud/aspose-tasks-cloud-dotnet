@@ -44,6 +44,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public int? TaskUid { get; set; }
 
         /// <summary>
+        /// Returns or sets the global unique identifier of an assignment.
+        /// </summary> 
+        public string Guid { get; set; }
+
+        /// <summary>
         /// Returns or sets a resource unique id assigned to a task.
         /// </summary>  
         public int? ResourceUid { get; set; }

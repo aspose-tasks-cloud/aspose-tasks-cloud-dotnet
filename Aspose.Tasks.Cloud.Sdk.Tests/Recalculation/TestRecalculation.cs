@@ -90,8 +90,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Reports
 
             Assert.AreEqual((int)HttpStatusCode.OK, recalculationResponse.Code);
             var validationResult = recalculationResponse.Result;
-            Assert.AreEqual(ProjectValidationState.HasErrors, validationResult.ValidationState);
-            Assert.AreEqual("Actual start date of task is greater than actual finish date. Task name: New task Name; Actual start date: 10/20/2000 00:00:00; Actual finish date: 10/09/2000 00:00:00", validationResult.ValidationErrorMessage);
+            Assert.AreEqual(ProjectValidationState.Valid, validationResult.ValidationState);
         }
 
 
