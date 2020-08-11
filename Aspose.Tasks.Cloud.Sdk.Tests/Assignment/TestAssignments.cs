@@ -32,6 +32,7 @@ using System;
 using System.Linq;
 using System.Net;
 using Task = System.Threading.Tasks.Task;
+using TD = Aspose.Tasks.Cloud.Sdk.Model.TimephasedData;
 
 namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 {
@@ -206,6 +207,90 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual((int)HttpStatusCode.OK, getResponse.Code);
             Assert.IsFalse(getResponse.Assignments.AssignmentItem.Any(a => a.TaskUid == 34 && a.ResourceUid == 1));
             Assert.IsTrue(getResponse.Assignments.AssignmentItem.Any(a => a.TaskUid == 0 && a.ResourceUid == 1 && a.Uid == 63));
+        }
+
+        [Test]
+        public async Task TestEditAssignmentWithTimephasedDataAndBaselines()
+        {
+            var remoteName = await UploadFileToStorageAsync("sample.mpp");
+
+            var response = await TasksApi.GetAssignmentAsync(new GetAssignmentRequest
+            {
+                AssignmentUid = 1,
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+
+            Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
+            Assert.IsNotNull(response.Assignment);
+
+            var assignment = response.Assignment;
+            assignment.Cost = 100;
+            assignment.Start = new DateTime(2001, 10, 10);
+            assignment.Finish = new DateTime(2002, 10, 10);
+            assignment.ActualWork = new TimeSpan(10, 10, 10);
+            assignment.ActualCost = 100;
+            assignment.ActualStart = new DateTime(2001, 10, 11);
+            assignment.ActualFinish = new DateTime(2002, 10, 11);
+            assignment.ActualOvertimeWork = new TimeSpan(100, 10, 0);
+            assignment.Work = new TimeSpan(80, 0, 0);
+            assignment.Uid = 1;
+            assignment.Vac = 10;
+            assignment.WorkContour = WorkContourType.Contoured;
+            assignment.TimephasedData.Clear();
+            assignment.TimephasedData.Add(new TD
+            {
+                Uid = assignment.Uid,
+                Start = new DateTime(2001, 10, 10, 9, 0, 0, 0),
+                Finish = new DateTime(2001, 10, 10, 14, 0, 0, 0),
+                Unit = TimeUnitType.Hour,
+                Value = TimeSpan.FromHours(4).ToString(),
+                TimephasedDataType = TimephasedDataType.AssignmentRemainingWork
+            });
+            assignment.Baselines.Add(new AssignmentBaseline
+            {
+                BaselineNumber = BaselineType.Baseline1,
+                Start = new DateTime(2002, 10, 10)
+            });
+
+            var putResponse = await TasksApi.PutAssignmentAsync(new PutAssignmentRequest
+            {
+                Mode = CalculationMode.None,
+                Recalculate = false,
+                AssignmentUid = assignment.Uid,
+                Assignment = assignment,
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+
+            Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status);
+            Assert.IsNotNull(putResponse.Assignment);
+            var assignmentAfterUpdate = putResponse.Assignment;
+            var baselinesAfterUpdate = assignmentAfterUpdate.Baselines;
+            Assert.AreEqual(1, baselinesAfterUpdate.Count);
+            Assert.AreEqual(BaselineType.Baseline1, baselinesAfterUpdate[0].BaselineNumber);
+            Assert.AreEqual(assignment.Baselines[0].Start, baselinesAfterUpdate[0].Start);
+
+            var timephasedDataAfterUpdate = assignmentAfterUpdate.TimephasedData;
+            var td = timephasedDataAfterUpdate[0];
+            Assert.AreEqual(1, timephasedDataAfterUpdate.Count);
+            Assert.AreEqual(assignment.TimephasedData[0].Uid, td.Uid);
+            Assert.AreEqual(assignment.TimephasedData[0].Start, td.Start);
+            Assert.AreEqual(assignment.TimephasedData[0].Finish, td.Finish);
+            Assert.AreEqual(assignment.TimephasedData[0].Unit, td.Unit);
+            Assert.AreEqual("PT4H0M0S", td.Value.ToString());
+            Assert.AreEqual(assignment.TimephasedData[0].TimephasedDataType, td.TimephasedDataType);
+
+            Assert.AreEqual(assignment.Cost, assignmentAfterUpdate.Cost);
+            Assert.AreEqual(assignment.Start, assignmentAfterUpdate.Start);
+            Assert.AreEqual(assignment.Finish, assignmentAfterUpdate.Finish);
+            Assert.AreEqual(assignment.Work, assignmentAfterUpdate.Work);
+            Assert.AreEqual(assignment.ActualWork, assignmentAfterUpdate.ActualWork);
+            Assert.AreEqual(assignment.ActualStart, assignmentAfterUpdate.ActualStart);
+            Assert.AreEqual(assignment.ActualFinish, assignmentAfterUpdate.ActualFinish);
+            Assert.AreEqual(assignment.ActualOvertimeWork, assignmentAfterUpdate.ActualOvertimeWork);
+            Assert.AreEqual(assignment.Vac, assignmentAfterUpdate.Vac);
+            Assert.AreEqual(assignment.Uid, assignmentAfterUpdate.Uid);
         }
 
         [Test]

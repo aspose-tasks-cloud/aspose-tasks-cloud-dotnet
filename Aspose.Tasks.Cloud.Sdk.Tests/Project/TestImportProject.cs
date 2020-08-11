@@ -106,7 +106,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Name = fileName,
                 Guid = Guid.Parse("E6426C44-D6CB-4B9C-AF16-48910ACE0F54"),
                 Token = "SOMESECRETTOKEN",
-                SiteUrl = "https://your_company_name.sharepoint.com",
+                SiteUrl = "http://project_server_instance.local/sites/pwa",
                 Format = ProjectFileFormat.Xml
             };
             Stream binaryResponse = null;
@@ -139,7 +139,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
                 Guid = Guid.Parse("E6426C44-D6CB-4B9C-AF16-48910ACE0F54"),
                 UserName = "SomeLogin",
                 XSharepointPassword = "SomePassword",
-                SiteUrl = "https://your_company_name.sharepoint.com",
+                SiteUrl = "http://project_server_instance.local/sites/pwa",
                 Format = ProjectFileFormat.Xml
             };
             Stream binaryResponse = null;

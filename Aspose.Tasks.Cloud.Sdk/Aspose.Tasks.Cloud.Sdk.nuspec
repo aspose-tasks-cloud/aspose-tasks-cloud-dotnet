@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Aspose.Tasks-Cloud</id>
-    <version>20.6</version>
+    <version>20.8</version>
     <title>Aspose.Tasks Cloud SDK for .NET</title>
     <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
     <authors>Aspose</authors>
@@ -13,17 +13,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>New generation of Aspose Cloud SDK that allows to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications. It allows you to work with all aspects of a Project document including conversion. The API offers a wide range of Microsoft Project export options. The Aspose.Tasks Cloud API allows developers to convert Project documents to various formats including XML, HTML, BMP, PNG, PDF, and XSLX.
     </description>
-    <releaseNotes>	
-    * Possibility to render comments when saving as image, HTML or PDF.
-    * Now you has an option to use username and password to connect Project Online (Server) instead of auth token, if you don't have it.
-    * Now you can add assignments to your project file with specifying its cost.
-    * Accelerated adding new tasks to project, when calculation mode is set to automatic.
-    * Provided ability to add project in Microsoft Project Server.
-    * Improved performance of autorecalculation for large sets of tasks.
-    * Added support of reading of shared resource assignments.
-    * Improved performance of timephased data calculation.
-	
-	The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+20.6+Release+Notes
+    <releaseNotes>
+      * Add an ability to specify the non-default path for Project Server's PWA URL.
+      * Add an ability to modify timephasedData collection in assignments.
+
+      The complete list of changes can be found at https://docs.aspose.cloud/display/taskscloud/Aspose.Tasks+Cloud+20.8+Release+Notes
     </releaseNotes>
     <copyright>Aspose 2002-2020. All Rights Reserved.</copyright>
     <tags>MPP Primavera Microsoft Project Server Online P6XML PrimaveraXML XER MPX</tags>

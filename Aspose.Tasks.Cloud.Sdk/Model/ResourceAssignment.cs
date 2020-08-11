@@ -374,6 +374,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public List<ExtendedAttribute> ExtendedAttributes { get; set; }
 
         /// <summary>
+        /// Represents a collection of TimephasedData objects.
+        /// </summary>  
+        public List<TimephasedData> TimephasedData { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -445,6 +450,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  RateScale: ").Append(this.RateScale).Append("\n");
             sb.Append("  Baselines: ").Append(this.Baselines).Append("\n");
             sb.Append("  ExtendedAttributes: ").Append(this.ExtendedAttributes).Append("\n");
+            sb.Append("  TimephasedData: ").Append(this.TimephasedData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

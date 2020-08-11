@@ -12,9 +12,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
         public GetProjectListRequest()
         {
         }
-        
+
         /// <summary>
-        /// The url of sharepoint site. For example, "https://your_company_name.sharepoint.com".
+        /// The URL of PWA (Project Web Access) API of Project Online.
         /// </summary>  
         public string SiteUrl { get; set; }
 

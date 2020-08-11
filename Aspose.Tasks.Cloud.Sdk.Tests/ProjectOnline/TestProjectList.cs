@@ -16,7 +16,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
             var response = await TasksApi.GetProjectListAsync(new GetProjectListRequest
             {
                 Token = "SOMESECRETTOKEN",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -31,7 +31,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
             {
                 UserName = "SomeLogin",
                 XSharepointPassword = "SomePassword",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -47,7 +47,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
             {
                 Name = remoteName,
                 XProjectOnlineToken = "SOMESECRETTOKEN",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -63,7 +63,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
                 Name = remoteName,
                 UserName = "SomeLogin",
                 XSharepointPassword = "SomePassword",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -78,7 +78,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
             {
                 Name = remoteName,
                 XProjectOnlineToken = "SOMESECRETTOKEN",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);
@@ -94,7 +94,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.ProjectOnline
                 Name = remoteName,
                 UserName = "SomeLogin",
                 XSharepointPassword = "SomePassword",
-                SiteUrl = "your_company_name.sharepoint.com"
+                SiteUrl = "http://project_server_instance.local/sites/pwa"
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, response.Code);

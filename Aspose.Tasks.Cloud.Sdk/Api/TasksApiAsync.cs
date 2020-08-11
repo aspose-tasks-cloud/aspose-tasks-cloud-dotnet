@@ -4036,7 +4036,7 @@ namespace Aspose.Tasks.Cloud.Sdk
                 formParams.Add("file", (object)this.apiInvoker.ToFileInfo(request.File, "File"));
             try
             {
-                string json = await this.apiInvoker.InvokeApiAsync(url, "POST", (string)null, (Dictionary<string, string>)null,
+                string json = await this.apiInvoker.InvokeApiAsync(url, "PUT", (string)null, (Dictionary<string, string>)null,
                     formParams, "application/json");
                 if (json != null)
                     return (UploadResponse)SerializationHelper.Deserialize(json, typeof(UploadResponse));
