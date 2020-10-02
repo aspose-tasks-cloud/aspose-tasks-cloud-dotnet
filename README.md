@@ -25,7 +25,7 @@ All Aspose.Tasks Cloud SDKs, helper scripts and templates are licensed under [MI
 # Resources
 + [**Website**](https://www.aspose.cloud)
 + [**Product Home**](https://products.aspose.cloud/tasks/cloud)
-+ [**Documentation**](https://docs.aspose.cloud/display/taskscloud/Home)
++ [**Documentation**](https://docs.aspose.cloud/tasks/)
 + [**Free Support Forum**](https://forum.aspose.cloud/c/tasks)
 + [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
 + [**Blog**](https://blog.aspose.cloud/category/aspose-products/aspose-tasks-product-family/)
