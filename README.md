@@ -3,7 +3,7 @@
 
 # .NET SDK to Manage Tasks in the Cloud
 
-Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in the Cloud. Aspose.Tasks Cloud SDK for .NET wrappers the REST API to make it easier for .NET developers to integrate Task Management features in their own cloud-based C#, ASP.NET or other .NET applications.
+Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in the Cloud. [Aspose.Tasks Cloud SDK for .NET](https://products.aspose.cloud/tasks/net) wraps the REST API to make it easier for .NET developers to integrate Task Management features in their own cloud-based C#, ASP.NET or other .NET applications.
 
 ## REST API for Task Management
 
@@ -60,7 +60,7 @@ using (var sr = new StreamReader(response))
     Assert.AreEqual("Five to Eight Weeks Before Moving,16 days", line1);
 }
 ```
-## Aspose.Cells Cloud SDKs in Popular Languages
+## Aspose.Tasks Cloud SDKs in Popular Languages
 
 | .NET | PHP | Python | Node.js |
 |---|---|---|---|
