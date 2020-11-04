@@ -58,7 +58,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
                 throw new FileNotFoundException("servercreds.json doesn't contain AppKey and AppSid");
             }
 
-            var configuration = new Configuration { ApiBaseUrl = BaseProductUri, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid };
+            var configuration = new Configuration { ApiBaseUrl = BaseProductUri, AppKey = this.keys.AppKey, AppSid = this.keys.AppSid, AuthUrl = this.keys.AuthUrl };
             this.TasksApi = new TasksApi(configuration);
             clearingRequests = new List<DeleteRequest>();
         }
@@ -152,6 +152,8 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Base
             public string AppSid { get; set; }
 
             public string AppKey { get; set; }
+
+            public string AuthUrl { get; set; }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿
-// --------------------------------------------------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="TestTasks.cs">
 //   Copyright (c) 2018 Aspose.Tasks for Cloud
 // </copyright>
@@ -29,6 +28,7 @@ using Aspose.Tasks.Cloud.Sdk.Model.Requests;
 using Aspose.Tasks.Cloud.Sdk.Tests.Base;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using Task = System.Threading.Tasks.Task;
@@ -139,6 +139,46 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
 
             Assert.AreEqual((int)HttpStatusCode.OK, tasksResponse.Code);
             Assert.IsNotNull(tasksResponse.Task);
+        }
+
+        [Test]
+        public async Task TestAddTasks()
+        {
+            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
+            var firstTask = new TaskCreationRequest
+            {
+                TaskName = "SomeFirstTaskName"
+            };
+            var secondTask = new TaskCreationRequest
+            {
+                TaskName = "SomeSecondTaskNameWithParent",
+                ParentTaskUid = 2
+            };
+            var request = new PostTasksRequest
+            {
+                Name = remoteName,
+                Folder = this.DataFolder,
+                Requests = new List<TaskCreationRequest> { firstTask, secondTask }
+            };
+            var postResponse = await TasksApi.PostTasksAsync(request);
+
+            Assert.AreEqual((int)HttpStatusCode.Created, postResponse.Code);
+            Assert.IsNotNull(postResponse.Tasks);
+            Assert.AreEqual(request.Requests.Count, postResponse.Tasks.TaskItem.Count);
+
+            var newSubtaskUid = postResponse.Tasks.TaskItem
+                .Single(t => t.Name == secondTask.TaskName)
+                .Uid;
+            var parentTaskResponse = await TasksApi.GetTaskAsync(new GetTaskRequest
+            {
+                TaskUid = secondTask.ParentTaskUid,
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+
+            Assert.AreEqual((int)HttpStatusCode.OK, parentTaskResponse.Code);
+            Assert.IsNotNull(parentTaskResponse.Task);
+            Assert.Contains(newSubtaskUid, parentTaskResponse.Task.SubtasksUids);
         }
 
         [Test]
@@ -272,12 +312,12 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             var remoteName = await UploadFileToStorageAsync("NewProductDev.mpp");
 
             var response = await TasksApi.PutMoveTaskToSiblingAsync(new PutMoveTaskToSiblingRequest
-               {
-                   Name = remoteName,
-                   Folder = this.DataFolder,
-                   TaskUid = 99999,
-                   BeforeTaskUid = -1
-               });
+            {
+                Name = remoteName,
+                Folder = this.DataFolder,
+                TaskUid = 99999,
+                BeforeTaskUid = -1
+            });
 
             Assert.IsNull(response);
         }

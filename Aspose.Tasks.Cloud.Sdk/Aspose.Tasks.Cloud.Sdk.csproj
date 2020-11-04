@@ -231,6 +231,7 @@
     <Compile Include="Model\Requests\PostTaskLinkRequest.cs" />
     <Compile Include="Model\Requests\PostTaskRecurringInfoRequest.cs" />
     <Compile Include="Model\Requests\PostTaskRequest.cs" />
+    <Compile Include="Model\Requests\PostTasksRequest.cs" />
     <Compile Include="Model\Requests\PutAssignmentRequest.cs" />
     <Compile Include="Model\Requests\PutCalendarExceptionRequest.cs" />
     <Compile Include="Model\Requests\PutCalendarRequest.cs" />
@@ -264,6 +265,7 @@
     <Compile Include="Model\RollupType.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TaskBaseline.cs" />
+    <Compile Include="Model\TaskCreationRequest.cs" />
     <Compile Include="Model\TaskItem.cs" />
     <Compile Include="Model\TaskItemResponse.cs" />
     <Compile Include="Model\TaskItems.cs" />

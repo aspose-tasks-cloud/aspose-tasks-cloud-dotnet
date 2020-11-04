@@ -281,7 +281,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual("PT4H0M0S", td.Value.ToString());
             Assert.AreEqual(assignment.TimephasedData[0].TimephasedDataType, td.TimephasedDataType);
 
-            Assert.AreEqual(assignment.Cost, assignmentAfterUpdate.Cost);
+            Assert.AreNotEqual(assignment.Cost, assignmentAfterUpdate.Cost, "Calculated fields must be overwritten");
             Assert.AreEqual(assignment.Start, assignmentAfterUpdate.Start);
             Assert.AreEqual(assignment.Finish, assignmentAfterUpdate.Finish);
             Assert.AreEqual(assignment.Work, assignmentAfterUpdate.Work);

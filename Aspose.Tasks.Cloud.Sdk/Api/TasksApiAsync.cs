@@ -2452,6 +2452,60 @@ namespace Aspose.Tasks.Cloud.Sdk
         }
 
         /// <summary>
+        /// Add a new tasks to a project. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostTasksRequest" /></param> 
+        /// <returns><see cref="TaskItemsResponse"/></returns>            
+        public async Task<TaskItemsResponse> PostTasksAsync(PostTasksRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling PostTasks",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+            // verify the required parameter 'requests' is set
+            if (request.Requests == null)
+            {
+                throw new ApiException("Missing required parameter 'requests' when calling PostTasks",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/tasks/batch");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            var postBody = SerializationHelper.Serialize(request.Requests); // http body (model) parameter
+
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (TaskItemsResponse)SerializationHelper.Deserialize(response, typeof(TaskItemsResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Get a project document in the specified format and with the specified save options. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostTaskDocumentWithFormatRequest" /></param> 

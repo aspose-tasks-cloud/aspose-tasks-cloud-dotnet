@@ -123,7 +123,7 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
 
         private void RequestToken()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
+            var requestUrl = this.configuration.AuthUrl ?? (this.configuration.ApiBaseUrl + "/connect/token");
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;
@@ -143,7 +143,7 @@ namespace Aspose.Tasks.Cloud.Sdk.RequestHandlers
         
         private async Task RequestTokenAsync()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
+            var requestUrl = this.configuration.AuthUrl ?? (this.configuration.ApiBaseUrl + "/connect/token");
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;

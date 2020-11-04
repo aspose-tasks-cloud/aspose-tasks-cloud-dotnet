@@ -51,6 +51,12 @@ namespace Aspose.Tasks.Cloud.Sdk
             }
         }
 
+
+        /// <summary>
+        /// Aspose Cloud Auth URL.
+        /// </summary>
+        public string AuthUrl { get; set; }
+
         /// <summary>
         /// Gets or sets the app key.
         /// </summary>
