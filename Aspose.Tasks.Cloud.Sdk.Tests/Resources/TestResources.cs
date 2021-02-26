@@ -155,25 +155,33 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
         [Test]
         public async Task TestDeleteResource()
         {
-            var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
+            var remoteName = await UploadFileToStorageAsync("Plan with resource.mpp");
+            
+            var resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
+            {
+                Name = remoteName,
+                Folder = this.DataFolder
+            });
+            
+            var resourceCountBeforeDelete = resourceResponse.Resources.ResourceItem.Count;
 
             var deleteResponse = await TasksApi.DeleteResourceAsync(new DeleteResourceRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder,
-                ResourceUid = 0
+                ResourceUid = 1
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, deleteResponse.Code);
 
-            var resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
+            resourceResponse = await TasksApi.GetResourcesAsync(new GetResourcesRequest
             {
                 Name = remoteName,
                 Folder = this.DataFolder
             });
 
             Assert.AreEqual((int)HttpStatusCode.OK, resourceResponse.Code);
-            Assert.AreEqual(0, resourceResponse.Resources.ResourceItem.Count);
+            Assert.Greater(resourceCountBeforeDelete, resourceResponse.Resources.ResourceItem.Count);
         }
     }
 }

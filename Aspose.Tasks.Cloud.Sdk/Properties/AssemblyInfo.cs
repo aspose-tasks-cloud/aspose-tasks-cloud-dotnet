@@ -35,7 +35,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Aspose.Tasks.Cloud.Sdk.Properties")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,5 +53,5 @@ using System.Runtime.InteropServices;
 //      Minor Version 
 //      Build Number
 //      Revision
-[assembly: AssemblyVersion("20.11.0.0")]
-[assembly: AssemblyFileVersion("20.11.0.0")]
+[assembly: AssemblyVersion("21.2.0.0")]
+[assembly: AssemblyFileVersion("21.2.0.0")]

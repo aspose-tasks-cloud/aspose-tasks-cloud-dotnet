@@ -614,6 +614,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool Warning { get; set; }
 
         /// <summary>
+        /// Represents activity id field - a task's unique identifier used by Primavera (only applicable to Primavera projects).
+        /// </summary>  
+        public string ActivityId { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -734,6 +739,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  ExtendedAttributes: ").Append(this.ExtendedAttributes).Append("\n");
             sb.Append("  OutlineCodes: ").Append(this.OutlineCodes).Append("\n");
             sb.Append("  Warning: ").Append(this.Warning).Append("\n");
+            sb.Append("  ActivityId: ").Append(this.ActivityId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
