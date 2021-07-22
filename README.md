@@ -1,13 +1,13 @@
 
 ![](https://img.shields.io/badge/api-v3.0-lightgrey) ![Nuget](https://img.shields.io/nuget/v/Aspose.tasks-Cloud) ![Nuget](https://img.shields.io/nuget/dt/Aspose.tasks-Cloud) [![GitHub license](https://img.shields.io/github/license/aspose-tasks-cloud/aspose-tasks-cloud-dotnet)](https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-dotnet/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-tasks-Cloud/aspose-tasks-cloud-dotnet)
 
-# Manipulate Project Files via .NET Cloud REST API
+# Manipulate MS Project Files in .NET via Cloud REST API
 
-Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in the Cloud. [Aspose.Tasks Cloud SDK for Go](https://products.aspose.cloud/tasks/go) wraps the REST API to make it easier for the developers to integrate Task Management features in their own cloud-based Go applications.
+Aspose.Tasks for Cloud offers the ability to manipulate and convert Microsoft Project MPT, MPP, MPX & Oracle Primavera XER, XML, and PrimaveraP6XML files in .NET. [Aspose.Tasks Cloud SDK for .NET](https://products.aspose.cloud/tasks/net) wraps the REST API to make it easier for the developers to integrate MS Project Task Management features in their own cloud-based .NET applications on Linux, MacOS, Windows or Android.
 
 Feel free to explore the [Developer's Guide](https://docs.aspose.cloud/display/taskscloud/Developer+Guide) & [API Reference](https://apireference.aspose.cloud/tasks/) to know all about Aspose.Tasks Cloud API.
 
-## MS Project Processing Features
+## MS Project in .NET Processing Features
 - Add project assignments or delete project assignments along with their references.
 - Get the project's outline codes by index & get links to all project tasks.
 - Import projects from Primavera DB formats or from databases with the specified connection string.
@@ -52,9 +52,9 @@ XER, XLSX, HTML, XML, TXT, TIF, SVG, PNG, JPEG
 
 ## Get Started with Aspose.Tasks Cloud SDK for .NET
 
-Register an account at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) to get you application information. Next, execute `Install-Package Aspose.Tasks-Cloud` from the Package Manager Console in Visual Studio to fetch & reference Aspose.Tasks Cloud SDK assembly in your project. If you already have Aspose.Tasks Cloud SDK for .NET, execute `Update-Package Aspose.Tasks-Cloud` to get the latest version. You may alternatively install the package from command line as `nuget install Aspose.Tasks-Cloud`.
+Register an account at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) to get you application information. Next, execute `Install-Package Aspose.Tasks-Cloud` from the Package Manager Console in Visual Studio to fetch & reference Aspose.Tasks Cloud SDK .NET assembly in your project. If you already have Aspose.Tasks Cloud SDK for .NET, execute `Update-Package Aspose.Tasks-Cloud` to get the latest version. You may alternatively install the package from command line as `nuget install Aspose.Tasks-Cloud`.
 
-## Convert MPP Project File to CSV in C# .Net
+## Convert MS Project MPP to PDF in .NET
 
 ```csharp
 	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
@@ -65,16 +65,16 @@ Register an account at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#
 	};
 
 	var tasksApi = new TasksApi(config);
-	using (var inputStream = new FileStream("template.mpp", FileMode.Open))
+	using (var inputStream = new FileStream("some_project.mpp", FileMode.Open))
 	{
-		var uploadFileRequest = new PostCreateRequest("template.mpp", inputStream);
+		var uploadFileRequest = new PostCreateRequest("some_project.mpp", inputStream);
 		tasksApi.UploadFile(uploadFileRequest);
 	}
 
-	var request = new PostTaskDocumentWithFormatRequest();
-	request.Name = "template.mpp";
-	request.Format = ProjectFileFormat.Csv;
-	Stream response = tasksApi.PostTaskDocumentWithFormat(request);
+	var request = new GetReportPdfRequest();
+	request.Name = "some_project.mpp";
+	request.Type = ReportType.Milestones;
+	Stream response = await tasksApi.GetReportPdfAsync(request);
 ```
 
 ## Aspose.Tasks Cloud SDKs in Popular Languages
