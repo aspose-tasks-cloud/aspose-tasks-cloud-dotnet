@@ -45,6 +45,34 @@ namespace Aspose.Tasks.Cloud.Sdk
             return url;
         }        
 
+        public static string AddQueryParameterToUrl(string url, string parameterName, DateTime? parameterValue)
+        {
+            if (url.Contains("{" + parameterName + "}"))
+            {               
+                url = AddPathParameter(url, parameterName, parameterValue);
+                return url;
+            }
+
+            if (url.Contains("%7B" + parameterName + "%7D"))
+            {
+                url = url.Replace("%7B", "{").Replace("%7D", "}");
+                url = AddPathParameter(url, parameterName, parameterValue);
+                return url;
+            }
+           
+            if (parameterValue == null)
+            {
+                return url;
+            }
+
+            var uriBuilder = new UriBuilder(url);
+            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+            query.Add(parameterName, parameterValue.Value.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            uriBuilder.Query = query.ToString();
+
+            return uriBuilder.ToString();
+        }    
+
         public static string AddQueryParameterToUrl(string url, string parameterName, object parameterValue)
         {
             if (url.Contains("{" + parameterName + "}"))

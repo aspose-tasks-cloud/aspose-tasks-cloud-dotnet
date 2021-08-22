@@ -23,9 +23,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Tasks.Cloud.Sdk.Model 
+namespace Aspose.Tasks.Cloud.Sdk.Model
 {
-    using System;  
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
@@ -37,7 +37,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     /// Represents project task.
     /// </summary>
     public class Task
-    { 
+    {
         /// <summary>
         /// The unique id of a task.
         /// </summary>  
@@ -333,6 +333,12 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public bool? IsOverAllocated { get; set; }
 
         /// <summary>
+        /// Indicates whether the task has an resource assigned which has more work on assigned
+        /// tasks than can be completed within normal working capacity.
+        /// </summary> 
+        public bool? HasOverallocatedResource { get; set; }
+
+        /// <summary>
         /// Determines whether a task is estimated.
         /// </summary>  
         public bool? IsEstimated { get; set; }
@@ -622,7 +628,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        public override string ToString()
         {
             var sb = new StringBuilder();
             sb.Append("class Task {\n");
@@ -684,6 +690,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  SubtasksUids: ").Append(this.SubtasksUids).Append("\n");
             sb.Append("  OutlineLevel: ").Append(this.OutlineLevel).Append("\n");
             sb.Append("  IsOverAllocated: ").Append(this.IsOverAllocated).Append("\n");
+            sb.Append("  HasOverallocatedResource: ").Append(this.HasOverallocatedResource).Append("\n");
             sb.Append("  IsEstimated: ").Append(this.IsEstimated).Append("\n");
             sb.Append("  OvertimeCost: ").Append(this.OvertimeCost).Append("\n");
             sb.Append("  OvertimeWork: ").Append(this.OvertimeWork).Append("\n");
