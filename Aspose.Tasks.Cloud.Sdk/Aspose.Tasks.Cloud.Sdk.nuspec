@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Aspose.Tasks-Cloud</id>
-    <version>21.8</version>
+    <version>21.10</version>
     <title>Aspose.Tasks Cloud SDK for .NET</title>
     <summary>Aspose.Tasks Cloud SDK allows developer to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications</summary>
     <authors>Aspose</authors>
@@ -14,7 +14,7 @@
     <description>New generation of Aspose Cloud SDK that allows to manipulate or convert Microsoft Project documents hosted on a cloud platform from .NET applications. It allows you to work with all aspects of a Project document including conversion. The API offers a wide range of Microsoft Project export options. The Aspose.Tasks Cloud API allows developers to convert Project documents to various formats including XML, HTML, BMP, PNG, PDF, and XSLX.
     </description>
     <releaseNotes>
-      The complete list of changes can be found at https://github.com/aspose-tasks-cloud/aspose-tasks-cloud-docs/blob/master/tasks/release-notes/release-notes-2021/aspose-tasks-cloud-21-8-release-notes/_index.md
+      The complete list of changes can be found at https://docs.aspose.cloud/tasks/aspose-tasks-cloud-21-10-release-notes/
     </releaseNotes>
     <copyright>Aspose 2002-2021. All Rights Reserved.</copyright>
     <tags>MPP Primavera Microsoft Project Server Online P6XML PrimaveraXML XER MPX</tags>

@@ -86,6 +86,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string TextValue { get; set; }
 
         /// <summary>
+        ///  Gets whether calculation of extended attribute's value resulted in an error.
+        /// </summary>
+        public bool IsErrorValue { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -102,6 +107,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  DateValue: ").Append(this.DateValue).Append("\n");
             sb.Append("  FlagValue: ").Append(this.FlagValue).Append("\n");
             sb.Append("  TextValue: ").Append(this.TextValue).Append("\n");
+            sb.Append("  IsErrorValue: ").Append(this.IsErrorValue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
