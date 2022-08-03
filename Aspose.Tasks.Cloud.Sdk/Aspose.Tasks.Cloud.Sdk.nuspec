@@ -19,7 +19,7 @@
     <copyright>Aspose 2002-2021. All Rights Reserved.</copyright>
     <tags>MPP Primavera Microsoft Project Server Online P6XML PrimaveraXML XER MPX</tags>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="12.0.1" />
+      <dependency id="Newtonsoft.Json" version="13.0.1" />
     </dependencies>
   </metadata>
   <files>
