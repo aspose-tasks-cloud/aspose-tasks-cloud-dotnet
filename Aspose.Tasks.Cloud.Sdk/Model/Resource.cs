@@ -64,6 +64,12 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
         public ResourceType Type { get; set; }
 
+        /// <summary>
+        ///  Gets the flag indicating whether resource is a root resource. Root resource is
+        ///  a special resource which is intended to support internals of MS Project's formats
+        ///  and is not intended to be used directly from the user's code. 
+        /// </summary>  
+        public bool? IsRoot { get; set; }
 
         /// <summary>
         /// Determines whether a resource is null.
@@ -443,6 +449,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  Id: ").Append(this.Id).Append("\n");
             sb.Append("  Guid: ").Append(this.Guid).Append("\n");
             sb.Append("  Type: ").Append(this.Type).Append("\n");
+            sb.Append("  IsRoot: ").Append(this.IsRoot).Append("\n");
             sb.Append("  IsNull: ").Append(this.IsNull).Append("\n");
             sb.Append("  Initials: ").Append(this.Initials).Append("\n");
             sb.Append("  Phonetics: ").Append(this.Phonetics).Append("\n");

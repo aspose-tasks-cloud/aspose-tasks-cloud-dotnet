@@ -122,6 +122,13 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
 
 
         /// <summary>
+        /// Gets or sets the type of calculation of the custom attribute's value for summary rows.
+        /// </summary>  
+        [JsonProperty("SummaryRowsCalculationType", NullValueHandling = NullValueHandling.Ignore)]
+        public SummaryRowsCalculationType SummaryRowsCalculationType { get; set; }
+
+
+        /// <summary>
         /// The formula that Microsoft Project uses to populate a custom task field.
         /// </summary>  
         public string Formula { get; set; }
@@ -178,6 +185,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  LookupUid: ").Append(this.LookupUid).Append("\n");
             sb.Append("  PhoneticsAlias: ").Append(this.PhoneticsAlias).Append("\n");
             sb.Append("  RollupType: ").Append(this.RollupType).Append("\n");
+            sb.Append("  SummaryRowsCalculationType: ").Append(this.SummaryRowsCalculationType).Append("\n");
             sb.Append("  CalculationType: ").Append(this.CalculationType).Append("\n");
             sb.Append("  Formula: ").Append(this.Formula).Append("\n");
             sb.Append("  RestrictValues: ").Append(this.RestrictValues).Append("\n");

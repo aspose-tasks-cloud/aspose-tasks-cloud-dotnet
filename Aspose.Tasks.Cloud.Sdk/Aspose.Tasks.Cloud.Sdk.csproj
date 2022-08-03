@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>Aspose.Tasks.Cloud.Sdk</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -263,6 +263,7 @@
     <Compile Include="Model\ResourceResponse.cs" />
     <Compile Include="Model\ResourceType.cs" />
     <Compile Include="Model\RollupType.cs" />
+    <Compile Include="Model\SummaryRowsCalculationType.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TaskBaseline.cs" />
     <Compile Include="Model\TaskCreationRequest.cs" />
