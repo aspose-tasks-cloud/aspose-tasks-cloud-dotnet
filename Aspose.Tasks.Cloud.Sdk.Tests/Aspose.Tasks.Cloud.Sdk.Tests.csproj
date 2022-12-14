@@ -62,6 +62,7 @@
     <Compile Include="Reports\TestReport.cs" />
     <Compile Include="Resources\TestResources.cs" />
     <Compile Include="TaskLinks\TaskLinksTests.cs" />
+    <Compile Include="Tasks\TestPrimaveraProperties.cs" />
     <Compile Include="Tasks\TestRecurringInfo.cs" />
     <Compile Include="Tasks\TestTasksExtendedAttributes.cs" />
     <Compile Include="Tasks\TestTasks.cs" />

@@ -578,6 +578,62 @@ namespace Aspose.Tasks.Cloud.Sdk
         }
 
         /// <summary>
+        /// Get primavera properties for a task with the specified Uid. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetPrimaveraTaskPropertiesRequest" /></param> 
+        /// <returns><see cref="PrimaveraTaskPropertiesResponse"/></returns>                
+        public async Task<PrimaveraTaskPropertiesResponse> GetPrimaveraTaskPropertiesAsync(GetPrimaveraTaskPropertiesRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling GetPrimaveraTaskProperties",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // verify the required parameter 'taskUid' is set
+            if (request.TaskUid == null)
+            {
+                throw new ApiException(
+                    "Missing required parameter 'taskUid' when calling GetPrimaveraTaskProperties",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() +
+                                            "/tasks/{name}/tasks/{taskUid}/primaveraProperties");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "taskUid", request.TaskUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (PrimaveraTaskPropertiesResponse)SerializationHelper.Deserialize(response,
+                        typeof(PrimaveraTaskPropertiesResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Get project&#39;s assignment items. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetAssignmentsRequest" /></param> 

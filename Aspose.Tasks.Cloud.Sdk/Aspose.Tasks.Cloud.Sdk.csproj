@@ -160,6 +160,8 @@
     <Compile Include="Model\PageCountResponse.cs" />
     <Compile Include="Model\PageSize.cs" />
     <Compile Include="Model\PresentationFormat.cs" />
+    <Compile Include="Model\PrimaveraTaskProperties.cs" />
+    <Compile Include="Model\PrimaveraTaskPropertiesResponse.cs" />
     <Compile Include="Model\ProbabilityDistributionType.cs" />
     <Compile Include="Model\ProjectDatabaseType.cs" />
     <Compile Include="Model\ProjectFileFormat.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Model\Requests\GetOutlineCodeByIndexRequest.cs" />
     <Compile Include="Model\Requests\GetOutlineCodesRequest.cs" />
     <Compile Include="Model\Requests\GetPageCountRequest.cs" />
+    <Compile Include="Model\Requests\GetPrimaveraTaskPropertiesRequest.cs" />
     <Compile Include="Model\Requests\GetProjectIdsRequest.cs" />
     <Compile Include="Model\Requests\GetProjectListRequest.cs" />
     <Compile Include="Model\Requests\GetReportPdfRequest.cs" />
