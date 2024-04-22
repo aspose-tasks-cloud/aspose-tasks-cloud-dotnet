@@ -69,6 +69,7 @@
     <Compile Include="DocumentProperties\TestDocumentProperties.cs" />
     <Compile Include="TimephasedData\TimephasedDataTests.cs" />
     <Compile Include="Vba\VbaTests.cs" />
+    <Compile Include="Views\ViewsTests.cs" />
     <Compile Include="Wbs\WbsTests.cs" />
   </ItemGroup>
   <ItemGroup>

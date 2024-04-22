@@ -24,6 +24,7 @@ node_modules/
 *.userprefs
 packages/
 *.nupkg
+*.pfx
 *.gitattributes
 *.pyc
 # Built application files

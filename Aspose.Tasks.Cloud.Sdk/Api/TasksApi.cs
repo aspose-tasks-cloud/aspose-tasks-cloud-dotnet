@@ -4277,6 +4277,302 @@ namespace Aspose.Tasks.Cloud.Sdk
             return this.apiInvoker.InvokeBinaryApi(url, "GET", null, null, null);
         }
 
+        /// <summary>
+        /// Read all project views.
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetViewsRequest" /></param> 
+        /// <returns><see cref="ViewsResponse"/></returns>            
+        public ViewsResponse GetViews(GetViewsRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling GetViews",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/views");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (ViewsResponse)SerializationHelper.Deserialize(response,
+                        typeof(ViewsResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Read all table text styles from specified view.
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetAllTableTextStylesRequest" /></param> 
+        /// <returns><see cref="TableTextStylesResponse"/></returns>            
+        public TableTextStylesResponse GetAllTableTextStyles(GetAllTableTextStylesRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling GetAllTableTextStyles",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl()
+                + "/tasks/{name}/views/{viewUid}/tabletextstyles");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "viewUid", request.ViewUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (TableTextStylesResponse)SerializationHelper.Deserialize(response,
+                        typeof(TableTextStylesResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Read specified table text style from specified view.
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetTableTextStyleRequest" /></param> 
+        /// <returns><see cref="TableTextStyleResponse"/></returns>            
+        public TableTextStyleResponse GetTableTextStyle(GetTableTextStyleRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling GetTableTextStyle",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl()
+                + "/tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "viewUid", request.ViewUid);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "rowUid", request.RowUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "GET",
+                    null,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (TableTextStyleResponse)SerializationHelper.Deserialize(response,
+                        typeof(TableTextStyleResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Create table text style in specified view.
+        /// </summary>
+        /// <param name="request">Request. <see cref="CreateTableTextStyleRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse CreateTableTextStyle(CreateTableTextStyleRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling CreateTableTextStyle",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl()
+                + "/tasks/{name}/views/{viewUid}/tabletextstyles");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "viewUid", request.ViewUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            var postBody = SerializationHelper.Serialize(request.TableTextStyle); // http body (model) parameter
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "POST",
+                    postBody,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response,
+                        typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Update table text style in specified view.
+        /// </summary>
+        /// <param name="request">Request. <see cref="UpdateTableTextStyleRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse UpdateTableTextStyle(UpdateTableTextStyleRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling UpdateTableTextStyle",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl()
+                + "/tasks/{name}/views/{viewUid}/tabletextstyles");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "viewUid", request.ViewUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            var body = SerializationHelper.Serialize(request.TableTextStyle); // http body (model) parameter
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "PUT",
+                    body,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response,
+                        typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Delete specified table text style from specified view.
+        /// </summary>
+        /// <param name="request">Request. <see cref="DeleteTableTextStyleRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse DeleteTableTextStyle(DeleteTableTextStyleRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling DeleteTableTextStyle",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath = UnescapePath(this.configuration.GetApiRootUrl()
+                + "/tasks/{name}/views/{viewUid}/tabletextstyles/{rowUid}");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "viewUid", request.ViewUid);
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "rowUid", request.RowUid);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "DELETE",
+                    null,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response,
+                        typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
         private string BuildUrl(string path, object versionId, object storage)
         {
             string baseUrl = Regex
