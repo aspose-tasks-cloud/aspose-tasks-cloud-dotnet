@@ -39,6 +39,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     public class Calendar
     { 
         /// <summary>
+        /// Gets calendar's Guid.
+        /// </summary>
+        public string Guid { get; set; }
+        
+        /// <summary>
         /// The name of the calendar.
         /// </summary>  
         public string Name { get; set; }

@@ -63,6 +63,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.AreEqual("Task Dependent", entity.RawActivityType);
             Assert.AreEqual("Units", entity.RawCompletePercentType);
             Assert.AreEqual("Not Started", entity.RawStatus);
+            Assert.AreEqual(PrimaveraDurationType.FixedUnits, entity.DurationType);
+            Assert.AreEqual(PrimaveraActivityType.TaskDependent, entity.ActivityType);
+            Assert.AreEqual(PrimaveraPercentCompleteType.Units, entity.PercentCompleteType);
         }
         
     }
