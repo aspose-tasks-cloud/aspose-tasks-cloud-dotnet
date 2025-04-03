@@ -29,6 +29,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
     using System.Collections;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using System.Security;
     using System.Text;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -75,6 +76,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         /// </summary>  
         [JsonProperty("LagFormat", NullValueHandling = NullValueHandling.Ignore)]
         public TimeUnitType LagFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets lag duration, depending on LagFormat.
+        /// </summary>  
+        public string LinkLagTimeSpan { get; set; }
 
 
         /// <summary>

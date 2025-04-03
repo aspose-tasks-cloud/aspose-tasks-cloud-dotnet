@@ -171,6 +171,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public decimal? Cost { get; set; }
 
         /// <summary>
+        /// Gets or sets a value of OutlineNumber.
+        /// </summary>  
+        public string OutlineNumber { get; set; }
+
+        /// <summary>
         /// The difference between the baseline cost and total cost for a task.
         /// </summary>  
         public double? Cv { get; set; }
@@ -625,6 +630,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string ActivityId { get; set; }
 
         /// <summary>
+        /// Contains the external task's Unique identifier when the task is external.
+        /// </summary>  
+        public string ExternalUid { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -658,6 +668,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  ConstraintType: ").Append(this.ConstraintType).Append("\n");
             sb.Append("  Contact: ").Append(this.Contact).Append("\n");
             sb.Append("  Cost: ").Append(this.Cost).Append("\n");
+            sb.Append("  OutlineNumber: ").Append(this.OutlineNumber).Append("\n");
             sb.Append("  Cv: ").Append(this.Cv).Append("\n");
             sb.Append("  Deadline: ").Append(this.Deadline).Append("\n");
             sb.Append("  DurationVariance: ").Append(this.DurationVariance).Append("\n");
@@ -747,6 +758,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             sb.Append("  OutlineCodes: ").Append(this.OutlineCodes).Append("\n");
             sb.Append("  Warning: ").Append(this.Warning).Append("\n");
             sb.Append("  ActivityId: ").Append(this.ActivityId).Append("\n");
+            sb.Append("  ExternalUid: ").Append(this.ExternalUid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

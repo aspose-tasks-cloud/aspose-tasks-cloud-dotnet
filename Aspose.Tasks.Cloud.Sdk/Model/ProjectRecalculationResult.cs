@@ -51,6 +51,11 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
         public string ValidationErrorMessage { get; set; }
 
         /// <summary>
+        /// Gets the task uid which caused the validation error.
+        /// </summary>
+        public int? FailedTaskUid { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -59,6 +64,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Model
             var sb = new StringBuilder();
             sb.Append("class ProjectRecalculationResult {\n");
             sb.Append("  ValidationState: ").Append(this.ValidationState).Append("\n");
+            sb.Append("  FailedTaskUid: ").Append(this.FailedTaskUid).Append("\n");
             sb.Append("  ValidationErrorMessage: ").Append(this.ValidationErrorMessage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

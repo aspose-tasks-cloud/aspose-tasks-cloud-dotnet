@@ -111,6 +111,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.TaskLinks
             Assert.AreEqual(TaskLinkType.StartToFinish, linksResponse.TaskLinks[0].LinkType);
             Assert.AreEqual(9600, linksResponse.TaskLinks[0].Lag);
             Assert.AreEqual(TimeUnitType.Day, linksResponse.TaskLinks[0].LagFormat);
+            Assert.AreEqual("16:00:00", linksResponse.TaskLinks[0].LinkLagTimeSpan);
         }
 
         [Test]

@@ -109,6 +109,7 @@ hs_err_pid*
 *.xcuserstate*StyleCop.Cache
 *StyleCop.Cache
 .vs/*
+*/.vs/*
 SDKs/PHP/.idea/*
 SDKs/PHP/vendor/*
 SDKs/PHP/testReports/*

@@ -64,7 +64,7 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
         }
 
         [Test]
-        public async Task TestGetDocumentInCsvFormatWithSaveOptions()
+        public async Task TestGetDocumentInCsvFormatWithSaveOptions([Values(true, false)] bool isExtendedFields)
         {
             var remoteName = await UploadFileToStorageAsync("Home move plan.mpp");
 
@@ -72,7 +72,10 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             // Aspose.Tasks's SaveOptions class or its format-specific inheritors (Like CsvOptions, etc):
             // See Aspose.Tasks reference: https://apireference.aspose.com/net/tasks/aspose.tasks.saving/saveoptions
 
-            var saveOptionsSerialized = "{ \"TextDelimiter\":\"Comma\", \"IncludeHeaders\":false,\"NonExistingTestProperty\":false," +
+            var saveOptionsSerialized = isExtendedFields ?
+                "{\"View\": {\"Columns\": [{\"Type\": \"GanttChartColumn\", \"Name\": \"ID\", \"Property\": \"Id\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Active\", \"Property\": \"IsActive\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Name\", \"Property\": \"Name\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Duration\", \"Property\": \"Duration\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Start\", \"Property\": \"Start\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Finish\", \"Property\": \"Finish\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Predecessors\", \"Property\": \"Predecessors\", \"Width\": 120}, {\"Type\": \"GanttChartColumn\", \"Name\": \"Successors\", \"Property\": \"Successors\", \"Width\": 120}]}}"
+                :
+                "{ \"TextDelimiter\":\"Comma\", \"IncludeHeaders\":false,\"NonExistingTestProperty\":false," +
                 "\"View\":{ \"Columns\":[{Type:\"GanttChartColumn\",\"Name\":\"TestColumn1\",\"Property\":\"Name\",\"Width\":120}," +
                 "{Type:\"GanttChartColumn\",\"Name\":\"TestColumn2\",\"Property\":\"Duration\",\"Width\":120}]}}";
 
@@ -90,10 +93,13 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Project
             Assert.IsTrue(response.Length > 0);
             response.Seek(0, SeekOrigin.Begin);
 
+            var expectedLine = isExtendedFields ?
+                "ID;Active;Name;Duration;Start;Finish;Predecessors;Successors" :
+                "Five to Eight Weeks Before Moving,16 days";
             using (var sr = new StreamReader(response))
             {
                 var line1 = sr.ReadLine();
-                Assert.AreEqual("Five to Eight Weeks Before Moving,16 days", line1);
+                Assert.AreEqual(expectedLine, line1);
             }
         }
 
