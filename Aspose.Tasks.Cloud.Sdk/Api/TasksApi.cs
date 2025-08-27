@@ -23,10 +23,10 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Tasks.Cloud.Sdk.RequestHandlers;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Aspose.Tasks.Cloud.Sdk.RequestHandlers;
 
 namespace Aspose.Tasks.Cloud.Sdk
 {
@@ -34,6 +34,7 @@ namespace Aspose.Tasks.Cloud.Sdk
     using Aspose.Tasks.Cloud.Sdk.Model.Requests;
     using System.Net;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Aspose.Tasks for Cloud API.
@@ -2861,7 +2862,111 @@ namespace Aspose.Tasks.Cloud.Sdk
                     null);
                 if (response != null)
                 {
-                    return (AssignmentResponse) SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
+                    return (AssignmentResponse)SerializationHelper.Deserialize(response, typeof(AssignmentResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Levels tasks for project’s resources. If request body is empty,  all project's resources with default leveling options will be leveled.
+        /// </summary>
+        /// <param name="request">Request. <see cref="LevelTasksRequest" /></param> 
+        /// <returns><see cref="LevelingResponse"/></returns>              
+        public LevelingResponse LevelTasks(LevelTasksRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling PutAssignment",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resourceLevel");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            string body = null;
+            if (request.Options != null)
+            {
+                body = SerializationHelper.Serialize(request.Options);
+            }
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "PUT",
+                    body,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (LevelingResponse)SerializationHelper.Deserialize(response, typeof(LevelingResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Clears leveling delays that was previously added to the project during resource leveling.  If request body is empty, all leveling delays will be cleared.
+        /// </summary>
+        /// <param name="request">Request. <see cref="ClearLevelingRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public AsposeResponse ÑlearLeveling(ClearLevelingRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling PutAssignment",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resourceLevel");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            string body = null;
+            if (request.TaskUids != null)
+            {
+                body = SerializationHelper.Serialize(request.TaskUids);
+            }
+            try
+            {
+                var response = this.apiInvoker.InvokeApi(
+                    resourcePath,
+                    "DELETE",
+                    body,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
                 }
 
                 return null;

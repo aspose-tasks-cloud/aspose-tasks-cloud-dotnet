@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AssemblyInfo.cs">
-//   Copyright (c) 2018 Aspose.Tasks for Cloud
+// <copyright company="Aspose" file="LevelingResponse.cs">
+//   Copyright (c) 2025 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,35 +23,37 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+namespace Aspose.Tasks.Cloud.Sdk.Model
+{
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Runtime.Serialization;
+    using System.Text;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("Aspose.Tasks.Cloud.Sdk")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aspose.Tasks.Cloud.Sdk.Properties")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+    /// <summary>
+    /// Represents the results of resource leveling.
+    /// </summary>
+    public class LevelingResponse : AsposeResponse
+    {
+        /// <summary>
+        /// Gets a set of task uids affected by resource leveling.
+        /// </summary>
+        public List<int> AffectedTaskUids { get; set; }
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fec6e585-8ced-4654-a98a-c1ef99b00819")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-[assembly: AssemblyVersion("25.8.0.0")]
-[assembly: AssemblyFileVersion("25.8.0.0")]
+        /// <summary>
+        /// Get the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("class LevelingResponse {\n");
+            sb.Append("  AffectedTaskUids: ").Append(this.AffectedTaskUids).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+    }
+}

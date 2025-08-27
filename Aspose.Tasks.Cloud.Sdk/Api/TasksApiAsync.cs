@@ -2817,6 +2817,110 @@ namespace Aspose.Tasks.Cloud.Sdk
         }
 
         /// <summary>
+        /// Levels tasks for project’s resources. If request body is empty,  all project's resources with default leveling options will be leveled.
+        /// </summary>
+        /// <param name="request">Request. <see cref="LevelTasksRequest" /></param> 
+        /// <returns><see cref="LevelingResponse"/></returns>            
+        public async Task<LevelingResponse> LevelTasksAsync(LevelTasksRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling PutAssignment",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resourceLevel");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            string body = null;
+            if (request.Options != null)
+            {
+                body = SerializationHelper.Serialize(request.Options);
+            }
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "PUT",
+                    body,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (LevelingResponse)SerializationHelper.Deserialize(response, typeof(LevelingResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Clears leveling delays that was previously added to the project during resource leveling.  If request body is empty, all leveling delays will be cleared.
+        /// </summary>
+        /// <param name="request">Request. <see cref="ClearLevelingRequest" /></param> 
+        /// <returns><see cref="AsposeResponse"/></returns>            
+        public async Task<AsposeResponse> ÑlearLevelingAsync(ClearLevelingRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.Name == null)
+            {
+                throw new ApiException("Missing required parameter 'name' when calling PutAssignment",
+                    StatusCodes.ErrorInvalidInputData);
+            }
+
+            // create path and map variables
+            var resourcePath =
+                UnescapePath(this.configuration.GetApiRootUrl() + "/tasks/{name}/resourceLevel");
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.Name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.Storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.Folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fileName", request.FileName);
+            string body = null;
+            if (request.TaskUids != null)
+            {
+                body = SerializationHelper.Serialize(request.TaskUids);
+            }
+            try
+            {
+                var response = await this.apiInvoker.InvokeApiAsync(
+                    resourcePath,
+                    "DELETE",
+                    body,
+                    null,
+                    null);
+                if (response != null)
+                {
+                    return (AsposeResponse)SerializationHelper.Deserialize(response, typeof(AsposeResponse));
+                }
+
+                return null;
+            }
+            catch (ApiException ex)
+            {
+                if (ex.HttpStatusCode == HttpStatusCode.NotFound)
+                {
+                    return null;
+                }
+
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Edits an existing project calendar. 
         /// </summary>
         /// <param name="request">Request. <see cref="PutCalendarRequest" /></param> 

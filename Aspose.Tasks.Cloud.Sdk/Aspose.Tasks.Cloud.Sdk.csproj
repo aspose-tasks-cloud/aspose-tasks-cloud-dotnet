@@ -145,6 +145,9 @@
     <Compile Include="Model\Field.cs" />
     <Compile Include="Model\ImportedProjectType.cs" />
     <Compile Include="Model\ItemType.cs" />
+    <Compile Include="Model\LevelingOptions.cs" />
+    <Compile Include="Model\LevelingOrder.cs" />
+    <Compile Include="Model\LevelingResponse.cs" />
     <Compile Include="Model\Link.cs" />
     <Compile Include="Model\LinkElement.cs" />
     <Compile Include="Model\MaskType.cs" />
@@ -187,6 +190,7 @@
     <Compile Include="Model\RecurringInfo.cs" />
     <Compile Include="Model\RecurringInfoResponse.cs" />
     <Compile Include="Model\ReportType.cs" />
+    <Compile Include="Model\Requests\ClearLevelingRequest.cs" />
     <Compile Include="Model\Requests\CreateNewProjectRequest.cs" />
     <Compile Include="Model\Requests\CreateTableTextStyleRequest.cs" />
     <Compile Include="Model\Requests\DeleteAssignmentRequest.cs" />
@@ -237,6 +241,7 @@
     <Compile Include="Model\Requests\GetVbaProjectRequest.cs" />
     <Compile Include="Model\Requests\GetViewsRequest.cs" />
     <Compile Include="Model\Requests\GetWbsDefinitionRequest.cs" />
+    <Compile Include="Model\Requests\LevelTasksRequest.cs" />
     <Compile Include="Model\Requests\PostAssignmentRequest.cs" />
     <Compile Include="Model\Requests\PostCalendarExceptionRequest.cs" />
     <Compile Include="Model\Requests\PostCalendarRequest.cs" />

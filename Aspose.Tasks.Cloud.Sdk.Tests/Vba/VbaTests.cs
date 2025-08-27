@@ -49,9 +49,9 @@ namespace Aspose.Tasks.Cloud.Sdk.Tests.Tasks
             Assert.IsNotNull(vbaResponse.VbaProject);
             Assert.IsNotNull(vbaResponse.VbaProject.Modules);
 
-            Assert.AreEqual(7, vbaResponse.VbaProject.Modules.Count);
-            Assert.AreEqual("Module1", vbaResponse.VbaProject.Modules[0].Name);
-            Assert.IsTrue(vbaResponse.VbaProject.Modules[0].SourceCode.StartsWith("Type MEMORYSTATUS"));
+            Assert.AreEqual(8, vbaResponse.VbaProject.Modules.Count);
+            Assert.AreEqual("Module1", vbaResponse.VbaProject.Modules[1].Name);
+            Assert.IsTrue(vbaResponse.VbaProject.Modules[1].SourceCode.StartsWith("Type MEMORYSTATUS"));
         }
     }
 }

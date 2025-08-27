@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AssemblyInfo.cs">
-//   Copyright (c) 2018 Aspose.Tasks for Cloud
+// <copyright company="Aspose" file="LevelTasksRequest.cs">
+//   Copyright (c) 2025 Aspose.Tasks for Cloud
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,36 +22,47 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+namespace Aspose.Tasks.Cloud.Sdk.Model.Requests
+{
+    using Aspose.Tasks.Cloud.Sdk.Model;
 
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+    /// <summary>
+    /// Request model for <see cref="Aspose.Tasks.Cloud.Sdk.Api.TasksApi.LevelTasksAsync" /> operation.
+    /// </summary>  
+    public class LevelTasksRequest
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LevelTasksRequest"/> class.
+        /// </summary>        
+        public LevelTasksRequest()
+        {
+        }
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("Aspose.Tasks.Cloud.Sdk")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aspose.Tasks.Cloud.Sdk.Properties")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+        /// <summary>
+        /// The file name
+        /// </summary>  
+        public string Name { get; set; }
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("fec6e585-8ced-4654-a98a-c1ef99b00819")]
+        /// <summary>
+        /// Options which specifies how to level resources. 
+        /// If not specified, default leveling options will be used.
+        /// </summary>
+        public LevelingOptions Options { get; set; }
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-[assembly: AssemblyVersion("25.8.0.0")]
-[assembly: AssemblyFileVersion("25.8.0.0")]
+        /// <summary>
+        /// The document storage
+        /// </summary>  
+        public string Storage { get; set; }
+
+        /// <summary>
+        /// The document storage
+        /// </summary>  
+        public string Folder { get; set; }
+
+        /// <summary>
+        /// The filename to save Changes
+        /// </summary>  
+        public string FileName { get; set; }
+    }
+}
